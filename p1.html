@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteMon - Galería de Sprites</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>ByteMon</h1>
+        <p>¡Welcome to the ByteMon sprite gallery! Discover the charming characters of our world.</p>
+    </header>
+
+    <main class="main-content">
+        <section class="sprite-gallery">
+            <h2>Sprite gallery</h2>
+            <div class="sprite-container">
+                <div class="sprite pixelart-to-css1"></div>
+                <div class="sprite pixelart-to-css2"></div>
+                <div class="sprite pixelart-to-css3"></div>
+            </div>
+        </section>
+
+        <!-- Espacio para cambiar el nombre del personaje -->
+        <section class="character-name-section">
+            <h2>Change Character Name</h2>
+            <input type="text" id="characterNameInput" placeholder="Enter character name">
+            <button onclick="changeCharacterName()">Change Name</button>
+        </section>
+
+        <!-- Sección donde se mostrará el nombre del personaje -->
+        <section class="display-character-name">
+            <h3>Character Name: <span id="characterNameDisplay">Default Name</span></h3>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Somos <a href="https://github.com/HectorCRZBQ" target="_blank">HectorCRZBQ</a> y <a href="https://github.com/Sergio016" target="_blank">Sergio016</a></p>
+    </footer>
+
+    <!-- Script para cambiar el nombre del personaje -->
+    <script src="script.js"></script>
+    
+</body>
+</html>
