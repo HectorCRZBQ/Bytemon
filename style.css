@@ -91,23 +91,20 @@ button {
 
 /* Contenedor para los sprites */
 .sprite-container {
-  display: flex;
   justify-content: center; /* Centra los sprites horizontalmente */
-  gap: 10px; /* Espacio entre los sprites */
   position: relative; /* Mantén el contenedor relativo */
   width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
   max-width: 600px; /* Limita el ancho máximo para mejor visualización */
-  height: 150px; /* Ajusta la altura del contenedor para evitar superposición */
-  margin-bottom: 20px; /* Agrega margen para separar del resto del contenido */
+  height: 350px; /* Ajusta la altura del contenedor para evitar superposición */
+  margin-bottom: 100px; /* Agrega margen para separar del resto del contenido */
 }
 
 /* Estilo de los sprites (ajusta según sea necesario) */
 .sprite {
-  width: 100px; /* Ajusta el tamaño de los sprites */
+  width: 100px;
   height: 100px;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
-  position: relative; /* Cambia de absolute a relative */
 }
 
 /* Evo1 */
@@ -159,6 +156,8 @@ button {
   -webkit-animation: y 1s infinite;
   -moz-animation: y 1s infinite;
   -o-animation: y 1s infinite;
+  width: 100px;
+  height: 100px;
 }
 
 @keyframes y {
@@ -188,6 +187,7 @@ button {
   }
 }
 
+/* Evo3 */
 .pixelart-to-css3 {
   position: absolute;
   animation: z 1s infinite;
@@ -229,7 +229,7 @@ button {
   }
 }
 
-/* Evo3 */
+/* Evo4 */
 .pixelart-to-css4 {
     position: absolute;
     animation: w 1s infinite;
