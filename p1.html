@@ -3,35 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ByteMon - Galería de Sprites</title>
+    <title>ByteMon</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header">
         <h1>ByteMon</h1>
-        <p>¡Welcome to the ByteMon sprite gallery! Discover the charming characters of our world.</p>
+        <p>¡Welcome to the ByteMon!</p>
+        <p>Discover the charming characters of our world.</p>
     </header>
 
     <main class="main-content">
         <section class="sprite-gallery">
-            <h2>Sprite gallery</h2>
+            <h2>Choose your ByteMon</h2>
             <div class="sprite-container">
-                <div class="sprite pixelart-to-css1"></div>
-                <div class="sprite pixelart-to-css2"></div>
-                <div class="sprite pixelart-to-css3"></div>
+                <!-- El sprite del personaje -->
+                <div class="sprite pixelart-to-css1" id="currentSprite"></div>
             </div>
         </section>
 
         <!-- Espacio para cambiar el nombre del personaje -->
         <section class="character-name-section">
-            <h2>Change Character Name</h2>
             <input type="text" id="characterNameInput" placeholder="Enter character name">
             <button onclick="changeCharacterName()">Change Name</button>
         </section>
 
         <!-- Sección donde se mostrará el nombre del personaje -->
         <section class="display-character-name">
-            <h3>Character Name: <span id="characterNameDisplay">Default Name</span></h3>
+            <h3>Character Name: <span id="characterNameDisplay">Charmander</span></h3>
+        </section>
+
+        <!-- Botón Luchar y botón de sonido -->
+        <section class="battle-section">
+            <h2>Battle!</h2>
+            <button id="battleButton" onclick="fight()">Luchar</button>
+            <button id="soundButton" onclick="playEvolutionSound()">Play Sound</button>
+            <p id="evolutionMessage"></p>
         </section>
     </main>
 
@@ -39,8 +46,14 @@
         <p>Somos <a href="https://github.com/HectorCRZBQ" target="_blank">HectorCRZBQ</a> y <a href="https://github.com/Sergio016" target="_blank">Sergio016</a></p>
     </footer>
 
-    <!-- Script para cambiar el nombre del personaje -->
+    <!-- Elementos de audio para los sonidos de evolución -->
+    <audio id="sound1" src="sounds/evo1.mp3"></audio>
+    <audio id="sound2" src="sounds/evo2.mp3"></audio>
+    <audio id="sound3" src="sounds/evo3.mp3"></audio>
+    <audio id="sound4" src="sounds/evo4.mp3"></audio>
+
+    <!-- Script para cambiar el nombre del personaje y la evolución -->
     <script src="script.js"></script>
-    
 </body>
 </html>
+
