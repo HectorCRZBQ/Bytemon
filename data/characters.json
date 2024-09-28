@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "name": "Maricarmen",
-    "energyLevel": 0,
-    "lifePoints": 0,
-    "team": "Instinct",
-    "initial": "Squirtle"
+    "name": "Hector",
+    "energyLevel": "999",
+    "lifePoints": 1000,
+    "team": "Valor",
+    "initial": "Charmander"
   }
 ]
