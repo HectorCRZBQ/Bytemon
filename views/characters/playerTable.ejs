@@ -1,0 +1,19 @@
+<h1>Lista de Jugadores</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Jugador</th>
+                <th>Bytemon Inicial</th>
+                <th>Equipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% characters.forEach(character => { %>
+                <tr>
+                    <td><%= character.name %></td>
+                    <td><%= character.initial %></td>
+                    <td><%= character.team %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>

@@ -25,11 +25,15 @@ app.post('/characters', characterController.store);
 app.get('/characters/:id/edit', characterController.edit);
 app.post('/characters/:id/update', characterController.update);
 app.post('/characters/:id/delete', characterController.delete);
+
 // Game routes
 app.get('/game', gameController.view);
 app.get('/game/select', gameController.select);
 app.post('/game/select', gameController.chooseCharacter);
 app.put('/game/update', gameController.updateEnergy);
+
+// Table routes
+app.get('/players', characterController.showPlayerTable);
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
