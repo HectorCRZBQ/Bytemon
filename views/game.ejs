@@ -28,22 +28,30 @@
     <script>
         let attackCounter = 0; // Contador para los ataques
 
-        // Array de rutas dinámicas de GIFs para mostrar en los diferentes niveles
-        const gifs = [
-            `/images/<%= character.initial.toLowerCase() %>/evo1.gif`, // GIF para los primeros 5 ataques
-            `/images/<%= character.initial.toLowerCase() %>/evo2.gif`, // GIF para los siguientes 10 ataques
-            `/images/<%= character.initial.toLowerCase() %>/evo3.gif`, // GIF para los siguientes 15 ataques
-            `/images/<%= character.initial.toLowerCase() %>/evo4.gif`, // GIF para los siguientes 20 ataques
-            `/images/<%= character.initial.toLowerCase() %>/evo5.gif`  // GIF para los siguientes 25 ataques
+        // Arrays de GIFs y sonidos para Charmander, con cuatro evoluciones
+        const gifsCharmander = [
+            `/images/charmander/evo2.gif`,
+            `/images/charmander/evo3.gif`,
+            `/images/charmander/evo4.gif`,
         ];
 
-        // Array de rutas dinámicas de sonidos para los diferentes niveles
-        const sounds = [
-            `/sounds/<%= character.initial.toLowerCase() %>/sound1.mp3`, // Sonido para los primeros 5 ataques
-            `/sounds/<%= character.initial.toLowerCase() %>/sound2.mp3`, // Sonido para los siguientes 10 ataques
-            `/sounds/<%= character.initial.toLowerCase() %>/sound3.mp3`, // Sonido para los siguientes 15 ataques
-            `/sounds/<%= character.initial.toLowerCase() %>/sound4.mp3`, // Sonido para los siguientes 20 ataques
-            `/sounds/<%= character.initial.toLowerCase() %>/sound5.mp3`  // Sonido para los siguientes 25 ataques
+        const soundsCharmander = [
+            `/sounds/charmander/sound1.mp3`,
+            `/sounds/charmander/sound2.mp3`,
+            `/sounds/charmander/sound3.mp3`,
+            `/sounds/charmander/sound4.mp3`,
+        ];
+
+        // Arrays de GIFs y sonidos para otros Pokémon
+        const gifsDefault = [
+            `/images/<%= character.initial.toLowerCase() %>/evo2.gif`,
+            `/images/<%= character.initial.toLowerCase() %>/evo3.gif`,
+        ];
+
+        const soundsDefault = [
+            `/sounds/<%= character.initial.toLowerCase() %>/sound1.mp3`,
+            `/sounds/<%= character.initial.toLowerCase() %>/sound2.mp3`,
+            `/sounds/<%= character.initial.toLowerCase() %>/sound3.mp3`,
         ];
 
         // Nombres evolutivos correspondientes
@@ -66,8 +74,8 @@
             }, 3000); // Tiempo de 3 segundos para el mensaje de evolución
         }
 
-        function playSound(index) {
-            const audio = new Audio(sounds[index]); // Crea un nuevo objeto de Audio con la ruta del sonido
+        function playSound(index, isCharmander) {
+            const audio = new Audio(isCharmander ? soundsCharmander[index] : soundsDefault[index]); // Crea un nuevo objeto de Audio con la ruta del sonido
             audio.play(); // Reproduce el sonido
         }
 
@@ -92,9 +100,11 @@
                     
                     // Cada vez que se alcance un múltiplo de 5, cambiar el GIF y reproducir el sonido
                     if (attackCounter % 5 === 0) {
+                        const isCharmander = '<%= character.initial %>' === 'Charmander';
                         const gifIndex = (attackCounter / 5) - 1; // Obtener el índice del GIF correspondiente
-                        if (gifIndex < gifs.length) { // Verificar que no se exceda el número de GIFs
-                            document.getElementById('normalGif').src = gifs[gifIndex]; // Cambiar la fuente del GIF
+
+                        if (gifIndex < (isCharmander ? gifsCharmander.length : gifsDefault.length)) {
+                            document.getElementById('normalGif').src = isCharmander ? gifsCharmander[gifIndex] : gifsDefault[gifIndex]; // Cambiar la fuente del GIF
 
                             // Cambiar el nombre del ByteMon
                             const currentByteMon = document.getElementById('byteMonName');
@@ -109,7 +119,7 @@
                             showEvolutionMessage();
 
                             // Reproducir el sonido correspondiente al evolucionar
-                            playSound(gifIndex);
+                            playSound(gifIndex, isCharmander);
                         }
                     }
                 }
@@ -117,8 +127,9 @@
                 // Si la acción es "sound", simplemente reproducir el sonido correspondiente
                 if (action === 'sound') {
                     const soundIndex = Math.floor(attackCounter / 5); // Determina el índice de sonido
-                    if (soundIndex < sounds.length) {
-                        playSound(soundIndex);
+                    const isCharmander = '<%= character.initial %>' === 'Charmander';
+                    if (soundIndex < (isCharmander ? soundsCharmander.length : soundsDefault.length)) {
+                        playSound(soundIndex, isCharmander);
                     }
                 }
             })
@@ -130,4 +141,5 @@
     <p>No hay ningún personaje seleccionado.</p>
     <a href="/characters">Seleccionar Personaje</a>
 <% } %>
+
 

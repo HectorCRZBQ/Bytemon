@@ -54,3 +54,8 @@ exports.delete = (req, res) => {
     characterModel.saveCharacters(characters);
     res.redirect('/characters');
 };
+
+exports.showPlayerTable = (req, res) => {
+    const characters = characterModel.getAllCharacters();
+    res.render('characters/playerTable', { characters, loadTableCss: true });
+};

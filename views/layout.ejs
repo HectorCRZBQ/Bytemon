@@ -9,10 +9,16 @@
     <% if (typeof loadFormCss !== 'undefined' && loadFormCss) { %>
         <link rel="stylesheet" href="/css/form.css">
     <% } %>
+
+    <% if (typeof loadTableCss !== 'undefined' && loadTableCss) { %>
+        <link rel="stylesheet" href="/css/table.css">
+    <% } %>
+
+
 </head>
 <body>
     <header>
-        BYTEMON | <a href="/characters">Gestión de personajes</a> <a href="/game/select">Cambiar personaje</a> <a href="/game">Jugar</a>
+        BYTEMON | <a href="/characters">Gestión de personajes</a> <a href="/game/select">Cambiar personaje</a> <a href="/players">Lista de jugadores</a> <a href="/game">Jugar</a>
     </header>
     
     <%- body %>
