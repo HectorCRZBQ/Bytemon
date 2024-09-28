@@ -13,15 +13,60 @@ body {
 
 /* Cabecera */
 header {
-  background: #ff6f00; /* Color vibrante del borde del formulario */
+  background: #ff6f00;
   color: #fff;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si es necesario */
   border-bottom: 5px solid #770505;
 }
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 1em;
+  font-family: 'Press Start 2P', cursive;
+}
+
+header a:hover {
+  text-decoration: underline;
+  color: #770505;
+}
+
+/* Botón del menú hamburguesa (oculto en pantallas grandes) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #fff;
+  margin-left: auto;
+
+}
+
+/* Estilo para el menú desplegable en dispositivos móviles */
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.nav-links a {
+  text-transform: uppercase;
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 111, 0, 0.6);
+  color: #fff;
+}
+
 header h1 {
   margin: 0;
   font-size: 2.5em;
 }
+
 header p {
   font-size: 1.2em;
   margin: 10px 0 0 0;
@@ -73,6 +118,7 @@ input[type="text"] {
 button {
   padding: 12px 20px; /* Ajustar el padding para un mejor aspecto con los bordes redondeados */
   margin-left: 10px;
+  margin-bottom: 10px;
   font-size: 16px;
   background-color: #ff6f00; /* Color del botón del formulario */
   color: #fff; /* Texto en blanco */
@@ -81,8 +127,58 @@ button {
   text-transform: uppercase; /* Texto en mayúsculas */
   border-radius: 20px; /* Botones más redondeados */
 }
+
 button:hover {
   background-color: #ff8c1a; /* Color más claro al pasar el mouse */
+}
+
+/* Estilos generales para la lista de personajes */
+.character-list {
+  list-style: none; /* Eliminar puntos de la lista */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Flexbox para disposición en fila */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas */
+  justify-content: center; /* Centrar los elementos */
+}
+
+/* Estilo de cada elemento de la lista */
+.character-item {
+  background-color: #333; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  padding: 15px; /* Espaciado interno */
+  margin: 10px; /* Espaciado entre elementos */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
+  display: flex; /* Flexbox para disposición interna */
+  align-items: center; /* Centrar verticalmente el contenido */
+}
+
+/* Nombre del personaje */
+.character-name {
+  flex-grow: 1; /* Ocupa el espacio disponible */
+  font-size: 1.2em; /* Tamaño de fuente más grande */
+}
+
+/* Estilo del formulario */
+.character-form {
+  display: inline; /* Asegurarse de que el formulario esté en línea */
+}
+
+/* Estilo del botón */
+.select-button {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #ff6f00; /* Color de fondo del botón */
+  color: #fff; /* Texto blanco */
+  padding: 10px 15px; /* Espaciado del botón */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor pointer para el botón */
+  transition: background-color 0.3s; /* Transición al cambiar el color */
+}
+
+.select-button:hover {
+  background-color: #ffa952; /* Color más claro al pasar el mouse */
 }
 
 #evolutionMessage {
@@ -123,4 +219,47 @@ button:hover {
 /* Agrega un margen inferior al contenedor principal para que no tape el footer */
 #mainContainer { /* Asegúrate de que tu contenedor principal tenga este ID */
   padding-bottom: 80px; /* Deja espacio suficiente para el footer */
+}
+
+/*Responsive*/
+@media (max-width: 768px) {
+  /* Oculta los enlaces en dispositivos pequeños, muestra el menú hamburguesa */
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 70px; /* Alineado justo debajo del header */
+      left: 0;
+      background-color: rgba(255, 111, 0, 0.8); /* Fondo translúcido */
+      z-index: 1;
+      border-radius: 5px; /* Bordes redondeados */
+  }
+
+  .nav-links a {
+      padding: 0px; /* Espaciado aumentado */
+      border-top: 1px solid #770505; /* Borde superior para cada enlace */
+      margin: 0; /* Eliminar margen para evitar espacio extra */
+  }
+
+  /* Botón hamburguesa visible en pantallas pequeñas */
+  .hamburger {
+      display: block;
+  }
+
+  /* Cuando se activa el menú (clase .active), los enlaces se muestran en columna */
+  .nav-links.active {
+      display: flex;
+  }
+
+  .character-item {
+    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    align-items: flex-start; /* Alinear a la izquierda */
+    width: 70%; /* Hacer que ocupe todo el ancho */
+}
+
+.character-name {
+    margin-bottom: 10px; /* Espacio entre el nombre y el botón */
+    align-items: center;
+}
 }

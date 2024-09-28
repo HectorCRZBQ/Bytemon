@@ -14,12 +14,36 @@
         <link rel="stylesheet" href="/css/table.css">
     <% } %>
 
+    <% if (typeof loadIndexCss !== 'undefined' && loadIndexCss) { %>
+        <link rel="stylesheet" href="/css/index.css">
+    <% } %>
+
 
 </head>
 <body>
     <header>
-        BYTEMON | <a href="/characters">Gestión de personajes</a> <a href="/game/select">Cambiar personaje</a> <a href="/players">Lista de jugadores</a> <a href="/game">Jugar</a>
+        <div class="logo">
+            BYTEMON
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776; <!-- Símbolo del menú hamburguesa -->
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/characters">Gestión de personajes</a></li>
+                <li><a href="/game/select">Cambiar personaje</a></li>
+                <li><a href="/players">Lista de jugadores</a></li>
+                <li><a href="/game">Jugar</a></li>
+            </ul>
+        </nav>
     </header>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
     
     <%- body %>
 
