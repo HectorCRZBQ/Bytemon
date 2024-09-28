@@ -1,0 +1,126 @@
+/* Fuente retro */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Estilos globales */
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #222; /* Fondo oscuro similar al formulario */
+  color: #fff; /* Texto en blanco para mejor contraste */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Cabecera */
+header {
+  background: #ff6f00; /* Color vibrante del borde del formulario */
+  color: #fff;
+  padding: 20px;
+  border-bottom: 5px solid #770505;
+}
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+header p {
+  font-size: 1.2em;
+  margin: 10px 0 0 0;
+}
+
+/* Estilos del footer */
+footer {
+  background-color: #ff6f00; /* Fondo vibrante como el del botón del formulario */
+  color: #fff;
+  padding: 10px 0;
+  border-top: 5px solid #770505;
+  text-align: center;
+  position: fixed; /* Mantener el footer fijo en la parte inferior */
+  left: 0;
+  right: 0;
+  bottom: 0; /* Asegura que esté siempre en la parte inferior */
+  z-index: 10; /* Asegura que esté en frente de otros elementos */
+}
+footer p {
+  margin: 0;
+  font-size: 1em; /* Ajusta el tamaño de la fuente para el footer */
+}
+footer a {
+  color: #fff; /* Enlaces de color blanco */
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+/* Sección de selección de nombre */
+.character-name-section { /* Se corrigió el selector */
+  margin-top: 30px;
+}
+.display-character-name { /* Se corrigió el selector */
+  margin-top: 20px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  font-size: 16px;
+  background-color: #333; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  border: 2px solid #ff6f00; /* Borde grueso */
+  border-radius: 10px; /* Bordes más redondeados */
+  box-shadow: inset 0 0 10px #000, 0 0 10px #ff6f00; /* Brillo retro */
+}
+
+button {
+  padding: 12px 20px; /* Ajustar el padding para un mejor aspecto con los bordes redondeados */
+  margin-left: 10px;
+  font-size: 16px;
+  background-color: #ff6f00; /* Color del botón del formulario */
+  color: #fff; /* Texto en blanco */
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase; /* Texto en mayúsculas */
+  border-radius: 20px; /* Botones más redondeados */
+}
+button:hover {
+  background-color: #ff8c1a; /* Color más claro al pasar el mouse */
+}
+
+#evolutionMessage {
+  color: #ff6f00; /* Color vibrante para resaltar el mensaje */
+  font-size: 22px; /* Fuente un poco más grande */
+  font-family: 'Press Start 2P', cursive; /* Mantener el estilo retro */
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente oscuro */
+  padding: 15px; /* Espaciado alrededor del texto */
+  border: 3px solid #770505; /* Borde de color similar al borde del header */
+  border-radius: 15px; /* Bordes redondeados para darle estilo */
+  box-shadow: 0 0 10px #ff6f00, 0 0 20px #ff6f00; /* Efecto de brillo alrededor del mensaje */
+  display: none; /* Inicia oculto */
+  position: relative;
+  width: 80%; /* Ocupa el 80% del ancho */
+  margin: 20px auto; /* Centrar el mensaje */
+  text-align: center;
+  z-index: 10; /* Asegura que el mensaje esté en el frente */
+}
+
+#gifContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%; /* Se asegura que el contenedor ocupe el ancho completo */
+}
+
+#normalGif {
+  width: 100%; /* Ocupará todo el ancho disponible */
+  max-width: 300px; /* Tamaño máximo para mantener proporción en pantallas grandes */
+  border: 2px solid #ff6f00; /* Borde del GIF en el tema vibrante */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 0 10px #ff6f00; /* Sombra brillante */
+  object-fit: cover; /* Mantener buena proporción sin distorsionar */
+}
+
+/* Agrega un margen inferior al contenedor principal para que no tape el footer */
+#mainContainer { /* Asegúrate de que tu contenedor principal tenga este ID */
+  padding-bottom: 80px; /* Deja espacio suficiente para el footer */
+}
