@@ -12,7 +12,7 @@
         "express": "^4.21.0",
         "express-ejs-layouts": "^2.5.1"
     },
-    "author": "Sergio Lopez (Sergio016) y Héctor de la Cruz (HectorCRZBQ)",
+    "author": "HéctorCRZBQ y Sergio016",
     "license": "MIT",
     "keywords": []
 }
