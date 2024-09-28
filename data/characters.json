@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "name": "sd2",
-    "energyLevel": "75",
-    "lifePoints": 60,
+    "name": "Hector",
+    "energyLevel": "999",
+    "lifePoints": 1000,
     "team": "Valor",
     "initial": "Charmander"
   }

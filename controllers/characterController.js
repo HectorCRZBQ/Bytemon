@@ -2,7 +2,7 @@ const characterModel = require('../models/characterModel');
 
 exports.index = (req, res) => {
     const characters = characterModel.getAllCharacters();
-    res.render('characters/index', { characters });
+    res.render('characters/index', { characters, loadIndexCss: true});
 };
 
 exports.create = (req, res) => {
@@ -53,4 +53,9 @@ exports.delete = (req, res) => {
     characters = characters.filter(c => c.id !== parseInt(req.params.id));
     characterModel.saveCharacters(characters);
     res.redirect('/characters');
+};
+
+exports.showPlayerTable = (req, res) => {
+    const characters = characterModel.getAllCharacters();
+    res.render('characters/playerTable', { characters, loadTableCss: true });
 };

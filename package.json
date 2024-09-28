@@ -1,7 +1,7 @@
 {
-    "name": "ByteMon",
+    "name": "bytemon",
     "version": "1.0.0",
-    "description": "Juego retro de estilo Pokemon",
+    "description": "just bytemon",
     "main": "app.js",
     "scripts": {
         "start": "node app.js"
