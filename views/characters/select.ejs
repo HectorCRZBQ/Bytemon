@@ -1,0 +1,13 @@
+<h1>Selecciona un Personaje para Jugar</h1>
+<ul>
+    <% characters.forEach(character => { %>
+        <li>
+            <%= character.name %>
+            - <form action="/game/select" method="post" style="display:inline;">
+                <input type="hidden" name="characterId" value="<%= character.id %>">
+                <button type="submit">Seleccionar</button>
+        
+            </form>
+        </li>
+    <% }); %>
+</ul>

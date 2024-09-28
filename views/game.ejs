@@ -1,0 +1,133 @@
+<% if (character) { %>
+
+    <h2>Personaje: <span id="characterName"><%= character.name %></span></h2>
+    <p id="energyLevel">Nivel de Energía: <%= character.energyLevel %> ⚡️</p>
+    <p id="lifePoints">Puntos de Vida: <%= character.lifePoints %> ❤️</p>
+
+    <h1>ByteMon: <span id="byteMonName"><%= character.initial %></span></h1>
+
+    <!-- Aquí se mostrará el GIF correspondiente a su ByteMon -->
+    <div id="gifContainer">
+        <img id="normalGif" src="/images/<%= character.initial.toLowerCase() %>/evo1.gif" alt="GIF" />
+    </div>
+
+    <!-- Mensaje de evolución -->
+    <div id="evolutionMessage" style="display:none;">
+        ¡Se está evolucionando a <span id="currentByteMon"><%= character.initial %></span>!
+    </div>
+
+    <h2>Acciones</h2>
+    <button onclick="updateEnergy('sound')">Sonido 🔊</button>
+    <button onclick="updateEnergy('attack')">Ataque 👊</button>
+    <button onclick="updateEnergy('attackCharged')">Ataque Cargado 👊👊</button>
+
+    <h2>Curación</h2>
+    <button onclick="updateEnergy('feedBerry')">Baya 🫐</button>
+    <button onclick="updateEnergy('feedPotion')">Poción 🍼</button>
+
+    <script>
+        let attackCounter = 0; // Contador para los ataques
+
+        // Array de rutas dinámicas de GIFs para mostrar en los diferentes niveles
+        const gifs = [
+            `/images/<%= character.initial.toLowerCase() %>/evo1.gif`, // GIF para los primeros 5 ataques
+            `/images/<%= character.initial.toLowerCase() %>/evo2.gif`, // GIF para los siguientes 10 ataques
+            `/images/<%= character.initial.toLowerCase() %>/evo3.gif`, // GIF para los siguientes 15 ataques
+            `/images/<%= character.initial.toLowerCase() %>/evo4.gif`, // GIF para los siguientes 20 ataques
+            `/images/<%= character.initial.toLowerCase() %>/evo5.gif`  // GIF para los siguientes 25 ataques
+        ];
+
+        // Array de rutas dinámicas de sonidos para los diferentes niveles
+        const sounds = [
+            `/sounds/<%= character.initial.toLowerCase() %>/sound1.mp3`, // Sonido para los primeros 5 ataques
+            `/sounds/<%= character.initial.toLowerCase() %>/sound2.mp3`, // Sonido para los siguientes 10 ataques
+            `/sounds/<%= character.initial.toLowerCase() %>/sound3.mp3`, // Sonido para los siguientes 15 ataques
+            `/sounds/<%= character.initial.toLowerCase() %>/sound4.mp3`, // Sonido para los siguientes 20 ataques
+            `/sounds/<%= character.initial.toLowerCase() %>/sound5.mp3`  // Sonido para los siguientes 25 ataques
+        ];
+
+        // Nombres evolutivos correspondientes
+        const evolutionNames = {
+            'Charmander': 'Charmeleon',
+            'Charmeleon': 'Charizard',
+            'Charizard': 'Mega-Charizard',
+            'Squirtle': 'Wartortle',
+            'Wartortle': 'Blastoise',
+            'Bulbasaur': 'Ivysaur',
+            'Ivysaur': 'Venusaur'
+        };
+
+        function showEvolutionMessage() {
+            const evolutionMessage = document.getElementById('evolutionMessage');
+            evolutionMessage.style.display = 'block'; // Mostrar el mensaje
+
+            setTimeout(() => {
+                evolutionMessage.style.display = 'none'; // Ocultar el mensaje después de 3 segundos
+            }, 3000); // Tiempo de 3 segundos para el mensaje de evolución
+        }
+
+        function playSound(index) {
+            const audio = new Audio(sounds[index]); // Crea un nuevo objeto de Audio con la ruta del sonido
+            audio.play(); // Reproduce el sonido
+        }
+
+        function updateEnergy(action) {
+            fetch('/game/update', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ action: action })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Actualizar el nivel de energía en la interfaz
+                document.getElementById('energyLevel').innerText = 'Nivel de Energía: ' + data.energyLevel + ' ⚡️';
+                // Actualizar los puntos de vida en la interfaz
+                document.getElementById('lifePoints').innerText = 'Puntos de Vida: ' + data.lifePoints + ' ❤️';
+
+                // Incrementar el contador si la acción es un ataque
+                if (action === 'attack' || action === 'attackCharged') {
+                    attackCounter++;
+                    
+                    // Cada vez que se alcance un múltiplo de 5, cambiar el GIF y reproducir el sonido
+                    if (attackCounter % 5 === 0) {
+                        const gifIndex = (attackCounter / 5) - 1; // Obtener el índice del GIF correspondiente
+                        if (gifIndex < gifs.length) { // Verificar que no se exceda el número de GIFs
+                            document.getElementById('normalGif').src = gifs[gifIndex]; // Cambiar la fuente del GIF
+
+                            // Cambiar el nombre del ByteMon
+                            const currentByteMon = document.getElementById('byteMonName');
+                            const currentName = currentByteMon.innerText;
+                            const newByteMonName = evolutionNames[currentName] || currentName; // Obtener el nuevo nombre
+                            currentByteMon.innerText = newByteMonName; // Actualizar el nombre
+
+                            // Actualizar el mensaje de evolución con el nombre del ByteMon
+                            document.getElementById('currentByteMon').innerText = newByteMonName;
+
+                            // Mostrar mensaje de evolución temporalmente
+                            showEvolutionMessage();
+
+                            // Reproducir el sonido correspondiente al evolucionar
+                            playSound(gifIndex);
+                        }
+                    }
+                }
+
+                // Si la acción es "sound", simplemente reproducir el sonido correspondiente
+                if (action === 'sound') {
+                    const soundIndex = Math.floor(attackCounter / 5); // Determina el índice de sonido
+                    if (soundIndex < sounds.length) {
+                        playSound(soundIndex);
+                    }
+                }
+            })
+            .catch(error => console.error('Error al actualizar:', error));
+        }
+    </script>
+
+<% } else { %>
+    <p>No hay ningún personaje seleccionado.</p>
+    <a href="/characters">Seleccionar Personaje</a>
+<% } %>
+
