@@ -1,0 +1,18 @@
+{
+    "name": "ByteMon",
+    "version": "1.0.0",
+    "description": "Juego retro de estilo Pokemon",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "ejs": "^3.1.9",
+        "express": "^4.21.0",
+        "express-ejs-layouts": "^2.5.1"
+    },
+    "author": "Sergio Lopez (Sergio016) y Héctor de la Cruz (HectorCRZBQ)",
+    "license": "MIT",
+    "keywords": []
+}

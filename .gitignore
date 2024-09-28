@@ -1,0 +1,56 @@
+# Sistema de archivos de OS
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de compilación
+/dist/
+build/
+node_modules/
+
+# Archivos de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de log
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de caché
+.cache/
+*.cache
+
+# Archivos de respaldo
+*~
+*.bak
+
+# Archivos de pruebas
+coverage/
+*.spec.js
+*.test.js
+
+# Archivos generados por herramientas de documentación
+docs/
+
+# Archivos de sistema
+*.exe
+*.dll
+*.so
+*.o
+*.class
+
+# Otros
+*.zip
+*.tar.gz
+*.rar

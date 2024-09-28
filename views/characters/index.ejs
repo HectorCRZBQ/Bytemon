@@ -1,0 +1,12 @@
+<h1>Personajes</h1>
+<a href="/characters/new">Crear nuevo personaje</a>
+<ul>
+    <% characters.forEach(character => { %>
+        <li>
+            <%= character.name %> - <a href="/characters/<%= character.id %>/edit">Editar</a> - 
+            <form action="/characters/<%= character.id %>/delete" method="post" style="display:inline;">
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+    <% }); %>
+</ul>
