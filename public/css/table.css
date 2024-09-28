@@ -1,0 +1,100 @@
+/* Estilos generales para la tabla */
+table {
+    width: 80%; /* Ancho de la tabla */
+    max-width: 800px; /* Máximo ancho de la tabla para pantallas grandes */
+    margin: 30px auto; /* Centrar la tabla verticalmente con margen automático */
+    border-collapse: collapse; /* Elimina los espacios entre celdas */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+    background-color: #222; /* Fondo oscuro para la tabla */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra alrededor de la tabla */
+    border: 3px solid #ff6f00; /* Borde vibrante alrededor de la tabla */
+}
+
+/* Encabezado de la tabla */
+table thead {
+    background-color: #ff6f00; /* Fondo vibrante para el encabezado */
+    color: #fff; /* Texto blanco */
+    text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+table thead th {
+    padding: 15px 20px;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    border-bottom: 3px solid #770505; /* Borde inferior vibrante */
+}
+
+/* Cuerpo de la tabla */
+table tbody tr {
+    transition: background-color 0.3s ease; /* Transición suave al hacer hover */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #333; /* Fila de color alterno */
+}
+
+table tbody tr:hover {
+    background-color: #444; /* Fila resaltada al hacer hover */
+}
+
+table tbody td {
+    padding: 15px 20px;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    color: #fff; /* Texto en blanco */
+    text-align: center; /* Centrar el texto en las celdas */
+    border-bottom: 2px solid #ff6f00; /* Borde inferior vibrante */
+}
+
+/* Estilo para los enlaces dentro de la tabla (si los hubiera) */
+table tbody td a {
+    color: #00ffcc; /* Enlaces con color vibrante */
+    text-decoration: none; /* Sin subrayado */
+}
+
+table tbody td a:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
+/* Responsive: Pantallas pequeñas (menos de 768px) */
+@media (max-width: 768px) {
+    table {
+        width: 100%; /* Asegura que la tabla ocupe todo el ancho de la pantalla */
+        font-size: 12px;
+    }
+
+    table thead {
+        display: none; /* Oculta el encabezado de la tabla en móviles */
+    }
+
+    table tbody tr {
+        display: block; /* Cada fila se convierte en un bloque */
+        margin-bottom: 20px; /* Añadir espacio entre las filas */
+        border: 2px solid #ff6f00; /* Añadir borde alrededor de cada bloque */
+        padding: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra para cada fila */
+    }
+
+    table tbody td {
+        display: block;
+        text-align: right; /* Alinea el texto a la derecha */
+        padding: 10px;
+        font-size: 12px;
+        position: relative;
+        border: none;
+    }
+
+    table tbody td::before {
+        content: attr(data-label); /* Usa el atributo data-label para mostrar los encabezados */
+        position: absolute;
+        left: 10px;
+        text-align: left;
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #ff6f00; /* Color vibrante para los encabezados */
+    }
+
+    table tbody td:last-child {
+        border-bottom: 0;
+    }
+}
+

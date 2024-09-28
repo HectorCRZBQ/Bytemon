@@ -1,11 +1,12 @@
 <h1>Personajes</h1>
-<a href="/characters/new">Crear nuevo personaje</a>
-<ul>
+<a href="/characters/new" class="create-button">Crear nuevo personaje</a>
+<ul class="character-list">
     <% characters.forEach(character => { %>
-        <li>
-            <%= character.name %> - <a href="/characters/<%= character.id %>/edit">Editar</a> - 
-            <form action="/characters/<%= character.id %>/delete" method="post" style="display:inline;">
-                <button type="submit">Eliminar</button>
+        <li class="character-item">
+            <span class="character-name"><%= character.name %></span>
+            <a href="/characters/<%= character.id %>/edit" class="edit-button">Editar</a>
+            <form action="/characters/<%= character.id %>/delete" method="post" class="delete-form">
+                <button type="submit" class="delete-button">Eliminar</button>
             </form>
         </li>
     <% }); %>
