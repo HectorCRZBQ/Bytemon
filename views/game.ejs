@@ -11,15 +11,20 @@
         <img id="normalGif" src="/images/<%= character.initial.toLowerCase() %>/evo1.gif" alt="GIF" />
     </div>
 
-    <!-- Mensaje de evolución -->
+    <!-- Mensaje de evolución o advertencia -->
     <div id="evolutionMessage" style="display:none;">
         ¡Se está evolucionando a <span id="currentByteMon"><%= character.initial %></span>!
     </div>
 
+    <!-- Mensaje de curación -->
+    <div id="healMessage" style="display:none; color:red;">
+        Debes curar a tu ByteMon
+    </div>
+
     <h2>Acciones</h2>
-    <button onclick="updateEnergy('sound')">Sonido 🔊</button>
-    <button onclick="updateEnergy('attack')">Ataque 👊</button>
-    <button onclick="updateEnergy('attackCharged')">Ataque Cargado 👊👊</button>
+    <button id="soundButton" onclick="updateEnergy('sound')">Sonido 🔊</button>
+    <button id="attackButton" onclick="updateEnergy('attack')">Ataque 👊</button>
+    <button id="chargedAttackButton" onclick="updateEnergy('attackCharged')">Ataque Cargado 👊👊</button>
 
     <h2>Curación</h2>
     <button onclick="updateEnergy('feedBerry')">Baya 🫐</button>
@@ -74,6 +79,21 @@
             }, 3000); // Tiempo de 3 segundos para el mensaje de evolución
         }
 
+        function showHealMessage(temporary) {
+            const healMessage = document.getElementById('healMessage');
+            healMessage.style.display = 'block'; // Mostrar mensaje de curación
+
+            if (temporary) {
+                setTimeout(() => {
+                    healMessage.style.display = 'none'; // Ocultar mensaje de curación después de 3 segundos
+                }, 3000);
+            }
+        }
+
+        function hideHealMessage() {
+            document.getElementById('healMessage').style.display = 'none'; // Ocultar mensaje de curación
+        }
+
         function playSound(index, isCharmander) {
             const audio = new Audio(isCharmander ? soundsCharmander[index] : soundsDefault[index]); // Crea un nuevo objeto de Audio con la ruta del sonido
             audio.play(); // Reproduce el sonido
@@ -94,10 +114,32 @@
                 // Actualizar los puntos de vida en la interfaz
                 document.getElementById('lifePoints').innerText = 'Puntos de Vida: ' + data.lifePoints + ' ❤️';
 
+                // Evitar mostrar el mensaje de curación si se está usando feedBerry o feedPotion
+                if (action !== 'feedBerry' && action !== 'feedPotion') {
+                    // Mostrar el mensaje de curación temporalmente si la energía o los puntos de vida están entre 5 y 40
+                    if ((data.energyLevel > 5 && data.energyLevel <= 40) || (data.lifePoints > 5 && data.lifePoints <= 40)) {
+                        showHealMessage(true);
+                    } else if (data.energyLevel === 0 || data.lifePoints === 0) {
+                        showHealMessage(false); // Mostrar mensaje de curación indefinidamente
+                    } else {
+                        hideHealMessage();
+                    }
+                } else {
+                    hideHealMessage(); // Asegurarse de ocultar el mensaje de curación si se curan
+                }
+
+                // Deshabilitar botones si la energía o puntos de vida están en 0
+                const attackButtons = [document.getElementById('attackButton'), document.getElementById('chargedAttackButton')];
+                if (data.energyLevel === 0 || data.lifePoints === 0) {
+                    attackButtons.forEach(button => button.disabled = true);
+                } else {
+                    attackButtons.forEach(button => button.disabled = false);
+                }
+
                 // Incrementar el contador si la acción es un ataque
                 if (action === 'attack' || action === 'attackCharged') {
                     attackCounter++;
-                    
+
                     // Cada vez que se alcance un múltiplo de 5, cambiar el GIF y reproducir el sonido
                     if (attackCounter % 5 === 0) {
                         const isCharmander = '<%= character.initial %>' === 'Charmander';
@@ -141,5 +183,4 @@
     <p>No hay ningún personaje seleccionado.</p>
     <a href="/characters">Seleccionar Personaje</a>
 <% } %>
-
 
