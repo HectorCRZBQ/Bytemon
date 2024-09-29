@@ -6,5 +6,29 @@
     "lifePoints": 1000,
     "team": "Valor",
     "initial": "Charmander"
+  },
+  {
+    "id": 2,
+    "name": "Maricarmen",
+    "energyLevel": 988,
+    "lifePoints": 786,
+    "team": "Mystic",
+    "initial": "Squirtle"
+  },
+  {
+    "id": 3,
+    "name": "Ricardo",
+    "energyLevel": 300,
+    "lifePoints": 225,
+    "team": "Instinct",
+    "initial": "Bulbasaur"
+  },
+  {
+    "id": 4,
+    "name": "sd",
+    "energyLevel": 300,
+    "lifePoints": 180,
+    "team": "Valor",
+    "initial": "Charmander"
   }
 ]
