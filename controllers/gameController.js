@@ -28,14 +28,14 @@ exports.updateEnergy = (req, res) => {
         case 'sound': // Emitir sonido
             break;
             
-        case 'attack': //Dar de comer
+        case 'attack': //Ataque
             character.energyLevel = Math.max(0, character.energyLevel - 20);
             character.lifePoints = Math.max(0, character.lifePoints - 25);  
             break;
             
-        case 'attackCharged': //Dar de comer
+        case 'attackCharged': //Ataque cargado
             character.energyLevel = Math.max(0, character.energyLevel - 50);
-            character.lifePoints = Math.max(0, character.lifePoints - 50);  
+            character.lifePoints = Math.max(0, character.lifePoints - 60);  
             break;
             
         case 'feedBerry': //Curar con baya
@@ -44,8 +44,8 @@ exports.updateEnergy = (req, res) => {
             break;
             
         case 'feedPotion': //Curar con poción
-            character.energyLevel = Math.min(300, character.energyLevel + 10);
-            character.lifePoints = Math.min(250, character.lifePoints + 10);
+            character.energyLevel = Math.min(300, character.energyLevel + 20);
+            character.lifePoints = Math.min(250, character.lifePoints + 20);
             break;
         default:
             return res.status(400).json({ message: 'Acción no válida' });

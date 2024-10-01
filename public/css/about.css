@@ -1,0 +1,104 @@
+/* Estilos globales */
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #222; /* Fondo oscuro */
+    color: #fff; /* Texto en blanco para mejor contraste */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Estilo de las secciones */
+main {
+    padding: 20px; /* Espacio alrededor de las secciones */
+}
+
+/* Sección del objetivo */
+.objective, .sections, .controls, .authors {
+    width: 90%; /* Ancho de las secciones */
+    max-width: 600px; /* Ancho máximo para las secciones */
+    margin: 0 auto; /* Centrar las secciones horizontalmente */
+    background-color: #333; /* Fondo oscuro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espacio interno */
+    margin-bottom: 20px; /* Margen entre secciones */
+}
+
+/* Estilo específico para la sección objetivo */
+.objective {
+    background-color: rgba(255, 111, 0, 0.1); /* Fondo semitransparente */
+}
+
+/* Títulos */
+h2 {
+    color: #ff6f00; /* Color vibrante para los títulos */
+    margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+/* Listas */
+ul {
+    list-style-type: none; /* Eliminar puntos de la lista */
+    padding: 0;
+}
+
+li {
+    color: #fff; /* Texto en blanco */
+    padding: 10px;
+    margin: 5px 0; /* Margen entre elementos de la lista */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo para el texto en negrita */
+strong {
+    color: #ff6f00; /* Color vibrante para el texto en negrita */
+    font-weight: bold; /* Mantener el texto en negrita */
+    background-color: rgba(255, 111, 0, 0.3); /* Fondo para el texto en negrita */
+    padding: 2px 4px; /* Espaciado alrededor del texto en negrita */
+    border-radius: 3px; /* Bordes redondeados para el fondo */
+}
+
+/* Enlaces */
+a {
+    color: #ff6f00; /* Color de los enlaces */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em; /* Tamaño de fuente más pequeño */
+    }
+
+    h2 {
+        font-size: 1.4em; /* Tamaño de fuente más pequeño para títulos */
+    }
+
+    p, li {
+        font-size: 1em; /* Tamaño de letra más pequeño para párrafos y listas */
+        line-height: 1.5; /* Mayor interlineado para mejorar la legibilidad */
+    }
+
+    footer p {
+        font-size: 0.9em; /* Tamaño de fuente más pequeño para el footer */
+    }
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 480px) {
+    main {
+        padding: 10px; /* Reducir padding en pantallas pequeñas */
+    }
+
+    .objective, .sections, .controls, .authors {
+        padding: 15px; /* Reducir padding en secciones para más espacio */
+    }
+
+    li {
+        padding: 10px; /* Ajustar padding para elementos de la lista */
+    }
+}
