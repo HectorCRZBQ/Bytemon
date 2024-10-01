@@ -59,3 +59,7 @@ exports.showPlayerTable = (req, res) => {
     const characters = characterModel.getAllCharacters();
     res.render('characters/playerTable', { characters, loadTableCss: true });
 };
+
+exports.about = (req, res) => {
+    res.render('about', { loadAboutCss: true });
+};

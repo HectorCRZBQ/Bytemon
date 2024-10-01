@@ -1,3 +1,4 @@
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
@@ -11,7 +12,7 @@ app.use(expressLayouts);
 app.set('layout', 'layout');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Permitir JSON en el cuerpo de las solicitudes
-app.use(express.static('public'));
+app.use(express.static('public')); // Para archivos estáticos
 
 // Root route
 app.get('/', (req, res) => {
@@ -34,6 +35,11 @@ app.put('/game/update', gameController.updateEnergy);
 
 // Table routes
 app.get('/players', characterController.showPlayerTable);
+
+// Ruta para la página "Acerca de"
+app.get('/about', (req, res) => {
+    res.render('about');
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
