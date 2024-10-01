@@ -78,6 +78,7 @@ button {
     }
 
     button {
-        font-size: 12px;
+        font-size: 12px; /* Tamaño de fuente más pequeño para el botón */
+        padding: 8px; /* Ajustado para mayor compacidad */
     }
 }

@@ -21,6 +21,13 @@ header {
   align-items: center;
   flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si es necesario */
   border-bottom: 5px solid #770505;
+  font-size: 15px;
+}
+
+.logo {
+  font-size: 1;
+  white-space: nowrap;
+  color: rgb(255, 255, 255);
 }
 
 header a {
@@ -43,7 +50,14 @@ header a:hover {
   font-size: 1.5em;
   color: #fff;
   margin-left: auto;
+}
 
+li {
+  background-color: rgba(255, 111, 0, 0.2); /* Fondo para los ítems de la lista */
+  color: #fff; /* Texto en blanco */
+  padding: 10px;
+  margin: 5px 0; /* Margen entre elementos de la lista */
+  border-radius: 5px; /* Bordes redondeados */
 }
 
 /* Estilo para el menú desplegable en dispositivos móviles */
@@ -52,14 +66,17 @@ header a:hover {
   flex-direction: row;
   list-style: none;
   border-radius: 5px; /* Bordes redondeados */
+  padding: 0; /* Sin padding */
+  margin: 0; /* Sin margen */
 }
 
 .nav-links a {
   text-transform: uppercase;
-  padding: 15px;
   text-align: center;
   border-top: 1px solid rgba(255, 111, 0, 0.6);
   color: #fff;
+  margin: 0 15px; /* Espaciado entre enlaces */
+
 }
 
 header h1 {
@@ -74,34 +91,32 @@ header p {
 
 /* Estilos del footer */
 footer {
-  background-color: #ff6f00; /* Fondo vibrante como el del botón del formulario */
-  color: #fff;
-  padding: 10px 0;
-  border-top: 5px solid #770505;
-  text-align: center;
-  position: fixed; /* Mantener el footer fijo en la parte inferior */
-  left: 0;
-  right: 0;
-  bottom: 0; /* Asegura que esté siempre en la parte inferior */
-  z-index: 10; /* Asegura que esté en frente de otros elementos */
+  margin-top: 20px; /* Espacio por encima del footer */
+  padding: 10px; /* Espacio dentro del footer */
+  background-color: #333; /* Fondo del footer */
+  border-radius: 10px; /* Bordes redondeados */
 }
+
 footer p {
   margin: 0;
   font-size: 1em; /* Ajusta el tamaño de la fuente para el footer */
 }
+
 footer a {
   color: #fff; /* Enlaces de color blanco */
   text-decoration: none;
 }
+
 footer a:hover {
   text-decoration: underline; /* Subrayado al pasar el ratón */
 }
 
 /* Sección de selección de nombre */
-.character-name-section { /* Se corrigió el selector */
+.character-name-section {
   margin-top: 30px;
 }
-.display-character-name { /* Se corrigió el selector */
+
+.display-character-name {
   margin-top: 20px;
 }
 
@@ -181,7 +196,7 @@ button:hover {
   background-color: #ffa952; /* Color más claro al pasar el mouse */
 }
 
-#evolutionMessage {
+#evolutionMessage, #healMessage  {
   color: #ff6f00; /* Color vibrante para resaltar el mensaje */
   font-size: 22px; /* Fuente un poco más grande */
   font-family: 'Press Start 2P', cursive; /* Mantener el estilo retro */
@@ -225,41 +240,75 @@ button:hover {
 @media (max-width: 768px) {
   /* Oculta los enlaces en dispositivos pequeños, muestra el menú hamburguesa */
   .nav-links {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      position: absolute;
-      top: 70px; /* Alineado justo debajo del header */
-      left: 0;
-      background-color: rgba(255, 111, 0, 0.8); /* Fondo translúcido */
-      z-index: 1;
-      border-radius: 5px; /* Bordes redondeados */
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px; /* Alineado justo debajo del header */
+    left: 0;
+    background-color: rgba(255, 111, 0, 0.8); /* Fondo translúcido */
+    z-index: 1;
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Centrar el texto */
   }
 
   .nav-links a {
-      padding: 0px; /* Espaciado aumentado */
-      border-top: 1px solid #770505; /* Borde superior para cada enlace */
-      margin: 0; /* Eliminar margen para evitar espacio extra */
+    padding: 10px; /* Espaciado aumentado para mejor área clicable */
+    border-top: 1px solid #770505; /* Borde superior para cada enlace */
+    margin: 0; /* Eliminar margen para evitar espacio extra */
+    font-size: 0.9em; /* Tamaño de letra más pequeño */
   }
 
   /* Botón hamburguesa visible en pantallas pequeñas */
   .hamburger {
-      display: block;
+    display: block;
+    margin-left: auto; /* Mover a la derecha */
   }
 
   /* Cuando se activa el menú (clase .active), los enlaces se muestran en columna */
   .nav-links.active {
-      display: flex;
+    display: flex;
   }
 
   .character-item {
     flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
     align-items: flex-start; /* Alinear a la izquierda */
-    width: 70%; /* Hacer que ocupe todo el ancho */
-}
+    width: 90%; /* Aumentar el ancho para mejor ajuste */
+    padding: 10px; /* Menos padding para mejor uso del espacio */
+  }
 
-.character-name {
-    margin-bottom: 10px; /* Espacio entre el nombre y el botón */
-    align-items: center;
-}
+  .character-name {
+    margin-bottom: 5px; /* Espacio entre el nombre y el botón */
+    font-size: 1.1em; /* Tamaño de letra más pequeño */
+    text-align: center; /* Centrar el texto en el nombre del personaje */
+  }
+
+  li {
+    background-color: rgba(255, 111, 0, 0.2); /* Fondo para los ítems de la lista */
+    color: #fff; /* Texto en blanco */
+    padding: 10px;
+    margin: 5px 0; /* Margen entre elementos de la lista */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+
+  header h1 {
+    font-size: 1.8em; /* Tamaño de fuente más pequeño */
+  }
+
+  header p {
+    font-size: 1em; /* Tamaño de fuente más pequeño */
+  }
+
+  button {
+    font-size: 14px; /* Tamaño de letra más pequeño para botones */
+  }
+
+  input[type="text"] {
+    font-size: 14px; /* Tamaño de letra más pequeño para input */
+  }
+
+  #evolutionMessage, #healMessage {
+    font-size: 18px; /* Tamaño de letra más pequeño para mensajes */
+    padding: 10px; /* Menos padding para mensajes */
+  }
 }

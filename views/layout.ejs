@@ -18,6 +18,10 @@
         <link rel="stylesheet" href="/css/index.css">
     <% } %>
 
+    <% if (typeof loadAboutCss !== 'undefined' && loadAboutCss) { %>
+        <link rel="stylesheet" href="/css/about.css">
+    <% } %>
+
 
 </head>
 <body>
@@ -33,6 +37,7 @@
                 <li><a href="/characters">Gestión de personajes</a></li>
                 <li><a href="/game/select">Cambiar personaje</a></li>
                 <li><a href="/players">Lista de jugadores</a></li>
+                <li><a href="/about">Cómo funciona</a></li>
                 <li><a href="/game">Jugar</a></li>
             </ul>
         </nav>
