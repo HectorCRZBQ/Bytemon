@@ -75,4 +75,9 @@ Pasos de instalación:
 
 ![image](https://github.com/user-attachments/assets/82039daf-1238-4e7f-aac0-eedfc81443b6)
 
+---
+# **V-1.5.0** --- *9/10/2024*
 
+![image](https://github.com/user-attachments/assets/d61e8f06-101d-482c-bcbe-cbeb91e14937)
+
+![image](https://github.com/user-attachments/assets/5a5787d3-0997-4907-830e-f453bdb7cf5c)
