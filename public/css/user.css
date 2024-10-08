@@ -1,0 +1,116 @@
+/* Estilo general del formulario con un toque retro */
+form {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 3px solid #ff6f00;
+    border-radius: 8px;
+    background-color: #222;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+}
+
+/* Estilo de las etiquetas */
+label {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #ff6f00;
+}
+
+/* Estilo para los inputs */
+input[type="email"],
+input[type="password"] {
+    width: 45%;
+    padding: 10px; 
+    margin-bottom: 20px; /* Menos margen inferior para ahorrar espacio */
+    border: 2px solid #ff6f00;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+}
+
+/* Efecto focus en inputs */
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #00ffcc;
+    outline: none;
+}
+
+/* Estilo del botón */
+button {
+    background-color: #ff6f00;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover en botón */
+button:hover {
+    background-color: #ffa952;
+}
+
+/* Sombra y borde estilo retro en todos los elementos interactivos */
+input[type="email"],
+input[type="password"],
+button {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), 0 0 10px #ff6f00;
+}
+
+/* Estilo del checkbox */
+.form-check-input {
+    background-color: #222;
+    border: 2px solid #ff6f00;
+    box-shadow: 0 0 10px #ff6f00;
+}
+
+.form-check-input:checked {
+    background-color: #00ffcc;
+    border-color: #00ffcc;
+}
+
+/* Estilo para los enlaces */
+a {
+    color: #ff6f00;
+    font-family: 'Press Start 2P', cursive;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    color: #ffa952;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        width: 45%;
+        font-size: 14px; 
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
