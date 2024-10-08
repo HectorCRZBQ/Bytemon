@@ -1,13 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Hector",
-    "energyLevel": "999",
-    "lifePoints": 1000,
-    "team": "Valor",
-    "initial": "Charmander"
-  },
-  {
     "id": 5,
     "name": "Sergio",
     "energyLevel": "250",
@@ -44,6 +36,14 @@
     "name": "Ivan",
     "energyLevel": 700,
     "lifePoints": 980,
+    "team": "Mystic",
+    "initial": "Squirtle"
+  },
+  {
+    "id": 7,
+    "name": "Jose",
+    "energyLevel": 215,
+    "lifePoints": 135,
     "team": "Mystic",
     "initial": "Squirtle"
   }
