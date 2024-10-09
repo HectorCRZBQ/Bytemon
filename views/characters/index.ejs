@@ -1,14 +1,24 @@
-<h1>Personajes</h1>
-<a href="/characters/new" class="create-button">Crear nuevo personaje</a>
+<h1>Perfiles</h1>
+<a href="/characters/new" class="create-button button">Crear nuevo perfil</a>
 <ul class="character-list">
     <% characters.forEach(character => { %>
         <li class="character-item">
             <span class="character-name"><%= character.name %></span>
-            <a href="/characters/<%= character.id %>/edit" class="edit-button">Editar</a>
-            <form action="/characters/<%= character.id %>/delete" method="post" class="delete-form">
-                <button type="submit" class="delete-button">Eliminar</button>
-            </form>
+            <div class="button-group">
+                
+                <form action="/characters/<%= character.id %>/edit" method="get" class="edit-form">
+                    <button type="submit" class="edit-button button">Editar</button>
+                </form>
+                
+                <form action="/characters/<%= character.id %>/delete" method="post" class="delete-form">
+                    <button type="submit" class="delete-button button">Eliminar</button>
+                </form>
+                
+                <form action="/game/select" method="post" class="character-form">
+                    <input type="hidden" name="characterId" value="<%= character.id %>">
+                    <button type="submit" class="select-button button">Seleccionar</button>
+                </form>
+            </div>
         </li>
     <% }); %>
 </ul>
-
