@@ -16,5 +16,6 @@
     },
     "author": "HéctorCRZBQ y Sergio016",
     "license": "MIT",
-    "keywords": []
+    "keywords": [],
+    "devDependencies": {}
 }
