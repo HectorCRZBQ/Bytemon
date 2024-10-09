@@ -12,42 +12,56 @@
 .character-item {
     background-color: #333; /* Fondo oscuro */
     color: #fff; /* Texto blanco */
-    padding: 15px; /* Espaciado interno */
-    margin: 10px; /* Espaciado entre elementos */
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
-    display: inline-flex; /* Flexbox en línea para disposición interna */
+    padding: 25px; /* Espaciado interno incrementado */
+    margin: 25px 0; /* Espaciado entre elementos incrementado */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+    display: flex; /* Flexbox para disposición interna */
     justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Centrar elementos verticalmente */
     flex-shrink: 0; /* Evitar que se reduzca más allá de su contenido */
+    width: 90%; /* Ancho de cada elemento ajustado */
+    max-width: 800px; /* Ancho máximo para pantallas grandes */
+}
+
+/* Estilo del nombre del personaje */
+.character-name {
+    padding-bottom: 10px; /* Espaciado inferior para el nombre */
+}
+
+/* Agrupar los botones */
+.button-group {
+    display: flex; /* Flexbox para disposición de botones */
+    gap: 20px; /* Espaciado entre botones incrementado */
+}
+
+/* Estilo de los botones */
+.create-button, .edit-button, .delete-button, .select-button {
+    background-color: #ff6f00; /* Color de fondo del botón */
+    color: #fff; /* Texto blanco */
+    padding: 15px 20px; /* Espaciado del botón incrementado */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s; /* Transición al cambiar el color */
+    flex: 1; /* Hacer que todos los botones ocupen el mismo espacio */
+    font-size: 18px; /* Tamaño de fuente incrementado */
 }
 
 /* Estilo del botón de crear */
 .create-button {
-    display: inline-block;
-    background-color: #ff6f00; /* Color de fondo del botón */
-    color: #fff; /* Texto blanco */
-    padding: 10px 15px; /* Espaciado del botón */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    margin-bottom: 20px; /* Margen inferior */
-    text-decoration: none; /* Sin subrayado */
-    transition: background-color 0.3s; /* Transición al cambiar el color */
+    background-color: #ff9900; /* Color de fondo del botón de crear */
+    margin-bottom: 50px;
 }
 
 .create-button:hover {
-    background-color: #ffa952; /* Color más claro al pasar el mouse */
+    background-color: #ffc773; /* Color más oscuro al pasar el mouse */
 }
 
 /* Estilo del botón de editar */
 .edit-button {
+    font-family: 'Press Start 2P', cursive; /* Fuente retro estilo pixel */
     background-color: #ff9900; /* Color de fondo del botón de editar */
-    color: #fff; /* Texto blanco */
-    padding: 8px 12px; /* Espaciado del botón */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    margin-left: 10px; /* Margen izquierdo */
-    text-decoration: none; /* Sin subrayado */
-    transition: background-color 0.3s; /* Transición al cambiar el color */
 }
 
 .edit-button:hover {
@@ -57,30 +71,39 @@
 /* Estilo del botón de eliminar */
 .delete-button {
     font-family: 'Press Start 2P', cursive; /* Fuente retro estilo pixel */
-    background-color: #dc3545; /* Color de fondo del botón de eliminar */
-    color: #fff; /* Texto blanco */
-    padding: 8px 12px; /* Espaciado del botón */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    margin-left: 10px; /* Margen izquierdo */
-    cursor: pointer; /* Cambiar cursor a pointer */
-    transition: background-color 0.3s; /* Transición al cambiar el color */
+    background-color: #83020f; /* Color de fondo del botón de eliminar */
 }
 
 .delete-button:hover {
-    background-color: #c82333; /* Color más oscuro al pasar el mouse */
+    background-color: #be1627; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilo del botón de seleccionar */
+.select-button {
+    background-color: #586602; /* Color de fondo del botón de seleccionar */
+}
+
+/* Hover para el botón de seleccionar */
+.select-button:hover {
+    background-color: #8d9a03; /* Color más oscuro al pasar el mouse */
 }
 
 /* Media queries para pantallas pequeñas */
 @media (max-width: 768px) {
     .character-item {
         flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
-        align-items: flex-start; /* Alinear a la izquierda */
-        width: 70%; /* Hacer que ocupe todo el ancho */
+        align-items: stretch; /* Alinear a estirar el elemento */
+        width: 60%; /* Hacer que ocupe casi todo el ancho */
+        padding: 15px; /* Mantener padding cómodo para móviles */
     }
 
-    .edit-button, .delete-button {
-        margin-top: 10px; /* Espacio entre botones en pantallas pequeñas */
-        margin-left: 0; /* Eliminar margen izquierdo */
+    .button-group {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+        gap: 10px; /* Espaciado entre botones incrementado */
+    }
+    
+    /* Aumentar el tamaño de fuente en móviles */
+    .create-button, .edit-button, .delete-button, .select-button {
+        font-size: 16px; /* Tamaño de fuente más accesible para móviles */
     }
 }

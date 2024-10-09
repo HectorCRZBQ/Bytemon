@@ -1,50 +1,9 @@
 [
   {
-    "id": 5,
-    "name": "Sergio",
-    "energyLevel": "250",
-    "lifePoints": 135,
-    "team": "Instinct",
-    "initial": "Bulbasaur"
-  },
-  {
-    "id": 3,
-    "name": "Ricardo",
-    "energyLevel": "1888",
-    "lifePoints": 22232,
-    "team": "Mystic",
-    "initial": "Bulbasaur"
-  },
-  {
     "id": 4,
     "name": "sd",
-    "energyLevel": 1000,
-    "lifePoints": 2000,
+    "energyLevel": "300",
+    "lifePoints": 250,
     "team": "Mystic",
-    "initial": "Squirtle"
-  },
-  {
-    "id": 5,
-    "name": "sd2",
-    "energyLevel": 400,
-    "lifePoints": 30,
-    "team": "Mystic",
-    "initial": "Squirtle"
-  },
-  {
-    "id": 6,
-    "name": "Ivan",
-    "energyLevel": 700,
-    "lifePoints": 980,
-    "team": "Mystic",
-    "initial": "Squirtle"
-  },
-  {
-    "id": 7,
-    "name": "Jose",
-    "energyLevel": 215,
-    "lifePoints": 135,
-    "team": "Mystic",
-    "initial": "Squirtle"
   }
 ]
