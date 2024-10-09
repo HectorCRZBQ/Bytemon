@@ -1,18 +1,59 @@
-
 const express = require('express');
+const session = require('express-session'); // Para manejar sesiones
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const characterController = require('./controllers/characterController');
-const gameController = require('./controllers/gameController'); 
+const gameController = require('./controllers/gameController');
+const userController = require('./controllers/userController'); // Importar el controlador de usuario
 const app = express();
 const PORT = 3000;
 
+// Configuración de vistas
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', 'layout');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Permitir JSON en el cuerpo de las solicitudes
 app.use(express.static('public')); // Para archivos estáticos
+
+// Configuración de sesiones
+app.use(session({ secret: 'mi_secreto', resave: false, saveUninitialized: true }));
+
+// Middleware para hacer la sesión accesible en las vistas
+app.use((req, res, next) => {
+    res.locals.session = req.session; // Hacer la sesión accesible en las vistas
+    next();
+});
+
+// Rutas de inicio de sesión y registro
+app.get('/login', (req, res) => {
+    res.render('login', { loadUserCss: true, error: null, page: 'login' }); // Pasar la variable 'page'
+}); // Mostrar el formulario de inicio de sesión
+app.post('/login', userController.login); // Manejar el inicio de sesión
+
+app.get('/register', (req, res) => {
+    res.render('register', { loadUserCss: true, error: null, page: 'register' }); // Pasar la variable 'page'
+}); // Mostrar el formulario de registro
+app.post('/register', userController.register); // Manejar el registro de usuarios
+
+// Rutas de cierre de sesión
+app.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.redirect('/'); // Maneja el error adecuadamente
+        }
+        res.clearCookie('connect.sid'); // Limpia la cookie de sesión
+        res.redirect('/login'); // Redirige al formulario de login
+    });
+});
+
+// Middleware para proteger las rutas que requieren autenticación
+app.use((req, res, next) => {
+    if (!req.session.userId) {
+        return res.redirect('/login'); // Redirigir si no está autenticado
+    }
+    next();
+});
 
 // Root route
 app.get('/', (req, res) => {
@@ -41,6 +82,7 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
+// Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

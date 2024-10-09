@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByteMon</title>
     <link rel="stylesheet" href="/css/styles.css">
-    
+
     <% if (typeof loadFormCss !== 'undefined' && loadFormCss) { %>
         <link rel="stylesheet" href="/css/form.css">
     <% } %>
@@ -21,26 +21,31 @@
     <% if (typeof loadAboutCss !== 'undefined' && loadAboutCss) { %>
         <link rel="stylesheet" href="/css/about.css">
     <% } %>
-
-
 </head>
 <body>
     <header>
         <div class="logo">
             BYTEMON
         </div>
+        <% if (typeof page === 'undefined' || (page !== 'login' && page !== 'register')) { %> <!-- Verificar si page está definido -->
         <div class="hamburger" onclick="toggleMenu()">
             &#9776; <!-- Símbolo del menú hamburguesa -->
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="/characters">Gestión de personajes</a></li>
-                <li><a href="/game/select">Cambiar personaje</a></li>
+                <li><a href="/characters">Gestión de perfiles</a></li>
                 <li><a href="/players">Lista de jugadores</a></li>
                 <li><a href="/about">Cómo funciona</a></li>
                 <li><a href="/game">Jugar</a></li>
+
+                <% if (!session.userId) { %>
+                    <li><a href="/login">Iniciar sesión</a></li>
+                <% } else { %>
+                    <li><a href="/logout">Cerrar sesión</a></li>
+                <% } %>
             </ul>
         </nav>
+        <% } %>
     </header>
 
     <script>
@@ -51,6 +56,5 @@
     </script>
     
     <%- body %>
-
-
 </body>
+</html>
