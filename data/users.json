@@ -1,12 +1,16 @@
 [
   {
-    "username": "prueba",
-    "password": "prueba",
-    "uuid": "b33e921b-ee37-4a26-b474-a600495339ea"
+    "username": "2",
+    "password": "2",
+    "uuid": "88135fb8-fe50-4f9b-ae64-15e27c488923",
+    "lastLogin": "2024-10-13T13:39:14.576Z",
+    "isConnected": true
   },
   {
-    "username": "s",
+    "username": "1",
     "password": "1",
-    "uuid": "cb09612f-3684-433a-a15e-02806c7c1734"
+    "uuid": "b5cce795-43cd-4f3a-9e17-319640a04f92",
+    "lastLogin": "2024-10-13T13:39:11.226Z",
+    "isConnected": true
   }
 ]

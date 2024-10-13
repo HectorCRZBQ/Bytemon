@@ -1,3 +1,4 @@
+// characterModel.js
 const fs = require('fs');
 const path = './data/characters.json';
 
@@ -19,6 +20,16 @@ const findCharacterById = (id) => {
     return characters.find(c => c.id === id);
 };
 
+// Nueva función para re-numerar los IDs de los personajes
+const renumberCharacterIds = () => {
+    const characters = getAllCharacters();
+    const renumbered = characters.map((character, index) => ({
+        ...character,
+        id: index + 1 // Asigna un nuevo ID basado en el índice
+    }));
+    saveCharacters(renumbered); // Guarda la lista renumerada
+};
+
 const saveCharacter = (updatedCharacter) => {
     const characters = getAllCharacters();
     const index = characters.findIndex(c => c.id === updatedCharacter.id);
@@ -28,4 +39,10 @@ const saveCharacter = (updatedCharacter) => {
     }
 };
 
-module.exports = { getAllCharacters, saveCharacters, findCharacterById, saveCharacter };
+module.exports = { 
+    getAllCharacters, 
+    saveCharacters, 
+    findCharacterById, 
+    saveCharacter, 
+    renumberCharacterIds 
+};

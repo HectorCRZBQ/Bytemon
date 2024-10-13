@@ -1,9 +1,11 @@
 [
   {
-    "id": 4,
-    "name": "sd",
-    "energyLevel": "300",
-    "lifePoints": 250,
-    "team": "Mystic",
+    "id": 1,
+    "name": "2",
+    "energyLevel": 2,
+    "lifePoints": 2,
+    "team": "Valor",
+    "initial": "Charmander",
+    "userId": "88135fb8-fe50-4f9b-ae64-15e27c488923"
   }
 ]

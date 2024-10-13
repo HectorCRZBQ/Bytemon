@@ -1,26 +1,52 @@
+// userModel.js
 const fs = require('fs');
-const path = './data/users.json';
+const path = require('path');
 
-// Obtener todos los usuarios
-const getAllUsers = () => {
-    if (fs.existsSync(path)) {
-        const data = fs.readFileSync(path);
-        return JSON.parse(data);
+const usersFilePath = path.join(__dirname, '../data/users.json');
+
+let users = [];
+
+// Cargar los usuarios desde el archivo JSON al inicio
+const loadUsers = () => {
+    if (fs.existsSync(usersFilePath)) {
+        const data = fs.readFileSync(usersFilePath, 'utf-8');
+        users = JSON.parse(data);
     }
-    return [];
+};
+
+// Guardar los usuarios en el archivo JSON
+const saveUsers = () => {
+    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
 };
 
 // Agregar un nuevo usuario
-const addUser = (user) => {
-    const users = getAllUsers();
-    users.push(user);
-    fs.writeFileSync(path, JSON.stringify(users, null, 2));
+exports.addUser = (newUser) => {
+    loadUsers(); // Cargar usuarios antes de agregar
+    users.push(newUser); // Agregar nuevo usuario
+    saveUsers(); // Guardar cambios en el archivo
 };
 
-// Buscar un usuario por nombre de usuario
-const findUserByUsername = (username) => {
-    const users = getAllUsers();
+// Encontrar usuario por nombre de usuario
+exports.findUserByUsername = (username) => {
+    loadUsers(); // Cargar usuarios antes de buscar
     return users.find(user => user.username === username);
 };
 
-module.exports = { addUser, findUserByUsername };
+// Exportar la lista de usuarios
+exports.getAllUsers = () => {
+    loadUsers(); // Cargar usuarios antes de devolver
+    return users;
+};
+
+// Actualizar la conexión del usuario
+exports.updateUserConnection = (uuid, isConnected) => {
+    loadUsers(); // Cargar usuarios antes de actualizar
+    const user = users.find(u => u.uuid === uuid);
+    if (user) {
+        user.isConnected = isConnected; // Actualizar estado de conexión
+        if (isConnected) {
+            user.lastLogin = new Date().toISOString(); // Actualizar última conexión
+        }
+        saveUsers(); // Guardar cambios
+    }
+};
