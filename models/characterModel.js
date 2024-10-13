@@ -3,8 +3,13 @@ const fs = require('fs');
 const path = './data/characters.json';
 
 const getAllCharacters = () => {
-    const data = fs.readFileSync(path);
-    return JSON.parse(data);
+    try {
+        const data = fs.readFileSync(path);
+        return JSON.parse(data);
+    } catch (error) {
+        console.error('Error al cargar los personajes:', error);
+        return []; // Devuelve un arreglo vacío en caso de error
+    }
 };
 
 const saveCharacters = (characters) => {

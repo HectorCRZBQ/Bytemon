@@ -75,3 +75,17 @@ exports.showPlayerTable = (req, res) => {
     // Renderizar la vista playerTable con los datos de los usuarios
     res.render('characters/playerTable', { users });
 };
+
+exports.logout = (req, res) => {
+    const userId = req.session.userId;
+    if (userId) {
+        userModel.updateUserConnection(userId, false); // Marcar como desconectado
+        req.session.destroy(err => {
+            if (err) {
+                return res.redirect('/'); // Manejar el error adecuadamente
+            }
+            res.clearCookie('connect.sid', { path: '/' });
+            res.redirect('/login'); // Redirigir al formulario de login
+        });
+    }
+};

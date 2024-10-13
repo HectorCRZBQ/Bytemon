@@ -18,7 +18,6 @@ exports.create = (req, res) => {
 
 exports.store = (req, res) => {
     const characters = characterModel.getAllCharacters();
-    console.log(req.body); // Verifica el contenido de req.body
 
     const newCharacter = {
         id: characters.length > 0 ? characters[characters.length - 1].id + 1 : 1, // Generar un nuevo ID automáticamente
@@ -27,7 +26,7 @@ exports.store = (req, res) => {
         lifePoints: parseInt(req.body.lifePoints, 10),
         team: req.body.team,
         initial: req.body.initial,
-        userId: req.session.userId // Almacenar el ID del usuario que creó el personaje
+        userId: req.session.userId // Asegúrate de que el ID del usuario se esté almacenando aquí
     };
 
     characters.push(newCharacter);
@@ -39,7 +38,7 @@ exports.edit = (req, res) => {
     const character = characterModel.findCharacterById(parseInt(req.params.id));
     
     // Verificar si el usuario logueado es el creador del personaje
-    if (character.userId !== req.session.userId) {
+    if (!character || character.userId !== req.session.userId) {
         return res.status(403).send('No tienes permiso para editar este personaje.');
     }
 

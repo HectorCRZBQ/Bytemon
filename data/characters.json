@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "name": "2",
-    "energyLevel": 2,
-    "lifePoints": 2,
+    "name": "1",
+    "energyLevel": "1",
+    "lifePoints": 1,
     "team": "Valor",
     "initial": "Charmander",
-    "userId": "88135fb8-fe50-4f9b-ae64-15e27c488923"
+    "userId": "30ed4da4-919e-4d35-87c1-ad196cf6139a"
   }
 ]

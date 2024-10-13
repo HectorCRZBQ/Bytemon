@@ -37,14 +37,18 @@ app.get('/register', (req, res) => {
 app.post('/register', userController.register); // Manejar el registro de usuarios
 
 // Rutas de cierre de sesión
+app.get('/logout', userController.logout);
 app.get('/logout', (req, res) => {
-    req.session.destroy(err => {
-        if (err) {
-            return res.redirect('/'); // Maneja el error adecuadamente
-        }
-        res.clearCookie('connect.sid'); // Limpia la cookie de sesión
-        res.redirect('/login'); // Redirige al formulario de login
-    });
+    const userId = req.session.userId;
+    if (userId) {
+        req.session.destroy(err => {
+            if (err) {
+                return res.redirect('/'); // Manejar el error
+            }
+            res.clearCookie('connect.sid', { path: '/' }); // Limpiar la cookie de la pestaña actual
+            res.redirect('/login'); // Redirigir a la página de login
+        });
+    }
 });
 
 // Middleware para proteger las rutas que requieren autenticación
