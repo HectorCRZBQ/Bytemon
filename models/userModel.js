@@ -21,32 +21,49 @@ const saveUsers = () => {
 
 // Agregar un nuevo usuario
 exports.addUser = (newUser) => {
-    loadUsers(); // Cargar usuarios antes de agregar
-    users.push(newUser); // Agregar nuevo usuario
-    saveUsers(); // Guardar cambios en el archivo
+    loadUsers();
+    users.push(newUser);
+    saveUsers();
+};
+
+// Actualizar usuario por UUID
+exports.updateUser = (uuid, updatedData) => {
+    loadUsers();
+    const index = users.findIndex(u => u.uuid === uuid);
+    if (index !== -1) {
+        users[index] = { ...users[index], ...updatedData }; // Actualiza el usuario con los nuevos datos
+        saveUsers();
+    }
+};
+
+// Eliminar usuario por UUID
+exports.deleteUser = (uuid) => {
+    loadUsers();
+    users = users.filter(user => user.uuid !== uuid);
+    saveUsers();
 };
 
 // Encontrar usuario por nombre de usuario
 exports.findUserByUsername = (username) => {
-    loadUsers(); // Cargar usuarios antes de buscar
+    loadUsers();
     return users.find(user => user.username === username);
 };
 
 // Exportar la lista de usuarios
 exports.getAllUsers = () => {
-    loadUsers(); // Cargar usuarios antes de devolver
+    loadUsers();
     return users;
 };
 
 // Actualizar la conexión del usuario
 exports.updateUserConnection = (uuid, isConnected) => {
-    loadUsers(); // Cargar usuarios antes de actualizar
+    loadUsers();
     const user = users.find(u => u.uuid === uuid);
     if (user) {
-        user.isConnected = isConnected; // Actualizar estado de conexión
+        user.isConnected = isConnected;
         if (isConnected) {
             user.lastLogin = new Date().toISOString(); // Actualizar última conexión
         }
-        saveUsers(); // Guardar cambios
+        saveUsers();
     }
 };

@@ -1,4 +1,3 @@
-// userController.js
 const fs = require('fs');
 const path = require('path');
 const userModel = require('../models/userModel');
@@ -16,12 +15,16 @@ exports.login = (req, res) => {
 
     if (user && user.password === password) {
         req.session.userId = user.uuid;
+        req.session.isAdmin = username === 'admin' && password === 'admin'; // Identificar si es admin
 
-        // Actualizar el campo lastLogin y el estado de conexión del usuario
         userModel.updateUserConnection(user.uuid, true); // Marcar como conectado
         user.lastLogin = new Date().toISOString(); // Actualizar lastLogin también
 
-        res.redirect('/characters'); // Redirigir a la página de personajes
+        if (req.session.isAdmin) {
+            res.redirect('/admin'); // Si es admin, redirigir a la página de administración
+        } else {
+            res.redirect('/characters'); // Redirigir a la página de personajes
+        }
     } else {
         res.render('login', { loadUserCss: true, error: 'Usuario o contraseña incorrectos.', page: 'login' });
     }
@@ -51,31 +54,37 @@ exports.register = (req, res) => {
     }
 };
 
-// Manejar la conexión de un usuario
-exports.connectUser = (req, res) => {
-    const userId = req.session.userId; // Obtener ID de sesión
-    if (userId) {
-        userModel.updateUserConnection(userId, true); // Marcar como conectado
+// Mostrar la página de administración para el usuario "admin"
+exports.showAdminPage = (req, res) => {
+    if (!req.session.isAdmin) {
+        return res.redirect('/'); // Redirigir si no es admin
     }
+    const users = userModel.getAllUsers(); // Obtener todos los usuarios
+    res.render('admin', { users, loadAdminCss: true });
+};
+
+// Manejar la actualización de usuarios
+exports.updateUser = (req, res) => {
+    if (!req.session.isAdmin) {
+        return res.status(403).send('Acceso no autorizado');
+    }
+    const { username, password } = req.body;
+    const userId = req.params.uuid;
+    userModel.updateUser(userId, { username, password });
+    res.redirect('/admin');
+};
+
+// Manejar la eliminación de usuarios
+exports.deleteUser = (req, res) => {
+    if (!req.session.isAdmin) {
+        return res.status(403).send('Acceso no autorizado');
+    }
+    const userId = req.params.uuid;
+    userModel.deleteUser(userId);
+    res.redirect('/admin');
 };
 
 // Manejar la desconexión de un usuario
-exports.disconnectUser = (req, res) => {
-    const userId = req.session.userId; // Obtener ID de sesión
-    if (userId) {
-        userModel.updateUserConnection(userId, false); // Marcar como desconectado
-    }
-};
-
-// Función para mostrar la tabla de jugadores
-exports.showPlayerTable = (req, res) => {
-    const usersFilePath = path.join(__dirname, '../data/users.json'); // Ruta al archivo users.json
-    const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8')); // Leer el archivo
-
-    // Renderizar la vista playerTable con los datos de los usuarios
-    res.render('characters/playerTable', { users });
-};
-
 exports.logout = (req, res) => {
     const userId = req.session.userId;
     if (userId) {

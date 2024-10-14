@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const characterController = require('./controllers/characterController');
 const gameController = require('./controllers/gameController');
-const userController = require('./controllers/userController'); // Importar el controlador de usuario
+const userController = require('./controllers/userController');
 const app = express();
 const PORT = 3000;
 
@@ -85,6 +85,18 @@ app.get('/players', characterController.showPlayerTable);
 app.get('/about', (req, res) => {
     res.render('about');
 });
+
+// Rutas para el administrador
+app.get('/admin', (req, res) => {
+    if (req.session.isAdmin) {
+        userController.showAdminPage(req, res);
+    } else {
+        res.redirect('/'); // Redirigir a la raíz si no es admin
+    }
+});
+
+app.post('/admin/:uuid/update', userController.updateUser); // Actualizar usuario
+app.post('/admin/:uuid/delete', userController.deleteUser); // Eliminar usuario
 
 // Iniciar el servidor
 app.listen(PORT, () => {

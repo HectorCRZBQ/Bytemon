@@ -2,10 +2,10 @@
   {
     "id": 1,
     "name": "1",
-    "energyLevel": "1",
+    "energyLevel": 1,
     "lifePoints": 1,
     "team": "Valor",
     "initial": "Charmander",
-    "userId": "30ed4da4-919e-4d35-87c1-ad196cf6139a"
+    "userId": "8d14ea11-41db-4176-a945-c1e1fb07350c"
   }
 ]
