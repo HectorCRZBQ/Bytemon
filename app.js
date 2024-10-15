@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const characterController = require('./controllers/characterController');
 const gameController = require('./controllers/gameController');
-const userController = require('./controllers/userController'); // Importar el controlador de usuario
+const userController = require('./controllers/userController');
 const app = express();
 const PORT = 3000;
 
@@ -37,14 +37,18 @@ app.get('/register', (req, res) => {
 app.post('/register', userController.register); // Manejar el registro de usuarios
 
 // Rutas de cierre de sesión
+app.get('/logout', userController.logout);
 app.get('/logout', (req, res) => {
-    req.session.destroy(err => {
-        if (err) {
-            return res.redirect('/'); // Maneja el error adecuadamente
-        }
-        res.clearCookie('connect.sid'); // Limpia la cookie de sesión
-        res.redirect('/login'); // Redirige al formulario de login
-    });
+    const userId = req.session.userId;
+    if (userId) {
+        req.session.destroy(err => {
+            if (err) {
+                return res.redirect('/'); // Manejar el error
+            }
+            res.clearCookie('connect.sid', { path: '/' }); // Limpiar la cookie de la pestaña actual
+            res.redirect('/login'); // Redirigir a la página de login
+        });
+    }
 });
 
 // Middleware para proteger las rutas que requieren autenticación
@@ -81,6 +85,18 @@ app.get('/players', characterController.showPlayerTable);
 app.get('/about', (req, res) => {
     res.render('about');
 });
+
+// Rutas para el administrador
+app.get('/admin', (req, res) => {
+    if (req.session.isAdmin) {
+        userController.showAdminPage(req, res);
+    } else {
+        res.redirect('/'); // Redirigir a la raíz si no es admin
+    }
+});
+
+app.post('/admin/:uuid/update', userController.updateUser); // Actualizar usuario
+app.post('/admin/:uuid/delete', userController.deleteUser); // Eliminar usuario
 
 // Iniciar el servidor
 app.listen(PORT, () => {

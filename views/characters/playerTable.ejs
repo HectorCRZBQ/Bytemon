@@ -1,4 +1,7 @@
 <h1>Lista de Jugadores</h1>
+
+<!-- Tabla de personajes -->
+<h2>Personajes</h2>
 <table border="1">
     <thead>
         <tr>
@@ -13,6 +16,35 @@
                 <td data-label="Jugador"><%= character.name %></td>
                 <td data-label="Bytemon Inicial"><%= character.initial %></td>
                 <td data-label="Equipo"><%= character.team %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<!-- Tabla de usuarios -->
+<h2>Usuarios Registrados</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(user => { %>
+            <tr>
+                <td data-label="Username"><%= user.username %></td>
+                <td data-label="Estado">
+                    <% if (user.isConnected) { %>
+                        <span style="color: green;">Conectado</span>
+                    <% } else { %>
+                        <% if (user.lastLogin) { %>
+                            Última vez conectado: <%= new Date(user.lastLogin).toLocaleString() %>
+                        <% } else { %>
+                            <span style="color: red;">Nunca se ha conectado</span>
+                        <% } %>
+                    <% } %>
+                </td>
             </tr>
         <% }) %>
     </tbody>

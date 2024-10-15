@@ -1,0 +1,178 @@
+/* Estilos generales para la tabla */
+table {
+    width: 80%;
+    max-width: 800px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #222;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 3px solid #ff6f00;
+}
+
+/* Encabezado de la tabla */
+table thead {
+    background-color: #ff6f00;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+table thead th {
+    padding: 15px 20px;
+    font-size: 14px;
+    border-bottom: 3px solid #770505;
+}
+
+/* Cuerpo de la tabla */
+table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #333;
+}
+
+table tbody tr:hover {
+    background-color: #444;
+}
+
+table tbody td {
+    padding: 15px 20px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    border-bottom: 2px solid #ff6f00;
+}
+
+/* Contenedor para las acciones */
+td form {
+    display: flex; /* Flexbox para alinear en fila */
+    align-items: center; /* Alinea verticalmente los elementos */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 5px; /* Espacio entre botones */
+}
+
+/* Estilo para el campo de contraseña */
+input[type="text"],
+input[type="password"] {
+    padding: 10px; /* Añade espacio interno */
+    border: 2px solid #ff6f00; /* Borde vibrante */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    margin-right: 10px; /* Espacio entre el campo y el botón */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+    color: #fff; /* Texto blanco */
+    background-color: #333; /* Fondo oscuro */
+    transition: border-color 0.3s ease;
+    max-width: 220px; /* Ancho máximo para mantener el tamaño */
+}
+
+/* Estilo para el enfoque en los campos de texto */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ffa952; /* Color del borde al enfocar */
+    outline: none; /* Sin borde de enfoque predeterminado */
+}
+
+/* Estilo para los botones de acción */
+button {
+    background-color: #ff6f00; /* Color de fondo */
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.return-button {
+    background-color: #ff6f00; /* Color de fondo del botón */
+    color: #fff; /* Texto blanco */
+    padding: 15px 20px; /* Espaciado del botón incrementado */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s; /* Transición al cambiar el color */
+    flex: 1; /* Hacer que todos los botones ocupen el mismo espacio */
+    font-size: 18px; /* Tamaño de fuente incrementado */
+}
+
+/* Estilo del botón de crear */
+.return-button {
+    background-color: #ff9900; /* Color de fondo del botón de crear */
+    margin-bottom: 50px;
+}
+
+.return-button:hover {
+    background-color: #ffc773; /* Color más oscuro al pasar el mouse */
+}
+
+button:hover {
+    background-color: #ffa952; /* Color más claro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+.toggle-password {
+    background: none;
+    border: none;
+    color: #ff6f00; /* Color del ojo */
+    font-size: 18px; /* Tamaño del ícono */
+    cursor: pointer;
+    margin-left: 5px; /* Espacio entre el campo de contraseña y el ícono */
+}
+
+/* Estilo específico para botones de actualizar y eliminar */
+.form-action {
+    display: inline-block;
+    margin-right: 5px; /* Espacio entre botones */
+}
+
+/* Responsive: Pantallas pequeñas (menos de 768px) */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        font-size: 12px;
+        border: none; /* Quitar borde para el diseño móvil */
+    }
+
+    table thead {
+        display: none; /* Ocultar encabezados en dispositivos pequeños */
+    }
+
+    table tbody tr {
+        display: block; /* Cambia cada fila a un bloque */
+        margin-bottom: 20px;
+        border: 2px solid #ff6f00; /* Borde para filas en móvil */
+        padding: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    table tbody td {
+        display: block; /* Cada celda se comporta como un bloque */
+        text-align: right; /* Alinear texto a la derecha */
+        padding: 10px;
+        font-size: 12px;
+        position: relative;
+        border: none; /* Sin borde en vista móvil */
+    }
+
+    table tbody td::before {
+        content: attr(data-label); /* Usar data-label para etiquetas */
+        position: absolute;
+        left: 10px;
+        text-align: left;
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #ff6f00; /* Color para etiquetas */
+    }
+
+    table tbody td:last-child {
+        border-bottom: 0; /* Sin borde en la última celda */
+    }
+
+    .return-button {
+        font-size: 16px; /* Tamaño de fuente más accesible para móviles */
+    }
+}
