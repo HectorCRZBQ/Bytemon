@@ -80,3 +80,12 @@ Pasos de instalación:
 ![image](https://github.com/user-attachments/assets/d61e8f06-101d-482c-bcbe-cbeb91e14937)
 
 ![image](https://github.com/user-attachments/assets/5a5787d3-0997-4907-830e-f453bdb7cf5c)
+
+
+# **V-1.6.0** --- *15/10/2024*
+
+![image](https://github.com/user-attachments/assets/95ad3a5b-2d46-4704-ad91-1ae33e162f0c)
+
+![image](https://github.com/user-attachments/assets/6d9de33b-86ab-4c2e-8e50-6d78e313994b)
+
+![image](https://github.com/user-attachments/assets/f1458fc8-1e9b-40e5-a47b-3b361ddbba23)

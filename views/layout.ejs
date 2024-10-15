@@ -33,10 +33,14 @@
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="/characters">Gestión de perfiles</a></li>
+                <li><a href="/characters">Perfiles</a></li>
                 <li><a href="/players">Lista de jugadores</a></li>
                 <li><a href="/about">Cómo funciona</a></li>
                 <li><a href="/game">Jugar</a></li>
+
+                <% if (session && session.isAdmin) { %>
+                    <li><a href="/admin">Admininstación</a></li>
+                <% } %>
 
                 <% if (!session.userId) { %>
                     <li><a href="/login">Iniciar sesión</a></li>
