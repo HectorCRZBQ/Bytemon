@@ -3,312 +3,452 @@
 
 /* Estilos globales */
 body {
-  font-family: 'Press Start 2P', cursive;
-  background-color: #222; /* Fondo oscuro similar al formulario */
-  color: #fff; /* Texto en blanco para mejor contraste */
-  margin: 0;
-  padding: 0;
-  text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #222; /* Fondo oscuro similar al formulario */
+    color: #fff; /* Texto en blanco para mejor contraste */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Modo alto contraste para el body */
+body.high-contrast {
+    background-color: #000; /* Fondo negro para alto contraste */
+    color: #ff0; /* Texto amarillo para mayor legibilidad */
 }
 
 /* Cabecera */
 header {
-  background: #ff6f00;
-  color: #fff;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si es necesario */
-  border-bottom: 5px solid #770505;
-  font-size: 15px;
+    background: #ff6f00;
+    color: #fff;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si es necesario */
+    border-bottom: 0.3125rem solid #770505;
+    font-size: 0.9375rem;
 }
 
+body.high-contrast header, header.high-contrast {
+    background: #ffcc00; /* Fondo amarillo en alto contraste */
+    color: black; /* Texto negro */
+}
+
+/* Logo */
 .logo {
-  font-size: 1;
-  white-space: nowrap;
-  color: rgb(255, 255, 255);
+    font-size: 1rem; /* Tamaño ajustado */
+    white-space: nowrap;
+    color: rgb(255, 255, 255);
 }
 
+/* Estilo para la clase .logo en modo alto contraste */
+body.high-contrast .logo {
+    color:black; /* Cambia el color a amarillo en alto contraste */
+    font-size: 1rem; /* Opcional: Ajustar tamaño de fuente para alto contraste */
+}
+
+/* Enlaces en la cabecera */
 header a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 10px;
-  font-size: 1em;
-  font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 0.625rem;
+    font-size: 1rem;
 }
 
 header a:hover {
-  text-decoration: underline;
-  color: #770505;
+    text-decoration: underline;
+    color: #770505;
+}
+
+/* Enlaces en modo alto contraste */
+header.high-contrast a {
+    color: #000; /* Texto negro para alto contraste */
 }
 
 /* Botón del menú hamburguesa (oculto en pantallas grandes) */
 .hamburger {
-  display: none;
-  cursor: pointer;
-  font-size: 1.5em;
-  color: #fff;
-  margin-left: auto;
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-left: auto;
 }
 
+body.high-contrast .hamburger {
+    color: black; /* Color amarillo vibrante */
+    background-color: #ffcc00; /* Fondo negro para mayor contraste */
+    padding: 0.5rem; /* Espaciado interno para un toque visual */
+    border: 0.125rem solid #ffcc00; /* Borde amarillo vibrante */
+    border-radius: 0.25rem; /* Bordes ligeramente redondeados */
+}
+
+/* Estilo de los ítems de la lista */
 li {
-  background-color: rgba(255, 111, 0, 0.2); /* Fondo para los ítems de la lista */
-  color: #fff; /* Texto en blanco */
-  padding: 10px;
-  margin: 5px 0; /* Margen entre elementos de la lista */
-  border-radius: 5px; /* Bordes redondeados */
+    background-color: rgba(255, 111, 0, 0.2); /* Fondo para los ítems de la lista */
+    color: #fff; /* Texto en blanco */
+    padding: 0.625rem;
+    margin: 0.3125rem 0; /* Margen entre elementos de la lista */
+    border-radius: 0.3125rem; /* Bordes redondeados */
+}
+
+/* Estilo de los ítems en modo alto contraste */
+body.high-contrast li {
+    background-color: #ffcc00; /* Fondo amarillo para alto contraste */
+    color: #000; /* Texto negro para mayor legibilidad */
 }
 
 /* Estilo para el menú desplegable en dispositivos móviles */
 .nav-links {
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  border-radius: 5px; /* Bordes redondeados */
-  padding: 0; /* Sin padding */
-  margin: 0; /* Sin margen */
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    border-radius: 0.3125rem; /* Bordes redondeados */
+    padding: 0; /* Sin padding */
+    margin: 0; /* Sin margen */
 }
 
 .nav-links a {
-  text-transform: uppercase;
-  text-align: center;
-  border-top: 1px solid rgba(255, 111, 0, 0.6);
-  color: #fff;
-  margin: 0 15px; /* Espaciado entre enlaces */
-
+    text-transform: uppercase;
+    text-align: center;
+    border-top: 0.0625rem solid rgba(255, 111, 0, 0.6);
+    color: #fff;
+    margin: 0 0.9375rem; /* Espaciado entre enlaces */
 }
 
+/* Estilo de los enlaces en modo alto contraste */
+body.high-contrast .nav-links a {
+    color: #000; /* Texto negro para alto contraste */
+    background-color: #ffcc00; /* Fondo amarillo para mejor legibilidad */
+}
+
+/* Cabecera h1 */
 header h1 {
-  margin: 0;
-  font-size: 2.5em;
+    margin: 0;
+    font-size: 2.5rem; /* Tamaño de fuente grande */
 }
 
+/* Estilo de los mensajes */
+header h1.high-contrast {
+    color: #000; /* Texto negro en alto contraste */
+}
+
+/* Cabecera p */
 header p {
-  font-size: 1.2em;
-  margin: 10px 0 0 0;
+    font-size: 1.2rem; /* Tamaño de fuente ajustado */
+    margin: 0.625rem 0 0 0;
 }
 
 /* Estilos del footer */
 footer {
-  margin-top: 20px; /* Espacio por encima del footer */
-  padding: 10px; /* Espacio dentro del footer */
-  background-color: #333; /* Fondo del footer */
-  border-radius: 10px; /* Bordes redondeados */
+    margin-top: 1.25rem; /* Espacio por encima del footer */
+    padding: 0.625rem; /* Espacio dentro del footer */
+    background-color: #333; /* Fondo del footer */
+    border-radius: 0.625rem; /* Bordes redondeados */
 }
 
 footer p {
-  margin: 0;
-  font-size: 1em; /* Ajusta el tamaño de la fuente para el footer */
+    margin: 0;
+    font-size: 1rem; /* Ajusta el tamaño de la fuente para el footer */
 }
 
 footer a {
-  color: #fff; /* Enlaces de color blanco */
-  text-decoration: none;
+    color: #fff; /* Enlaces de color blanco */
+    text-decoration: none;
 }
 
 footer a:hover {
-  text-decoration: underline; /* Subrayado al pasar el ratón */
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+/* Estilo del footer en modo alto contraste */
+body.high-contrast footer {
+    background-color: #000; /* Fondo negro en alto contraste */
+}
+
+footer.high-contrast p,
+footer.high-contrast a {
+    color: #ff0; /* Texto amarillo en alto contraste */
 }
 
 /* Sección de selección de nombre */
 .character-name-section {
-  margin-top: 30px;
+    margin-top: 1.875rem;
 }
 
 .display-character-name {
-  margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
+/* Estilo de los inputs */
 input[type="text"] {
-  padding: 8px;
-  font-size: 16px;
-  background-color: #333; /* Fondo oscuro */
-  color: #fff; /* Texto blanco */
-  border: 2px solid #ff6f00; /* Borde grueso */
-  border-radius: 10px; /* Bordes más redondeados */
-  box-shadow: inset 0 0 10px #000, 0 0 10px #ff6f00; /* Brillo retro */
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    border: 0.125rem solid #ff6f00; /* Borde grueso */
+    border-radius: 0.625rem; /* Bordes más redondeados */
+    box-shadow: inset 0 0 0.625rem #000, 0 0 0.625rem #ff6f00; /* Brillo retro */
 }
 
+/* Estilo de inputs en modo alto contraste */
+body.high-contrast input[type="text"] {
+    background-color: #000; /* Fondo negro para alto contraste */
+    color: #ff0; /* Texto amarillo para mayor legibilidad */
+    border: 0.125rem solid #ffcc00; /* Borde amarillo para mayor visibilidad */
+}
+
+/* Estilo del botón */
 button {
-  padding: 12px 20px; /* Ajustar el padding para un mejor aspecto con los bordes redondeados */
-  margin-left: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  background-color: #ff6f00; /* Color del botón del formulario */
-  color: #fff; /* Texto en blanco */
-  border: none;
-  cursor: pointer;
-  text-transform: uppercase; /* Texto en mayúsculas */
-  border-radius: 20px; /* Botones más redondeados */
+    padding: 0.75rem 1.25rem; /* Ajustar el padding para un mejor aspecto */
+    margin-left: 0.625rem;
+    margin-bottom: 0.625rem;
+    font-size: 1rem;
+    background-color: #ff6f00; /* Color del botón del formulario */
+    color: #fff; /* Texto en blanco */
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase; /* Texto en mayúsculas */
+    border-radius: 1.25rem; /* Botones más redondeados */
 }
 
+/* Estilo del botón en modo alto contraste */
+body.high-contrast button {
+    background-color: #ffcc00; /* Fondo amarillo para mayor visibilidad */
+    color: #000; /* Texto negro para alto contraste */
+}
+
+/* Efecto hover en botones */
 button:hover {
-  background-color: #ff8c1a; /* Color más claro al pasar el mouse */
+    background-color: #ff8c1a; /* Color más claro al pasar el mouse */
+}
+
+/* Efecto hover en botones en alto contraste */
+body.high-contrast button:hover {
+    background-color: #ffc107; /* Color más claro para alto contraste */
 }
 
 /* Estilos generales para la lista de personajes */
 .character-list {
-  list-style: none; /* Eliminar puntos de la lista */
-  padding: 0;
-  margin: 0;
-  display: flex; /* Flexbox para disposición en fila */
-  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas */
-  justify-content: center; /* Centrar los elementos */
+    list-style: none; /* Eliminar puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Flexbox para disposición en fila */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas */
+    justify-content: center; /* Centrar los elementos */
 }
 
 /* Estilo de cada elemento de la lista */
 .character-item {
-  background-color: #333; /* Fondo oscuro */
-  color: #fff; /* Texto blanco */
-  padding: 15px; /* Espaciado interno */
-  margin: 10px; /* Espaciado entre elementos */
-  border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
-  display: flex; /* Flexbox para disposición interna */
-  align-items: center; /* Centrar verticalmente el contenido */
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    padding: 0.9375rem; /* Espaciado interno */
+    margin: 0.625rem; /* Espaciado entre elementos */
+    border-radius: 0.3125rem; /* Bordes redondeados */
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.5); /* Sombra */
+    display: flex; /* Flexbox para disposición interna */
+    align-items: center; /* Centrar verticalmente el contenido */
+}
+
+/* Estilo de los elementos en modo alto contraste */
+body.high-contrast .character-item {
+    background-color: #ffcc00; /* Fondo amarillo para mayor legibilidad */
+    color: #000; /* Texto negro para alto contraste */
+    box-shadow: 0 0 0.625rem rgba(255, 255, 255, 0.5); /* Sombra blanca para destacar */
 }
 
 /* Nombre del personaje */
 .character-name {
-  flex-grow: 1; /* Ocupa el espacio disponible */
-  font-size: 1.2em; /* Tamaño de fuente más grande */
+    flex-grow: 1; /* Ocupa el espacio disponible */
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+}
+
+/* Estilo del nombre en modo alto contraste */
+body.high-contrast .character-name {
+    color: #000; /* Texto negro para alto contraste */
 }
 
 /* Estilo del formulario */
 .character-form {
-  display: inline; /* Asegurarse de que el formulario esté en línea */
+    display: inline; /* Asegurarse de que el formulario esté en línea */
 }
 
-/* Estilo del botón */
+/* Estilo del botón de selección */
 .select-button {
-  font-family: 'Press Start 2P', cursive;
-  background-color: #ff6f00; /* Color de fondo del botón */
-  color: #fff; /* Texto blanco */
-  padding: 10px 15px; /* Espaciado del botón */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cursor pointer para el botón */
-  transition: background-color 0.3s; /* Transición al cambiar el color */
+    font-family: 'Press Start 2P', cursive;
+    background-color: #ff6f00; /* Color de fondo del botón */
+    color: #fff; /* Texto blanco */
+    padding: 0.625rem 0.9375rem; /* Espaciado del botón */
+    border: none; /* Sin borde */
+    border-radius: 0.3125rem; /* Bordes redondeados */
+    cursor: pointer; /* Cursor pointer para el botón */
+    transition: background-color 0.3s; /* Transición al cambiar el color */
 }
 
+/* Estilo del botón de selección en modo alto contraste */
+body.high-contrast .select-button {
+    background-color: #ffcc00; /* Fondo amarillo para mayor visibilidad */
+    color: #000; /* Texto negro para alto contraste */
+}
+
+/* Efecto hover en el botón de selección */
 .select-button:hover {
-  background-color: #ffa952; /* Color más claro al pasar el mouse */
+    background-color: #ffa952; /* Color más claro al pasar el mouse */
 }
 
-#evolutionMessage, #healMessage  {
-  color: #ff6f00; /* Color vibrante para resaltar el mensaje */
-  font-size: 22px; /* Fuente un poco más grande */
-  font-family: 'Press Start 2P', cursive; /* Mantener el estilo retro */
-  margin-top: 20px;
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente oscuro */
-  padding: 15px; /* Espaciado alrededor del texto */
-  border: 3px solid #770505; /* Borde de color similar al borde del header */
-  border-radius: 15px; /* Bordes redondeados para darle estilo */
-  box-shadow: 0 0 10px #ff6f00, 0 0 20px #ff6f00; /* Efecto de brillo alrededor del mensaje */
-  display: none; /* Inicia oculto */
-  position: relative;
-  width: 80%; /* Ocupa el 80% del ancho */
-  margin: 20px auto; /* Centrar el mensaje */
-  text-align: center;
-  z-index: 10; /* Asegura que el mensaje esté en el frente */
+/* Efecto hover en el botón de selección en alto contraste */
+body.high-contrast .select-button:hover {
+    background-color: #ffc107; /* Color más claro para alto contraste */
 }
 
+/* Estilo de los mensajes */
+#evolutionMessage, #healMessage {
+    color: #ff6f00; /* Color vibrante para resaltar el mensaje */
+    font-size: 1.375rem; /* Fuente un poco más grande */
+    font-family: 'Press Start 2P', cursive; /* Mantener el estilo retro */
+    margin-top: 1.25rem;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente oscuro */
+    padding: 0.9375rem; /* Espaciado alrededor del texto */
+    border: 0.1875rem solid #770505; /* Borde de color similar al borde del header */
+    border-radius: 0.9375rem; /* Bordes redondeados para darle estilo */
+    display: none; /* Inicia oculto */
+    position: relative;
+    width: 80%; /* Ocupa el 80% del ancho */
+    margin: 1.25rem auto; /* Centrar el mensaje */
+    text-align: center;
+    z-index: 10; /* Asegura que el mensaje esté en el frente */
+}
+
+/* Estilo de los mensajes en modo alto contraste */
+body.high-contrast #evolutionMessage,
+body.high-contrast #healMessage {
+    color: #ffcc00; /* Color amarillo para resaltar el mensaje */
+    background-color: rgba(0, 0, 0, 1); /* Fondo negro sólido para mayor legibilidad */
+    border: 0.1875rem solid #ffcc00; /* Borde amarillo */
+}
+
+/* Estilo del contenedor de gifs */
 #gifContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  width: 100%; /* Se asegura que el contenedor ocupe el ancho completo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.25rem;
+    width: 100%; /* Se asegura que el contenedor ocupe el ancho completo */
 }
 
+/* Estilo del gif */
 #normalGif {
-  width: 100%; /* Ocupará todo el ancho disponible */
-  max-width: 300px; /* Tamaño máximo para mantener proporción en pantallas grandes */
-  border: 2px solid #ff6f00; /* Borde del GIF en el tema vibrante */
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 0 10px #ff6f00; /* Sombra brillante */
-  object-fit: cover; /* Mantener buena proporción sin distorsionar */
+    width: 100%; /* Ocupará todo el ancho disponible */
+    max-width: 18.75rem; /* Tamaño máximo para mantener proporción en pantallas grandes */
+    border: 0.125rem solid #ff6f00; /* Borde del GIF en el tema vibrante */
+    border-radius: 0.625rem; /* Bordes redondeados */
+    box-shadow: 0 0 0.625rem #ff6f00; /* Sombra brillante */
+    object-fit: cover; /* Mantener buena proporción sin distorsionar */
 }
 
 /* Agrega un margen inferior al contenedor principal para que no tape el footer */
 #mainContainer { /* Asegúrate de que tu contenedor principal tenga este ID */
-  padding-bottom: 80px; /* Deja espacio suficiente para el footer */
+    padding-bottom: 5rem; /* Deja espacio suficiente para el footer */
 }
 
-/*Responsive*/
+/* Responsive */
 @media (max-width: 768px) {
-  /* Oculta los enlaces en dispositivos pequeños, muestra el menú hamburguesa */
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 60px; /* Alineado justo debajo del header */
-    left: 0;
-    background-color: rgba(255, 111, 0, 0.8); /* Fondo translúcido */
-    z-index: 1;
-    border-radius: 5px; /* Bordes redondeados */
-    text-align: center; /* Centrar el texto */
-  }
+    /* Oculta los enlaces en dispositivos pequeños, muestra el menú hamburguesa */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 3.75rem; /* Alineado justo debajo del header */
+        left: 0;
+        background-color: rgba(255, 111, 0, 0.8); /* Fondo translúcido */
+        z-index: 1;
+        border-radius: 0.3125rem; /* Bordes redondeados */
+        text-align: center; /* Centrar el texto */
+    }
 
-  .nav-links a {
-    padding: 10px; /* Espaciado aumentado para mejor área clicable */
-    border-top: 1px solid #770505; /* Borde superior para cada enlace */
-    margin: 0; /* Eliminar margen para evitar espacio extra */
-    font-size: 0.9em; /* Tamaño de letra más pequeño */
-  }
+    .nav-links a {
+        padding: 0.625rem; /* Espaciado aumentado para mejor área clicable */
+        border-top: 0.0625rem solid #770505; /* Borde superior para cada enlace */
+        margin: 0; /* Eliminar margen para evitar espacio extra */
+        font-size: 0.9rem; /* Tamaño de letra más pequeño */
+    }
 
-  /* Botón hamburguesa visible en pantallas pequeñas */
-  .hamburger {
-    display: block;
-    margin-left: auto; /* Mover a la derecha */
-  }
+    /* Botón hamburguesa visible en pantallas pequeñas */
+    .hamburger {
+        display: block;
+        margin-left: auto; /* Mover a la derecha */
+    }
 
-  /* Cuando se activa el menú (clase .active), los enlaces se muestran en columna */
-  .nav-links.active {
-    display: flex;
-  }
+    /* Cuando se activa el menú (clase .active), los enlaces se muestran en columna */
+    .nav-links.active {
+        display: flex;
+    }
 
-  .character-item {
-    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
-    align-items: flex-start; /* Alinear a la izquierda */
-    width: 90%; /* Aumentar el ancho para mejor ajuste */
-    padding: 10px; /* Menos padding para mejor uso del espacio */
-  }
+    .character-item {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+        align-items: flex-start; /* Alinear a la izquierda */
+        width: 90%; /* Aumentar el ancho para mejor ajuste */
+        padding: 0.625rem; /* Menos padding para mejor uso del espacio */
+    }
 
-  .character-name {
-    margin-bottom: 5px; /* Espacio entre el nombre y el botón */
-    font-size: 1.1em; /* Tamaño de letra más pequeño */
-    text-align: center; /* Centrar el texto en el nombre del personaje */
-  }
+    .character-name {
+        margin-bottom: 0.3125rem; /* Espacio entre el nombre y el botón */
+        font-size: 1.1rem; /* Tamaño de letra más pequeño */
+        text-align: center; /* Centrar el texto en el nombre del personaje */
+    }
 
-  li {
-    background-color: rgba(255, 111, 0, 0.2); /* Fondo para los ítems de la lista */
-    color: #fff; /* Texto en blanco */
-    padding: 10px;
-    margin: 5px 0; /* Margen entre elementos de la lista */
-    border-radius: 5px; /* Bordes redondeados */
-  }
+    li {
+        background-color: rgba(255, 111, 0, 0.2); /* Fondo para los ítems de la lista */
+        color: #fff; /* Texto en blanco */
+        padding: 0.625rem;
+        margin: 0.3125rem 0; /* Margen entre elementos de la lista */
+        border-radius: 0.3125rem; /* Bordes redondeados */
+    }
 
-  header h1 {
-    font-size: 1.8em; /* Tamaño de fuente más pequeño */
-  }
+    header h1 {
+        font-size: 1.8rem; /* Tamaño de fuente más pequeño */
+    }
 
-  header p {
-    font-size: 1em; /* Tamaño de fuente más pequeño */
-  }
+    header p {
+        font-size: 1rem; /* Tamaño de fuente más pequeño */
+    }
 
-  button {
-    font-size: 14px; /* Tamaño de letra más pequeño para botones */
-  }
+    button {
+        font-size: 0.875rem; /* Tamaño de letra más pequeño para botones */
+    }
 
-  input[type="text"] {
-    font-size: 14px; /* Tamaño de letra más pequeño para input */
-  }
+    input[type="text"] {
+        font-size: 0.875rem; /* Tamaño de letra más pequeño para input */
+    }
 
-  #evolutionMessage, #healMessage {
-    font-size: 18px; /* Tamaño de letra más pequeño para mensajes */
-    padding: 10px; /* Menos padding para mensajes */
-  }
+    #evolutionMessage, #healMessage {
+        font-size: 1.125rem; /* Tamaño de letra más pequeño para mensajes */
+        padding: 0.625rem; /* Menos padding para mensajes */
+    }
+}
+
+/* Estilo responsivo para modo alto contraste */
+@media (max-width: 768px) {
+    body.high-contrast .nav-links {
+        background-color: #ffcc00; /* Fondo amarillo para mayor legibilidad */
+    }
+
+    body.high-contrast .nav-links a {
+        color: #000; /* Texto negro para alto contraste */
+    }
+
+    body.high-contrast .character-item {
+        background-color: #ffcc00; /* Fondo amarillo para mayor legibilidad */
+        color: #000; /* Texto negro para alto contraste */
+    }
+
+    body.high-contrast header h1,
+    body.high-contrast header p {
+        color: #000; /* Texto negro en alto contraste */
+    }
+
+    body.high-contrast footer {
+        background-color: #000; /* Fondo negro en alto contraste */
+    }
 }

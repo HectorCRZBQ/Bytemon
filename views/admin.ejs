@@ -27,10 +27,10 @@
                     <input type="password" name="password" value="<%= user.username %>" placeholder="Nueva Contraseña">
                 </td>
                 <td>
-                    <button type="submit">Actualizar</button>
+                    <button aria-label="Actualizar" type="submit">Actualizar</button>
                 </form>
                 <form action="/admin/<%= user.uuid %>/delete" method="POST" style="display: inline;">
-                    <button type="submit">Eliminar</button>
+                    <button aria-label="Eliminar" type="submit">Eliminar</button>
                 </form>
             </td>
         </tr>
@@ -38,4 +38,4 @@
     </tbody>
 </table>
 
-<a href="/characters" class="return-button button">Volver a la gestión de personajes</a>
+<a href="/characters" aria-label="Volver a la gestión de personajes" class="return-button button">Volver a la gestión de personajes</a>

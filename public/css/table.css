@@ -1,13 +1,19 @@
 /* Estilos generales para la tabla */
 table {
     width: 80%; /* Ancho de la tabla */
-    max-width: 800px; /* Máximo ancho de la tabla para pantallas grandes */
-    margin: 30px auto; /* Centrar la tabla verticalmente con margen automático */
+    max-width: 50rem; /* Máximo ancho de la tabla para pantallas grandes */
+    margin: 1.875rem auto; /* Centrar la tabla verticalmente con margen automático */
     border-collapse: collapse; /* Elimina los espacios entre celdas */
     font-family: 'Press Start 2P', cursive; /* Fuente retro */
     background-color: #222; /* Fondo oscuro para la tabla */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra alrededor de la tabla */
-    border: 3px solid #ff6f00; /* Borde vibrante alrededor de la tabla */
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.5); /* Sombra alrededor de la tabla */
+    border: 0.1875rem solid #ff6f00; /* Borde vibrante alrededor de la tabla */
+}
+
+/* Modo alto contraste para la tabla */
+body.high-contrast table {
+    background-color: #000; /* Fondo negro para mayor contraste */
+    border: 0.1875rem solid #ffcc00; /* Borde amarillo vibrante */
 }
 
 /* Encabezado de la tabla */
@@ -18,12 +24,17 @@ table thead {
 }
 
 table thead th {
-    padding: 15px 20px;
-    font-size: 14px; /* Tamaño de fuente más pequeño */
-    border-bottom: 3px solid #770505; /* Borde inferior vibrante */
+    padding: 0.9375rem 1.25rem;
+    font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+    border-bottom: 0.1875rem solid #770505; /* Borde inferior vibrante */
 }
 
-/* Cuerpo de la tabla */
+/* Modo alto contraste para el encabezado */
+body.high-contrast table thead {
+    background-color: #ffcc00; /* Fondo amarillo para mayor visibilidad */
+    color: #000; /* Texto negro para alto contraste */
+}
+
 table tbody tr {
     transition: background-color 0.3s ease; /* Transición suave al hacer hover */
 }
@@ -37,11 +48,18 @@ table tbody tr:hover {
 }
 
 table tbody td {
-    padding: 15px 20px;
-    font-size: 14px; /* Tamaño de fuente más pequeño */
+    padding: 0.9375rem 1.25rem;
+    font-size: 0.875rem; /* Tamaño de fuente más pequeño */
     color: #fff; /* Texto en blanco */
     text-align: center; /* Centrar el texto en las celdas */
-    border-bottom: 2px solid #ff6f00; /* Borde inferior vibrante */
+    border-bottom: 0.125rem solid #ff6f00; /* Borde inferior vibrante */
+}
+
+/* Modo alto contraste para las celdas */
+body.high-contrast table tbody td {
+    background-color: #000; /* Fondo negro en las celdas */
+    color: #ffcc00; /* Texto amarillo para alto contraste */
+    border-bottom: 0.125rem solid #ffcc00; /* Borde inferior amarillo */
 }
 
 /* Estilo para los enlaces dentro de la tabla (si los hubiera) */
@@ -54,11 +72,16 @@ table tbody td a:hover {
     text-decoration: underline; /* Subrayado al pasar el mouse */
 }
 
+/* Modo alto contraste para enlaces */
+body.high-contrast table tbody td a {
+    color: #00ccff; /* Color azul para enlaces en alto contraste */
+}
+
 /* Responsive: Pantallas pequeñas (menos de 768px) */
 @media (max-width: 768px) {
     table {
         width: 100%; /* Asegura que la tabla ocupe todo el ancho de la pantalla */
-        font-size: 12px;
+        font-size: 0.75rem; /* Tamaño de letra más pequeño */
     }
 
     table thead {
@@ -67,33 +90,43 @@ table tbody td a:hover {
 
     table tbody tr {
         display: block; /* Cada fila se convierte en un bloque */
-        margin-bottom: 20px; /* Añadir espacio entre las filas */
-        border: 2px solid #ff6f00; /* Añadir borde alrededor de cada bloque */
-        padding: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra para cada fila */
+        margin-bottom: 1.25rem; /* Añadir espacio entre las filas */
+        border: 0.125rem solid #ff6f00; /* Añadir borde alrededor de cada bloque */
+        padding: 0.625rem; /* Espaciado dentro de cada fila */
+        box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.5); /* Sombra para cada fila */
     }
 
     table tbody td {
-        display: block;
+        display: block; /* Cada celda se convierte en bloque */
         text-align: right; /* Alinea el texto a la derecha */
-        padding: 10px;
-        font-size: 12px;
-        position: relative;
-        border: none;
+        padding: 0.625rem; /* Espaciado interno reducido */
+        font-size: 0.75rem; /* Tamaño de letra más pequeño */
+        position: relative; /* Posición relativa para el pseudo-elemento */
+        border: none; /* Sin borde en las celdas */
     }
 
     table tbody td::before {
         content: attr(data-label); /* Usa el atributo data-label para mostrar los encabezados */
-        position: absolute;
-        left: 10px;
-        text-align: left;
-        font-weight: bold;
-        font-size: 12px;
-        text-transform: uppercase;
+        position: absolute; /* Posición absoluta para el pseudo-elemento */
+        left: 0.625rem; /* Espaciado a la izquierda */
+        text-align: left; /* Alinea el texto a la izquierda */
+        font-weight: bold; /* Texto en negrita */
+        font-size: 0.75rem; /* Tamaño de fuente más pequeño */
+        text-transform: uppercase; /* Texto en mayúsculas */
         color: #ff6f00; /* Color vibrante para los encabezados */
     }
 
     table tbody td:last-child {
-        border-bottom: 0;
+        border-bottom: 0; /* Sin borde inferior en la última celda */
+    }
+    
+    /* Modo alto contraste para filas móviles */
+    body.high-contrast table tbody tr {
+        border: 0.125rem solid #ffcc00; /* Borde amarillo alrededor de cada bloque en móvil */
+        background-color: #000; /* Fondo negro para mayor contraste en filas móviles */
+    }
+
+    body.high-contrast table tbody td::before {
+        color: #ffcc00; /* Color amarillo para los encabezados en móvil */
     }
 }

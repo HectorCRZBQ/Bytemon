@@ -12,50 +12,65 @@
 .character-item {
     background-color: #333; /* Fondo oscuro */
     color: #fff; /* Texto blanco */
-    padding: 25px; /* Espaciado interno incrementado */
-    margin: 25px 0; /* Espaciado entre elementos incrementado */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+    padding: 1.5625rem; /* Espaciado interno incrementado (25px a rem) */
+    margin: 1.5625rem 0; /* Espaciado entre elementos incrementado (25px a rem) */
+    border-radius: 0.625rem; /* Bordes redondeados (10px a rem) */
+    box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.6); /* Sombra más pronunciada (20px a rem) */
     display: flex; /* Flexbox para disposición interna */
     justify-content: space-between; /* Espacio entre elementos */
     align-items: center; /* Centrar elementos verticalmente */
     flex-shrink: 0; /* Evitar que se reduzca más allá de su contenido */
     width: 90%; /* Ancho de cada elemento ajustado */
-    max-width: 800px; /* Ancho máximo para pantallas grandes */
+    max-width: 50rem; /* Ancho máximo para pantallas grandes (800px a rem) */
+}
+
+/* Modo de alto contraste para los elementos de la lista */
+body.high-contrast .character-item {
+    background-color: black; /* Fondo negro para alto contraste */
+    color: yellow; /* Texto amarillo para alto contraste */
+    border: 2px solid yellow; /* Bordes amarillos para destacar */
 }
 
 /* Estilo del nombre del personaje */
 .character-name {
-    padding-bottom: 10px; /* Espaciado inferior para el nombre */
+    padding-bottom: 0.625rem; /* Espaciado inferior para el nombre (10px a rem) */
 }
 
 /* Agrupar los botones */
 .button-group {
     display: flex; /* Flexbox para disposición de botones */
-    gap: 20px; /* Espaciado entre botones incrementado */
+    gap: 1.25rem; /* Espaciado entre botones incrementado (20px a rem) */
 }
 
 /* Estilo de los botones */
 .create-button, .edit-button, .delete-button, .select-button {
     background-color: #ff6f00; /* Color de fondo del botón */
     color: #fff; /* Texto blanco */
-    padding: 15px 20px; /* Espaciado del botón incrementado */
+    padding: 0.9375rem 1.25rem; /* Espaciado del botón incrementado (15px 20px a rem) */
     border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
+    border-radius: 0.3125rem; /* Bordes redondeados (5px a rem) */
     text-decoration: none; /* Sin subrayado */
-    transition: background-color 0.3s; /* Transición al cambiar el color */
     flex: 1; /* Hacer que todos los botones ocupen el mismo espacio */
-    font-size: 18px; /* Tamaño de fuente incrementado */
+    font-size: 1.125rem; /* Tamaño de fuente incrementado (18px a rem) */
+}
+
+/* Estilo de los botones en modo alto contraste */
+body.high-contrast .create-button,
+body.high-contrast .edit-button,
+body.high-contrast .delete-button,
+body.high-contrast .select-button {
+    border: 2px solid yellow; /* Bordes amarillos para destacar en alto contraste */
 }
 
 /* Estilo del botón de crear */
 .create-button {
     background-color: #ff9900; /* Color de fondo del botón de crear */
-    margin-bottom: 50px;
+    margin-bottom: 3.125rem; /* Margen inferior (50px a rem) */
 }
 
-.create-button:hover {
-    background-color: #ffc773; /* Color más oscuro al pasar el mouse */
+body.high-contrast .create-button {
+    background-color: yellow; /* Fondo amarillo en alto contraste */
+    color: black; /* Texto negro en alto contraste */
 }
 
 /* Estilo del botón de editar */
@@ -64,8 +79,9 @@
     background-color: #ff9900; /* Color de fondo del botón de editar */
 }
 
-.edit-button:hover {
-    background-color: #ffc773; /* Color más oscuro al pasar el mouse */
+body.high-contrast .edit-button {
+    background-color: yellow; /* Fondo amarillo en alto contraste */
+    color: black; /* Texto negro en alto contraste */
 }
 
 /* Estilo del botón de eliminar */
@@ -74,8 +90,9 @@
     background-color: #83020f; /* Color de fondo del botón de eliminar */
 }
 
-.delete-button:hover {
-    background-color: #be1627; /* Color más oscuro al pasar el mouse */
+body.high-contrast .delete-button {
+    background-color: yellow; /* Fondo rojo en alto contraste */
+    color: black; /* Texto blanco en alto contraste */
 }
 
 /* Estilo del botón de seleccionar */
@@ -83,9 +100,9 @@
     background-color: #586602; /* Color de fondo del botón de seleccionar */
 }
 
-/* Hover para el botón de seleccionar */
-.select-button:hover {
-    background-color: #8d9a03; /* Color más oscuro al pasar el mouse */
+body.high-contrast .select-button {
+    background-color: yellow; /* Fondo amarillo en alto contraste */
+    color: black; /* Texto negro en alto contraste */
 }
 
 /* Media queries para pantallas pequeñas */
@@ -94,16 +111,16 @@
         flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
         align-items: stretch; /* Alinear a estirar el elemento */
         width: 60%; /* Hacer que ocupe casi todo el ancho */
-        padding: 15px; /* Mantener padding cómodo para móviles */
+        padding: 0.9375rem; /* Mantener padding cómodo para móviles (15px a rem) */
     }
 
     .button-group {
         flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
-        gap: 10px; /* Espaciado entre botones incrementado */
+        gap: 0.625rem; /* Espaciado entre botones incrementado (10px a rem) */
     }
     
     /* Aumentar el tamaño de fuente en móviles */
     .create-button, .edit-button, .delete-button, .select-button {
-        font-size: 16px; /* Tamaño de fuente más accesible para móviles */
+        font-size: 1rem; /* Tamaño de fuente más accesible para móviles (16px a rem) */
     }
 }

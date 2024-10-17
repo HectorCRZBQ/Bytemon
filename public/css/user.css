@@ -1,116 +1,176 @@
 /* Estilo general del formulario con un toque retro */
 form {
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 30px;
-    border: 3px solid #ff6f00;
-    border-radius: 8px;
-    background-color: #222;
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    font-family: 'Press Start 2P', cursive;
-    text-align: center;
+    max-width: 25rem; /* Máximo ancho del formulario */
+    margin: 2.5rem auto; /* Centrar el formulario */
+    padding: 1.875rem; /* Espaciado interno */
+    border: 0.1875rem solid #ff6f00; /* Borde vibrante */
+    border-radius: 0.5rem; /* Bordes redondeados */
+    background-color: #222; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.5); /* Sombra alrededor */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+    text-align: center; /* Alinear texto al centro */
+}
+
+/* Modo alto contraste para el formulario */
+body.high-contrast form {
+    background-color: #000; /* Fondo negro para mayor contraste */
+    border: 0.1875rem solid #ffcc00; /* Borde amarillo vibrante */
+    color: #ffcc00; /* Texto amarillo para alto contraste */
 }
 
 /* Estilo de las etiquetas */
 label {
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #ff6f00;
+    display: block; /* Hacer etiquetas en bloque */
+    margin-bottom: 0.625rem; /* Espacio inferior */
+    margin-top: 1.25rem; /* Espacio superior */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 1rem; /* Tamaño de fuente */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    color: #ff6f00; /* Color vibrante */
+}
+
+/* Modo alto contraste para las etiquetas */
+body.high-contrast label {
+    color: #ffcc00; /* Color amarillo para etiquetas en alto contraste */
 }
 
 /* Estilo para los inputs */
 input[type="email"],
 input[type="password"] {
-    width: 45%;
-    padding: 10px; 
-    margin-bottom: 20px; /* Menos margen inferior para ahorrar espacio */
-    border: 2px solid #ff6f00;
-    border-radius: 4px;
-    background-color: #333;
-    color: #fff;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
+    width: 100%; /* Ajustar al 100% del contenedor */
+    max-width: 20rem; /* Máximo ancho para inputs */
+    padding: 0.625rem; /* Espaciado interno */
+    margin-bottom: 1.25rem; /* Espacio inferior */
+    border: 0.125rem solid #ff6f00; /* Borde vibrante */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    background-color: #333; /* Fondo oscuro para inputs */
+    color: #fff; /* Texto blanco */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+    font-size: 1rem; /* Tamaño de fuente */
+}
+
+/* Modo alto contraste para los inputs */
+body.high-contrast input[type="email"],
+body.high-contrast input[type="password"] {
+    background-color: #000; /* Fondo negro para inputs */
+    color: #ffcc00; /* Texto amarillo para alto contraste */
+    border: 0.125rem solid #ffcc00; /* Borde amarillo */
 }
 
 /* Efecto focus en inputs */
 input[type="email"]:focus,
 input[type="password"]:focus {
-    border-color: #00ffcc;
-    outline: none;
+    border-color: #00ffcc; /* Borde vibrante en foco */
+    outline: none; /* Sin contorno */
+}
+
+/* Modo alto contraste para inputs en foco */
+body.high-contrast input[type="email"]:focus,
+body.high-contrast input[type="password"]:focus {
+    border-color: #00ccff; /* Borde azul en foco */
 }
 
 /* Estilo del botón */
 button {
-    background-color: #ff6f00;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
+    background-color: #ff6f00; /* Fondo vibrante */
+    color: #fff; /* Texto blanco */
+    padding: 0.75rem 1.25rem; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+    font-size: 1rem; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia cursor a mano */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Modo alto contraste para el botón */
+body.high-contrast button {
+    background-color: #ffcc00; /* Fondo amarillo en alto contraste */
+    color: #000; /* Texto negro para alto contraste */
 }
 
 /* Hover en botón */
 button:hover {
-    background-color: #ffa952;
+    background-color: #ffa952; /* Color en hover */
+}
+
+/* Modo alto contraste para hover en botón */
+body.high-contrast button:hover {
+    background-color: #ffe77a; /* Color más claro en hover */
 }
 
 /* Sombra y borde estilo retro en todos los elementos interactivos */
 input[type="email"],
 input[type="password"],
 button {
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), 0 0 10px #ff6f00;
+    box-shadow: inset 0 0 0.625rem rgba(0, 0, 0, 0.5), 0 0 0.625rem #ff6f00; /* Sombra */
 }
 
 /* Estilo del checkbox */
 .form-check-input {
-    background-color: #222;
-    border: 2px solid #ff6f00;
-    box-shadow: 0 0 10px #ff6f00;
+    background-color: #222; /* Fondo oscuro */
+    border: 0.125rem solid #ff6f00; /* Borde vibrante */
+    box-shadow: 0 0 0.625rem #ff6f00; /* Sombra */
 }
 
 .form-check-input:checked {
-    background-color: #00ffcc;
-    border-color: #00ffcc;
+    background-color: #00ffcc; /* Fondo vibrante cuando está marcado */
+    border-color: #00ffcc; /* Borde vibrante cuando está marcado */
+}
+
+/* Modo alto contraste para el checkbox */
+body.high-contrast .form-check-input {
+    background-color: #000; /* Fondo negro */
+    border-color: #ffcc00; /* Borde amarillo */
+}
+
+body.high-contrast .form-check-input:checked {
+    background-color: #00ccff; /* Fondo azul cuando está marcado */
+    border-color: #00ccff; /* Borde azul cuando está marcado */
 }
 
 /* Estilo para los enlaces */
 a {
-    color: #ff6f00;
-    font-family: 'Press Start 2P', cursive;
-    text-decoration: none;
-    font-size: 14px;
+    color: #ff6f00; /* Color vibrante */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 0.875rem; /* Tamaño de fuente */
 }
 
+/* Modo alto contraste para los enlaces */
+body.high-contrast a {
+    color: #ffcc00; /* Color amarillo para enlaces en alto contraste */
+}
+
+/* Hover en enlaces */
 a:hover {
-    color: #ffa952;
-    text-decoration: underline;
+    color: #ffa952; /* Color en hover */
+    text-decoration: underline; /* Subrayado en hover */
+}
+
+/* Modo alto contraste para hover en enlaces */
+body.high-contrast a:hover {
+    color: #ffffff; /* Color blanco en hover */
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 37.5rem) {
     form {
-        padding: 20px;
-        margin: 20px;
+        padding: 1.25rem; /* Espaciado interno reducido */
+        margin: 1.25rem; /* Espaciado exterior reducido */
     }
 
     input[type="email"],
     input[type="password"] {
-        width: 45%;
-        font-size: 14px; 
-        padding: 10px;
+        width: 100%; /* Asegura que el input ocupe todo el ancho */
+        font-size: 0.875rem; /* Tamaño de letra más pequeño */
+        padding: 0.625rem; /* Espaciado interno reducido */
     }
 
     button {
-        font-size: 14px;
-        padding: 10px;
+        font-size: 0.875rem; /* Tamaño de letra más pequeño */
+        padding: 0.625rem; /* Espaciado interno reducido */
     }
 }
