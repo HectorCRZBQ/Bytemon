@@ -89,3 +89,25 @@ Pasos de instalación:
 ![image](https://github.com/user-attachments/assets/6d9de33b-86ab-4c2e-8e50-6d78e313994b)
 
 ![image](https://github.com/user-attachments/assets/f1458fc8-1e9b-40e5-a47b-3b361ddbba23)
+
+
+# **V-1.7.0** --- *17/10/2024*
+
+### Modo normal
+![image](https://github.com/user-attachments/assets/dc0e268c-ff04-4e98-b6ea-7efbbfa6c94b)
+
+### Modo alto contraste
+![image](https://github.com/user-attachments/assets/236c8316-1a7a-408c-85bd-5d7125c55369)
+
+### Modo normal
+![image](https://github.com/user-attachments/assets/b8d5c079-e593-4438-8358-f3753c48ce0f)
+
+### Modo alto contraste
+![image](https://github.com/user-attachments/assets/f209ac45-a640-4bd0-b095-91bf23a1f0f2)
+
+### Modo normal
+![image](https://github.com/user-attachments/assets/575194af-46b7-492e-ade6-80b12e6be45c)
+
+### Modo alto contraste
+![image](https://github.com/user-attachments/assets/a7b37711-30e8-44c7-a3aa-971a3328aba4)
+

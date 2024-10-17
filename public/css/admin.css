@@ -1,13 +1,20 @@
 /* Estilos generales para la tabla */
 table {
     width: 80%;
-    max-width: 800px;
-    margin: 30px auto;
+    max-width: 50rem;
+    margin: 1.875rem auto;
     border-collapse: collapse;
     font-family: 'Press Start 2P', cursive;
     background-color: #222;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    border: 3px solid #ff6f00;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.5);
+    border: 0.1875rem solid #ff6f00;
+}
+
+/* Estilos para modo alto contraste */
+body.high-contrast table {
+    background-color: black;
+    border: 0.1875rem solid yellow;
+    color: yellow;
 }
 
 /* Encabezado de la tabla */
@@ -17,10 +24,19 @@ table thead {
     text-transform: uppercase;
 }
 
+body.high-contrast table thead {
+    background-color: yellow;
+    color: black;
+}
+
 table thead th {
-    padding: 15px 20px;
-    font-size: 14px;
-    border-bottom: 3px solid #770505;
+    padding: 0.9375rem 1.25rem;
+    font-size: 0.875rem;
+    border-bottom: 0.1875rem solid #770505;
+}
+
+body.high-contrast table thead th {
+    border-bottom: 0.1875rem solid yellow;
 }
 
 /* Cuerpo de la tabla */
@@ -32,147 +48,212 @@ table tbody tr:nth-child(even) {
     background-color: #333;
 }
 
+body.high-contrast table tbody tr:nth-child(even) {
+    background-color: black;
+}
+
 table tbody tr:hover {
     background-color: #444;
 }
 
+body.high-contrast table tbody tr:hover {
+    background-color: black; /* Sin efecto hover en high contrast */
+}
+
 table tbody td {
-    padding: 15px 20px;
-    font-size: 14px;
+    padding: 0.9375rem 1.25rem;
+    font-size: 0.875rem;
     color: #fff;
     text-align: center;
-    border-bottom: 2px solid #ff6f00;
+    border-bottom: 0.125rem solid #ff6f00;
+}
+
+body.high-contrast table tbody td {
+    color: yellow;
+    border-bottom: 0.125rem solid yellow;
 }
 
 /* Contenedor para las acciones */
 td form {
-    display: flex; /* Flexbox para alinear en fila */
-    align-items: center; /* Alinea verticalmente los elementos */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    gap: 5px; /* Espacio entre botones */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3125rem;
 }
 
-/* Estilo para el campo de contraseña */
+/* Estilo para los campos de texto y contraseña */
 input[type="text"],
 input[type="password"] {
-    padding: 10px; /* Añade espacio interno */
-    border: 2px solid #ff6f00; /* Borde vibrante */
-    border-radius: 5px; /* Bordes ligeramente redondeados */
-    margin-right: 10px; /* Espacio entre el campo y el botón */
-    font-family: 'Press Start 2P', cursive; /* Fuente retro */
-    color: #fff; /* Texto blanco */
-    background-color: #333; /* Fondo oscuro */
+    padding: 0.625rem;
+    border: 0.125rem solid #ff6f00;
+    border-radius: 0.3125rem;
+    margin-right: 0.625rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    background-color: #333;
     transition: border-color 0.3s ease;
-    max-width: 220px; /* Ancho máximo para mantener el tamaño */
+    max-width: 13.75rem;
 }
 
-/* Estilo para el enfoque en los campos de texto */
+body.high-contrast input[type="text"],
+body.high-contrast input[type="password"] {
+    background-color: black;
+    color: yellow;
+    border-color: yellow;
+}
+
 input[type="text"]:focus,
 input[type="password"]:focus {
-    border-color: #ffa952; /* Color del borde al enfocar */
-    outline: none; /* Sin borde de enfoque predeterminado */
+    border-color: #ffa952;
+    outline: none;
+}
+
+body.high-contrast input[type="text"]:focus,
+body.high-contrast input[type="password"]:focus {
+    border-color: yellow;
 }
 
 /* Estilo para los botones de acción */
 button {
-    background-color: #ff6f00; /* Color de fondo */
+    background-color: #ff6f00;
     color: #fff;
-    padding: 10px 15px;
+    padding: 0.625rem 0.9375rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
+    font-size: 0.875rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.return-button {
-    background-color: #ff6f00; /* Color de fondo del botón */
-    color: #fff; /* Texto blanco */
-    padding: 15px 20px; /* Espaciado del botón incrementado */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    text-decoration: none; /* Sin subrayado */
-    transition: background-color 0.3s; /* Transición al cambiar el color */
-    flex: 1; /* Hacer que todos los botones ocupen el mismo espacio */
-    font-size: 18px; /* Tamaño de fuente incrementado */
-}
-
-/* Estilo del botón de crear */
-.return-button {
-    background-color: #ff9900; /* Color de fondo del botón de crear */
-    margin-bottom: 50px;
-}
-
-.return-button:hover {
-    background-color: #ffc773; /* Color más oscuro al pasar el mouse */
+body.high-contrast button {
+    background-color: yellow;
+    color: black;
+    transition: none; /* Sin transiciones en modo alto contraste */
 }
 
 button:hover {
-    background-color: #ffa952; /* Color más claro al pasar el mouse */
-    transform: translateY(-2px); /* Efecto de elevación */
+    background-color: #ffa952;
+    transform: translateY(-0.125rem);
 }
 
+body.high-contrast button:hover {
+    background-color: yellow; /* Sin efecto hover en high contrast */
+    transform: none;
+}
+
+/* Estilo para el botón de retorno */
+.return-button {
+    background-color: #ff6f00;
+    color: #fff;
+    padding: 0.9375rem 1.25rem;
+    border: none;
+    border-radius: 0.3125rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    flex: 1;
+    font-size: 1.125rem;
+}
+
+body.high-contrast .return-button {
+    background-color: yellow;
+    color: black;
+    transition: none;
+}
+
+.return-button:hover {
+    background-color: #ffc773;
+}
+
+body.high-contrast .return-button:hover {
+    background-color: yellow; /* Sin efecto hover en high contrast */
+}
+
+/* Estilo para el botón de mostrar contraseña */
 .toggle-password {
     background: none;
     border: none;
-    color: #ff6f00; /* Color del ojo */
-    font-size: 18px; /* Tamaño del ícono */
+    color: #ff6f00;
+    font-size: 1.125rem;
     cursor: pointer;
-    margin-left: 5px; /* Espacio entre el campo de contraseña y el ícono */
+    margin-left: 0.3125rem;
+}
+
+body.high-contrast .toggle-password {
+    color: yellow;
 }
 
 /* Estilo específico para botones de actualizar y eliminar */
 .form-action {
     display: inline-block;
-    margin-right: 5px; /* Espacio entre botones */
+    margin-right: 0.3125rem;
 }
 
 /* Responsive: Pantallas pequeñas (menos de 768px) */
 @media (max-width: 768px) {
     table {
         width: 100%;
-        font-size: 12px;
-        border: none; /* Quitar borde para el diseño móvil */
+        font-size: 0.75rem;
+        border: none;
+    }
+
+    body.high-contrast table {
+        border: none;
     }
 
     table thead {
-        display: none; /* Ocultar encabezados en dispositivos pequeños */
+        display: none;
     }
 
     table tbody tr {
-        display: block; /* Cambia cada fila a un bloque */
-        margin-bottom: 20px;
-        border: 2px solid #ff6f00; /* Borde para filas en móvil */
-        padding: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        display: block;
+        margin-bottom: 1.25rem;
+        border: 0.125rem solid #ff6f00;
+        padding: 0.625rem;
+        box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.5);
+    }
+
+    body.high-contrast table tbody tr {
+        border-color: yellow;
     }
 
     table tbody td {
-        display: block; /* Cada celda se comporta como un bloque */
-        text-align: right; /* Alinear texto a la derecha */
-        padding: 10px;
-        font-size: 12px;
+        display: block;
+        text-align: right;
+        padding: 0.625rem;
+        font-size: 0.75rem;
         position: relative;
-        border: none; /* Sin borde en vista móvil */
+        border: none;
+    }
+
+    body.high-contrast table tbody td {
+        color: yellow;
     }
 
     table tbody td::before {
-        content: attr(data-label); /* Usar data-label para etiquetas */
+        content: attr(data-label);
         position: absolute;
-        left: 10px;
+        left: 0.625rem;
         text-align: left;
         font-weight: bold;
-        font-size: 12px;
+        font-size: 0.75rem;
         text-transform: uppercase;
-        color: #ff6f00; /* Color para etiquetas */
+        color: #ff6f00;
+    }
+
+    body.high-contrast table tbody td::before {
+        color: yellow;
     }
 
     table tbody td:last-child {
-        border-bottom: 0; /* Sin borde en la última celda */
+        border-bottom: 0;
     }
 
     .return-button {
-        font-size: 16px; /* Tamaño de fuente más accesible para móviles */
+        font-size: 1rem;
+    }
+
+    body.high-contrast .return-button {
+        font-size: 1rem;
     }
 }

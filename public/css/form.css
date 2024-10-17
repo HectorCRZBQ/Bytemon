@@ -1,84 +1,128 @@
 /* Estilo general del formulario con un toque retro */
 form {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 30px;
-    border: 3px solid #ff6f00; /* Borde grueso de color vibrante */
-    border-radius: 0; /* Bordes rectos, estilo retro */
+    max-width: 25rem;
+    margin: 1.25rem auto;
+    padding: 1.875rem;
+    border: 0.1875rem solid #ff6f00;
+    border-radius: 0;
     background-color: #222; /* Fondo oscuro */
     color: #fff; /* Texto en blanco */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
-    font-family: 'Press Start 2P', cursive; /* Fuente retro estilo pixel */
-    text-align: center; /* Centrar el contenido del formulario */
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.5);
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
 }
+
+/* Modo de alto contraste */
+body.high-contrast form {
+    background-color: #000; /* Fondo negro */
+    border: 0.1875rem solid yellow; /* Bordes amarillos para destacar */
+    color: yellow; /* Texto amarillo */
+}
+
 /* Estilo de las etiquetas */
 label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     font-weight: bold;
-    font-size: 14px; /* Tamaño de fuente pequeño */
-    text-transform: uppercase; /* Texto en mayúsculas */
-    color: #ffffff; /* Color vibrante para las etiquetas */
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: #ffffff;
 }
+
+body.high-contrast label {
+    color: yellow; /* Texto amarillo en alto contraste */
+}
+
 /* Estilo para los inputs y select */
 input[type="text"],
 input[type="number"],
 select {
-    width: 75%; /* Ocupa todo el ancho */
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 2px solid #ff6f00; /* Borde grueso */
-    border-radius: 0; /* Bordes rectos */
+    width: 75%;
+    padding: 0.75rem;
+    margin-bottom: 1.25rem;
+    border: 0.125rem solid #ff6f00;
+    border-radius: 0;
     background-color: #333; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-    font-family: 'Press Start 2P', cursive; /* Fuente retro */
-    font-size: 14px;
+    color: #fff; /* Texto en blanco */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.875rem;
 }
+
+/* Enfoque en los inputs y select */
 input[type="text"]:focus,
 input[type="number"]:focus,
 select:focus {
-    border-color: #00ffcc; /* Cambia el color del borde al enfocar */
+    border-color: #00ffcc; /* Bordes cian al enfocar */
     outline: none;
 }
+
+/* Modo de alto contraste para inputs y select */
+body.high-contrast input[type="text"],
+body.high-contrast input[type="number"],
+body.high-contrast select {
+    background-color: black; /* Fondo negro */
+    border: 0.125rem solid yellow; /* Bordes amarillos */
+    color: yellow; /* Texto amarillo */
+}
+
+body.high-contrast input[type="text"]:focus,
+body.high-contrast input[type="number"]:focus,
+body.high-contrast select:focus {
+    border-color: yellow; /* Mantiene el amarillo al enfocar */
+}
+
 /* Estilo del botón */
 button {
-    background-color: #ff6f00; /* Color de fondo retro */
-    color: #fff;
-    padding: 12px 20px;
+    background-color: #ff6f00; /* Fondo naranja */
+    color: #fff; /* Texto en blanco */
+    padding: 0.75rem 1.25rem;
     border: none;
     border-radius: 0;
-    font-family: 'Press Start 2P', cursive; /* Fuente retro */
-    font-size: 14px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.875rem;
     cursor: pointer;
-    text-transform: uppercase; /* Texto en mayúsculas */
+    text-transform: uppercase;
+    box-shadow: inset 0 0 0.625rem #000, 0 0 0.625rem #ff6f00; /* Sombra retro */
 }
-button:hover {
-    background-color: #ffa952; /* Color más claro al pasar el mouse */
+
+/* Estilo del botón en modo de alto contraste */
+body.high-contrast button {
+    background-color: yellow; /* Fondo amarillo */
+    color: black; /* Texto negro */
+    box-shadow: inset 0 0 0.625rem #000, 0 0 0.625rem yellow; /* Sombra retro amarilla */
 }
+
 /* Agregar un estilo retro al contorno de los elementos del formulario */
 input[type="text"],
 input[type="number"],
 select,
 button {
-    box-shadow: inset 0 0 10px #000, 0 0 10px #ff6f00; /* Brillo retro con sombra interna y externa */
+    box-shadow: inset 0 0 0.625rem #000, 0 0 0.625rem #ff6f00; /* Sombra retro en todos los inputs y botón */
 }
 
-/*Responsive*/
+/* Modo de alto contraste para la sombra */
+body.high-contrast input[type="text"],
+body.high-contrast input[type="number"],
+body.high-contrast select,
+body.high-contrast button {
+    box-shadow: inset 0 0 0.625rem #000, 0 0 0.625rem yellow; /* Sombra retro amarilla en alto contraste */
+}
 
+/* Responsive */
 @media (max-width: 600px) {
     form {
-        padding: 20px;
+        padding: 1.25rem;
     }
 
     input[type="text"],
     input[type="number"],
     select {
-        font-size: 12px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
-        padding: 10px;
+        font-size: 0.75rem;
+        padding: 0.625rem;
     }
 
     button {
-        font-size: 12px; /* Tamaño de fuente más pequeño para el botón */
-        padding: 8px; /* Ajustado para mayor compacidad */
+        font-size: 0.75rem;
+        padding: 0.5rem;
     }
 }
