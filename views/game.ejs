@@ -22,13 +22,13 @@
     </div>
 
     <h2>Acciones</h2>
-    <button id="soundButton" onclick="updateEnergy('sound')">Sonido 🔊</button>
-    <button id="attackButton" onclick="updateEnergy('attack')">Ataque 👊</button>
-    <button id="chargedAttackButton" onclick="updateEnergy('attackCharged')">Ataque Cargado 👊👊</button>
+    <button aria-label="Sonido" id="soundButton" onclick="updateEnergy('sound')">Sonido 🔊</button>
+    <button aria-label="Ataque" id="attackButton" onclick="updateEnergy('attack')">Ataque 👊</button>
+    <button aria-label="Ataque Cargado" id="chargedAttackButton" onclick="updateEnergy('attackCharged')">Ataque Cargado 👊👊</button>
 
     <h2>Curación</h2>
-    <button onclick="updateEnergy('feedBerry')">Baya 🫐</button>
-    <button onclick="updateEnergy('feedPotion')">Poción 🍼</button>
+    <button aria-label="Baya" onclick="updateEnergy('feedBerry')">Baya 🫐</button>
+    <button aria-label="Poción" onclick="updateEnergy('feedPotion')">Poción 🍼</button>
 
     <script>
         let attackCounter = 0; // Contador para los ataques

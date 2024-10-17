@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +37,7 @@
                 <li><a href="/players">Lista de jugadores</a></li>
                 <li><a href="/about">Cómo funciona</a></li>
                 <li><a href="/game">Jugar</a></li>
+                <li><a id="contrast-toggle">Contraste</a></li>
 
                 <% if (session && session.isAdmin) { %>
                     <li><a href="/admin">Admininstación</a></li>
@@ -57,6 +58,24 @@
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
+
+          // Verificar si el modo de alto contraste ya estaba activado
+    if (localStorage.getItem('highContrast') === 'enabled') {
+        document.body.classList.add('high-contrast');
+    }
+
+    // Agregar evento al botón para activar/desactivar
+    document.getElementById('contrast-toggle').addEventListener('click', function () {
+        document.body.classList.toggle('high-contrast');
+        
+        // Guardar la preferencia en localStorage
+        if (document.body.classList.contains('high-contrast')) {
+        localStorage.setItem('highContrast', 'enabled');
+        } else {
+        localStorage.setItem('highContrast', 'disabled');
+        }
+    });
+
     </script>
     
     <%- body %>
