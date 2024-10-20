@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const userModel = require('../models/userModel');
 const { v4: uuidv4 } = require('uuid');
+const bcrypt = require('bcrypt'); // añado la libreria bcypt para hashear la contraseña
 
 // Mostrar el formulario de inicio de sesión
 exports.showLoginForm = (req, res) => {
@@ -35,21 +36,35 @@ exports.showRegisterForm = (req, res) => {
     res.render('register', { loadUserCss: true, error: null, page: 'register' });
 };
 
-// Manejar la creación de cuentas
-exports.register = (req, res) => {
+exports.register = async (req, res) => {
     const { newUsername, newPassword } = req.body;
 
+    // Comprobar si el usuario ya existe
     if (!userModel.findUserByUsername(newUsername)) {
-        const newUser = {
-            username: newUsername,
-            password: newPassword,
-            uuid: uuidv4(), // Generar un UUID para el nuevo usuario
-            lastLogin: null, // Inicialmente, no hay fecha de último inicio de sesión
-            isConnected: false // Inicialmente no está conectado
-        };
-        userModel.addUser(newUser);
-        res.redirect('/login'); // Redirigir al formulario de inicio de sesión
+        try {
+            // Generar el hash de la contraseña
+            const saltRounds = 10; // El número de salt rounds (incrementa la seguridad de la contraseña)
+            const hashedPassword = await bcrypt.hash(newPassword, saltRounds); // Hashear la contraseña de forma asíncrona
+
+            const newUser = {
+                username: newUsername,
+                password: hashedPassword, // Guardar la contraseña hasheada
+                uuid: uuidv4(), // Generar un UUID para el nuevo usuario
+                lastLogin: null, // Inicialmente, no hay fecha de último inicio de sesión
+                isConnected: false // Inicialmente no está conectado
+            };
+
+            // Agregar el usuario al modelo
+            userModel.addUser(newUser);
+
+            // Redirigir al formulario de inicio de sesión
+            res.redirect('/login');
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Error al registrar el usuario');
+        }
     } else {
+        // Si el usuario ya existe, renderizar el formulario con un error
         res.render('register', { loadUserCss: true, error: 'El nombre de usuario ya existe.', page: 'register' });
     }
 };
