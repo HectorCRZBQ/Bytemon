@@ -213,9 +213,11 @@ button {
 }
 
 /* Estilo del botón en modo alto contraste */
-body.high-contrast button {
+body.high-contrast button,
+body.high-contrast .select-button {
     background-color: #ffcc00; /* Fondo amarillo para mayor visibilidad */
     color: #000; /* Texto negro para alto contraste */
+    border: 0.125rem solid #000; /* Borde negro para más definición */
 }
 
 /* Efecto hover en botones */
@@ -223,9 +225,11 @@ button:hover {
     background-color: #ff8c1a; /* Color más claro al pasar el mouse */
 }
 
+
 /* Efecto hover en botones en alto contraste */
-body.high-contrast button:hover {
-    background-color: #ffc107; /* Color más claro para alto contraste */
+body.high-contrast button:hover,
+body.high-contrast .select-button:hover {
+    background-color: #ffd54f; /* Un amarillo más claro al pasar el mouse */
 }
 
 /* Estilos generales para la lista de personajes */

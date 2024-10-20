@@ -86,6 +86,11 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
+// Ruta para la pagina de configuracion
+app.get('/configuration', (req, res) => {
+    res.render('configuration')
+});
+
 // Rutas para el administrador
 app.get('/admin', (req, res) => {
     if (req.session.isAdmin) {
