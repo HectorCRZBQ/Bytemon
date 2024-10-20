@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Configuración</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Asegúrate de que tu CSS esté bien enlazado -->
+</head>
+<body>
+    <h1>Configuración</h1>
+    <button class="sound-button" id="contrast-toggle">Alternar alto contraste</button>
+    <button class="sound-button" id="sound-toggle">Activar sonido</button>
+    
+    <script>
+        // Verificar si el modo de alto contraste ya estaba activado
+        if (localStorage.getItem('highContrast') === 'enabled') {
+            document.body.classList.add('high-contrast');
+        }
+    </script>
+
+    <script src="/js/script.js" defer></script> <!-- Asegúrate de que la ruta del script sea correcta -->
+</body>
+</html>

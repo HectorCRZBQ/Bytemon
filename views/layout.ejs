@@ -32,12 +32,16 @@
             &#9776; <!-- Símbolo del menú hamburguesa -->
         </div>
         <nav>
+            <!--
+             <li><a id="contrast-toggle"> Contraste</a></li>
+            -->
             <ul class="nav-links">
-                <li><a href="/characters">Perfiles</a></li>
-                <li><a href="/players">Lista de jugadores</a></li>
-                <li><a href="/about">Cómo funciona</a></li>
-                <li><a href="/game">Jugar</a></li>
-                <li><a id="contrast-toggle">Contraste</a></li>
+                <li><a class="sound-button" href="/characters">Perfiles</a></li>
+                <li><a class="sound-button" href="/players">Lista de jugadores</a></li>
+                <li><a class="sound-button" href="/about">Cómo funciona</a></li>
+                <li><a class="sound-button" href="/game">Jugar</a></li>
+                <li><a class="sound-button" href="/configuration">configuracion</a></li>
+               
 
                 <% if (session && session.isAdmin) { %>
                     <li><a href="/admin">Admininstación</a></li>
@@ -59,6 +63,7 @@
             navLinks.classList.toggle('active');
         }
 
+   
           // Verificar si el modo de alto contraste ya estaba activado
     if (localStorage.getItem('highContrast') === 'enabled') {
         document.body.classList.add('high-contrast');
@@ -79,5 +84,7 @@
     </script>
     
     <%- body %>
+
+    <script src="/js/script.js" defer></script> 
 </body>
 </html>

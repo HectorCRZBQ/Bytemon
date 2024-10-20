@@ -3,7 +3,7 @@
     "username": "1",
     "password": "1",
     "uuid": "5a2fa55f-50cf-48d3-b9f5-1594f6af892b",
-    "lastLogin": "2024-10-17T10:02:26.936Z",
+    "lastLogin": "2024-10-20T14:28:52.737Z",
     "isConnected": true
   },
   {
@@ -12,5 +12,12 @@
     "uuid": "d20add1e-167e-4bcd-b710-edbf7bb9c5d8",
     "lastLogin": "2024-10-17T19:06:56.014Z",
     "isConnected": true
+  },
+  {
+    "username": "2",
+    "password": "$2b$10$PKEWCXLmup0Nqu83JaLYIeAZYW.OWF9KyidTFk6wuvrH.BVw.NLfi",
+    "uuid": "2df24130-355a-4f2b-8888-35688655767a",
+    "lastLogin": null,
+    "isConnected": false
   }
 ]
