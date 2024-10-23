@@ -305,6 +305,38 @@ body.high-contrast .select-button:hover {
     background-color: #ffc107; /* Color más claro para alto contraste */
 }
 
+/* Estilo general para los botones de contraste y sonido */
+#contrast-toggle,
+#sound-toggle {
+    font-family: 'Press Start 2P', cursive; /* Mantener el estilo retro */
+    background-color: #ff6f00; /* Color de fondo del botón */
+    color: #fff; /* Texto blanco */
+    padding: 0.625rem 0.9375rem; /* Espaciado del botón */
+    border: none; /* Sin borde */
+    border-radius: 0.3125rem; /* Bordes redondeados */
+    cursor: pointer; /* Cursor pointer para el botón */
+    transition: background-color 0.3s; /* Transición al cambiar el color */
+}
+
+/* Estilo en modo alto contraste */
+body.high-contrast #contrast-toggle,
+body.high-contrast #sound-toggle {
+    background-color: #ffcc00; /* Fondo amarillo para mayor visibilidad */
+    color: #000; /* Texto negro para alto contraste */
+}
+
+/* Efecto hover en los botones */
+#contrast-toggle:hover,
+#sound-toggle:hover {
+    background-color: #ffa952; /* Color más claro al pasar el mouse */
+}
+
+/* Efecto hover en alto contraste */
+body.high-contrast #contrast-toggle:hover,
+body.high-contrast #sound-toggle:hover {
+    background-color: #ffc107; /* Un amarillo más claro al pasar el mouse */
+}
+
 /* Estilo de los mensajes */
 #evolutionMessage, #healMessage {
     color: #ff6f00; /* Color vibrante para resaltar el mensaje */
