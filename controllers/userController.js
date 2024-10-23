@@ -10,21 +10,28 @@ exports.showLoginForm = (req, res) => {
 };
 
 // Manejar el inicio de sesión
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
     const { username, password } = req.body;
     const user = userModel.findUserByUsername(username);
 
-    if (user && user.password === password) {
-        req.session.userId = user.uuid;
-        req.session.isAdmin = username === 'admin' && password === 'admin'; // Identificar si es admin
+    if (user) {
+        // Usar bcrypt para comparar la contraseña proporcionada con la hasheada
+        const match = await bcrypt.compare(password, user.password);
 
-        userModel.updateUserConnection(user.uuid, true); // Marcar como conectado
-        user.lastLogin = new Date().toISOString(); // Actualizar lastLogin también
+        if (match) {
+            req.session.userId = user.uuid;
+            req.session.isAdmin = username === 'admin' && password === 'admin'; // Identificar si es admin
 
-        if (req.session.isAdmin) {
-            res.redirect('/admin'); // Si es admin, redirigir a la página de administración
+            userModel.updateUserConnection(user.uuid, true); // Marcar como conectado
+            user.lastLogin = new Date().toISOString(); // Actualizar lastLogin también
+
+            if (req.session.isAdmin) {
+                res.redirect('/admin'); // Si es admin, redirigir a la página de administración
+            } else {
+                res.redirect('/characters'); // Redirigir a la página de personajes
+            }
         } else {
-            res.redirect('/characters'); // Redirigir a la página de personajes
+            res.render('login', { loadUserCss: true, error: 'Usuario o contraseña incorrectos.', page: 'login' });
         }
     } else {
         res.render('login', { loadUserCss: true, error: 'Usuario o contraseña incorrectos.', page: 'login' });

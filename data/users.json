@@ -3,21 +3,21 @@
     "username": "1",
     "password": "1",
     "uuid": "5a2fa55f-50cf-48d3-b9f5-1594f6af892b",
-    "lastLogin": "2024-10-20T14:28:52.737Z",
+    "lastLogin": "2024-10-20T23:14:31.507Z",
     "isConnected": true
   },
   {
     "username": "admin",
     "password": "admin",
     "uuid": "d20add1e-167e-4bcd-b710-edbf7bb9c5d8",
-    "lastLogin": "2024-10-17T19:06:56.014Z",
-    "isConnected": true
+    "lastLogin": "2024-10-20T23:22:52.717Z",
+    "isConnected": false
   },
   {
     "username": "2",
-    "password": "$2b$10$PKEWCXLmup0Nqu83JaLYIeAZYW.OWF9KyidTFk6wuvrH.BVw.NLfi",
-    "uuid": "2df24130-355a-4f2b-8888-35688655767a",
-    "lastLogin": null,
-    "isConnected": false
+    "password": "$2b$10$/ismDWwMF30O/MdMr30sye4AHksB8sYdzZg7BEKH6o7SXPJo0i0zS",
+    "uuid": "50c0b9a4-c1bb-45cd-a54f-2ffff7c1eb6c",
+    "lastLogin": "2024-10-22T08:04:23.866Z",
+    "isConnected": true
   }
 ]

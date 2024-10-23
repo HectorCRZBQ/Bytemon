@@ -111,3 +111,9 @@ Pasos de instalación:
 ### Modo alto contraste
 ![image](https://github.com/user-attachments/assets/a7b37711-30e8-44c7-a3aa-971a3328aba4)
 
+# **V-1.8.0** --- *20/10/2024*
+
+![image](https://github.com/user-attachments/assets/c25be6b8-5c7d-4857-8d5d-a22a09a9b244)
+
+![image](https://github.com/user-attachments/assets/20707074-63c8-4854-8bb7-254f55d31217)
+
