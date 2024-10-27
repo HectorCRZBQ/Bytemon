@@ -86,6 +86,10 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
+app.get('/map', (req, res) => {
+    res.render('map');
+});
+
 // Ruta para la pagina de configuracion
 app.get('/configuration', (req, res) => {
     res.render('configuration')
