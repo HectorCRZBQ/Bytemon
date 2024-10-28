@@ -1,13 +1,37 @@
-<!-- views/map.ejs -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/map.css">
+
     <title>Mapa</title>
+    <!-- Incluir estilos de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- p5.js para animaciones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 </head>
 <body>
     <h1>Mapa del Juego</h1>
     <p>Bienvenido al mapa del juego. Aquí puedes explorar las áreas y encontrar ByteMons.</p>
+
+    <!-- Dropdown para seleccionar la imagen de fondo -->
+    <label for="backgroundSelector">Selecciona un fondo:</label>
+    <select id="backgroundSelector" onchange="changeBackground()">
+        <option value="automatic">Automático</option>
+        <option value="morning">Mañana</option>
+        <option value="daytime">Día</option>
+        <option value="evening">Tarde</option>
+        <option value="night">Noche</option>
+    </select>
+
+    <div id="map"></div> <!-- Contenedor para el mapa -->
+
+    <script src="/js/sketch.js"></script> <!-- Enlace al archivo JS -->
+    
+
 </body>
 </html>
