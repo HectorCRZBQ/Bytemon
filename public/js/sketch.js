@@ -46,11 +46,13 @@ function draw() {
 
 // Función para obtener la posición guardada del servidor
 function fetchCharacterPosition() {
-    fetch(`/characters/${characterId}/getPosition`)
+    fetch(`/characters/${characterId}/getPositions`) // Asegúrate de usar la ruta correcta
         .then(response => response.json())
         .then(data => {
-            posX = data.position.x; // Asigna la posición obtenida
-            posY = data.position.y;
+            if (data.length > 0) {
+                posX = data[0].position.x; // Asigna la posición obtenida
+                posY = data[0].position.y;
+            }
         })
         .catch(error => {
             console.error('Error al obtener la posición:', error);

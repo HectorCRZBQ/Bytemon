@@ -1,21 +1,21 @@
 [
   {
     "id": 1,
-    "name": "sd",
-    "energyLevel": 1,
+    "name": "creado por 2",
+    "energyLevel": "1",
     "lifePoints": 1,
     "team": "Valor",
     "initial": "Charmander",
     "userId": "ef402e65-4d33-4acd-b7e2-60a554728a67",
     "position": {
-      "x": 510,
+      "x": 545,
       "y": 0
     }
   },
   {
     "id": 2,
-    "name": "2",
-    "energyLevel": 2,
+    "name": "creado por 1",
+    "energyLevel": "2",
     "lifePoints": 2,
     "team": "Valor",
     "initial": "Charmander",

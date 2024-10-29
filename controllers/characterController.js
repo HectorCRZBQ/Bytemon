@@ -109,16 +109,15 @@ exports.updatePosition = (req, res) => {
     return res.status(403).json({ success: false, message: 'No tienes permiso para actualizar este personaje.' });
 };
 
-exports.getPositions = (req, res) => {
+exports.getPosition = (req, res) => {
+    const characterId = parseInt(req.params.id);
     const characters = characterModel.getAllCharacters();
-    const userId = req.session.userId;
+    const character = characters.find(c => c.id === characterId);
 
-    // Filtrar personajes por el ID del usuario que los creó
-    const userCharacters = characters.filter(character => character.userId === userId);
-    const positions = userCharacters.map(character => ({
-        id: character.id,
-        position: character.position
-    }));
+    // Verifica si el personaje existe
+    if (!character) {
+        return res.status(404).json({ message: 'Personaje no encontrado.' });
+    }
 
-    res.json(positions);
+    res.json({ position: character.position }); // Retorna la posición del personaje
 };
