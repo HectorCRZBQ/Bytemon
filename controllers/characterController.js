@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const characterModel = require('../models/characterModel');
 
+
 exports.index = (req, res) => {
     const characters = characterModel.getAllCharacters();
     const userId = req.session.userId; // Obtener el ID del usuario logueado
@@ -22,11 +23,12 @@ exports.store = (req, res) => {
     const newCharacter = {
         id: characters.length > 0 ? characters[characters.length - 1].id + 1 : 1, // Generar un nuevo ID automáticamente
         name: req.body.name,
-        energyLevel: parseInt(req.body.energyLevel, 10), 
+        energyLevel: parseInt(req.body.energyLevel, 10),
         lifePoints: parseInt(req.body.lifePoints, 10),
         team: req.body.team,
         initial: req.body.initial,
-        userId: req.session.userId // Asegúrate de que el ID del usuario se esté almacenando aquí
+        userId: req.session.userId,
+        position: { x: 0, y: 0 } // Posición inicial en (0, 0)
     };
 
     characters.push(newCharacter);
@@ -91,6 +93,31 @@ exports.showPlayerTable = (req, res) => {
     res.render('characters/playerTable', { characters: userCharacters, users, loadTableCss: true });
 };
 
-exports.about = (req, res) => {
-    res.render('about', { loadAboutCss: true });
+exports.updatePosition = (req, res) => {
+    const characters = characterModel.getAllCharacters();
+    const characterId = parseInt(req.params.id);
+    const characterIndex = characters.findIndex(c => c.id === characterId);
+
+    // Verificar si el personaje existe y pertenece al usuario actual
+    if (characterIndex >= 0 && characters[characterIndex].userId === req.session.userId) {
+        const { position } = req.body;
+        characters[characterIndex].position = position; // Actualiza la posición del personaje
+        characterModel.saveCharacters(characters);
+        return res.json({ success: true }); // Retorna éxito al cliente
+    }
+
+    return res.status(403).json({ success: false, message: 'No tienes permiso para actualizar este personaje.' });
+};
+
+exports.getPosition = (req, res) => {
+    const characterId = parseInt(req.params.id);
+    const characters = characterModel.getAllCharacters();
+    const character = characters.find(c => c.id === characterId);
+
+    // Verifica si el personaje existe
+    if (!character) {
+        return res.status(404).json({ message: 'Personaje no encontrado.' });
+    }
+
+    res.json({ position: character.position }); // Retorna la posición del personaje
 };

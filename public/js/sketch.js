@@ -1,57 +1,114 @@
-let img; // Variable para almacenar la imagen
-let posX = 100;  // Posición inicial del cuadrado
+let img;
+let posX = 100; // Valores iniciales temporales
 let posY = 100;
-const squareSize = 20; // Tamaño del cuadrado
-const moveAmount = 5; // Cantidad de píxeles para mover el cuadrado
+const squareSize = 20;
+const moveAmount = 5;
+let characterId = 1; // Cambia esto dinámicamente si es necesario
 
-// Arreglo para controlar las teclas presionadas
 let keys = {};
+let updateInterval;
 
+// Solicitar posición del servidor al cargar
 function preload() {
-    // Cargar la imagen de fondo por defecto
     img = loadImage('/images/background_images/daytime.png');
+    fetchCharacterPosition(); // Llama a la función para obtener la posición guardada
 }
 
+// Configuración inicial del lienzo y actualización automática de fondo
 function setup() {
-    // Configurar el canvas de p5.js que cubrirá el mapa
-    const overlay = createCanvas(windowWidth, 600); // Crear un canvas con la altura del mapa
-    overlay.parent('map'); // Insertar el canvas en el div del mapa
+    const overlay = createCanvas(windowWidth, 600);
+    overlay.parent('map');
     overlay.class('overlay');
-    noFill(); // El fondo no tendrá relleno en el setup
-
-    // Comenzar a cambiar la imagen de fondo automáticamente
-    setInterval(updateBackgroundAutomatically, 60000); // Actualiza cada minuto
+    noFill();
+    setInterval(updateBackgroundAutomatically, 60000); // Actualizar fondo cada minuto
 }
 
+// Dibuja el cuadrado y controla el movimiento del personaje
 function draw() {
-    // Dibujar la imagen de fondo
-    image(img, 0, 0, width, height); // Dibujar la imagen a escala completa
+    image(img, 0, 0, width, height);
+    fill(255, 0, 0);
+    rect(posX, posY, squareSize, squareSize);
 
-    // Dibujar cuadrado en la posición actual
-    fill(255, 0, 0); // Relleno rojo para el cuadrado
-    rect(posX, posY, squareSize, squareSize); // Dibujar cuadrado
-
-    // Mover el cuadrado según las teclas presionadas
+    // Control del movimiento del cuadrado
     if (keys[LEFT_ARROW]) {
-        posX = max(0, posX - moveAmount); // Mover a la izquierda
+        posX = max(0, posX - moveAmount);
     }
     if (keys[RIGHT_ARROW]) {
-        posX = min(width - squareSize, posX + moveAmount); // Mover a la derecha
+        posX = min(width - squareSize, posX + moveAmount);
     }
     if (keys[UP_ARROW]) {
-        posY = max(0, posY - moveAmount); // Mover hacia arriba
+        posY = max(0, posY - moveAmount);
     }
     if (keys[DOWN_ARROW]) {
-        posY = min(height - squareSize, posY + moveAmount); // Mover hacia abajo
+        posY = min(height - squareSize, posY + moveAmount);
     }
 }
 
-// Cambiar la imagen de fondo basado en la selección
+// Función para obtener la posición guardada del servidor
+function fetchCharacterPosition() {
+    fetch(`/characters/${characterId}/getPositions`) // Asegúrate de usar la ruta correcta
+        .then(response => response.json())
+        .then(data => {
+            if (data.length > 0) {
+                posX = data[0].position.x; // Asigna la posición obtenida
+                posY = data[0].position.y;
+            }
+        })
+        .catch(error => {
+            console.error('Error al obtener la posición:', error);
+        });
+}
+
+// Función para enviar la posición actual al servidor
+function updatePositionOnServer(posX, posY, characterId) {
+    fetch(`/characters/${characterId}/updatePosition`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ position: { x: posX, y: posY } })
+    }).then(response => {
+        if (!response.ok) {
+            console.error('Error al actualizar la posición en el servidor');
+        }
+    }).catch(error => {
+        console.error('Error en la conexión:', error);
+    });
+}
+
+// Inicia la actualización de posición en intervalos
+function startUpdatingPosition() {
+    if (!updateInterval) {
+        updateInterval = setInterval(() => {
+            updatePositionOnServer(posX, posY, characterId);
+        }, 100); // Actualizar cada 100ms
+    }
+}
+
+// Detiene la actualización de posición
+function stopUpdatingPosition() {
+    if (updateInterval) {
+        clearInterval(updateInterval);
+        updateInterval = null;
+    }
+    updatePositionOnServer(posX, posY, characterId); // Envía la posición final al soltar la tecla
+}
+
+// Controla cuando una tecla se presiona para iniciar el movimiento
+function keyPressed() {
+    keys[keyCode] = true;
+    startUpdatingPosition();
+}
+
+// Controla cuando una tecla se suelta para detener el movimiento
+function keyReleased() {
+    keys[keyCode] = false;
+    stopUpdatingPosition();
+}
+
+// Cambia el fondo de acuerdo a la selección del usuario
 function changeBackground() {
     const selector = document.getElementById('backgroundSelector');
     const selectedValue = selector.value;
 
-    // Determinar la ruta de la imagen seleccionada
     if (selectedValue === 'automatic') {
         updateBackgroundAutomatically();
     } else {
@@ -66,41 +123,27 @@ function changeBackground() {
             case 'night':
                 imagePath = '/images/background_images/night.png';
                 break;
-            default: // 'daytime'
+            default:
                 imagePath = '/images/background_images/daytime.png';
                 break;
         }
-
-        // Cargar la nueva imagen
         img = loadImage(imagePath);
     }
 }
 
-// Función para actualizar la imagen de fondo automáticamente
+// Cambia el fondo automáticamente según la hora del día
 function updateBackgroundAutomatically() {
     const currentHour = new Date().getHours();
     let imagePath;
 
-    // Cambiar la imagen según la hora del día
     if (currentHour >= 6 && currentHour < 12) {
-        imagePath = '/images/background_images/morning.png'; // 6 AM - 11:59 AM
+        imagePath = '/images/background_images/morning.png';
     } else if (currentHour >= 12 && currentHour < 18) {
-        imagePath = '/images/background_images/daytime.png'; // 12 PM - 5:59 PM
+        imagePath = '/images/background_images/daytime.png';
     } else if (currentHour >= 18 && currentHour < 21) {
-        imagePath = '/images/background_images/evening.png'; // 6 PM - 8:59 PM
+        imagePath = '/images/background_images/evening.png';
     } else {
-        imagePath = '/images/background_images/night.png'; // 9 PM - 5:59 AM
+        imagePath = '/images/background_images/night.png';
     }
-
-    // Cargar la nueva imagen
     img = loadImage(imagePath);
-}
-
-// Manejar las teclas de flecha
-function keyPressed() {
-    keys[keyCode] = true; // Marcar la tecla como presionada
-}
-
-function keyReleased() {
-    keys[keyCode] = false; // Marcar la tecla como liberada
 }

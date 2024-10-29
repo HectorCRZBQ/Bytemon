@@ -4,11 +4,20 @@ const path = './data/characters.json';
 
 const getAllCharacters = () => {
     try {
-        const data = fs.readFileSync(path);
-        return JSON.parse(data);
+        const data = fs.readFileSync(path, 'utf-8');
+        const characters = JSON.parse(data);
+
+        // Asegurar que cada personaje tenga el campo 'position'
+        characters.forEach(character => {
+            if (!character.position) {
+                character.position = { x: 0, y: 0 }; // Valor por defecto
+            }
+        });
+
+        return characters;
     } catch (error) {
         console.error('Error al cargar los personajes:', error);
-        return []; // Devuelve un arreglo vacío en caso de error
+        return [];
     }
 };
 
