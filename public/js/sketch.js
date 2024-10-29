@@ -49,9 +49,9 @@ function fetchCharacterPosition() {
     fetch(`/characters/${characterId}/getPositions`) // Asegúrate de usar la ruta correcta
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
-                posX = data[0].position.x; // Asigna la posición obtenida
-                posY = data[0].position.y;
+            if (data.position) { // Cambiado para acceder a la posición correctamente
+                posX = data.position.x; // Asigna la posición obtenida
+                posY = data.position.y;
             }
         })
         .catch(error => {
