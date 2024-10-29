@@ -21,8 +21,13 @@ const saveCharacters = (characters) => {
 };
 
 const findCharacterById = (id) => {
-    const characters = getAllCharacters();
-    return characters.find(c => c.id === id);
+    try {
+        const characters = getAllCharacters();
+        return characters.find(c => c.id === id) || null;
+    } catch (error) {
+        console.error('Error finding character by ID:', error);
+        return null;
+    }
 };
 
 // Nueva función para re-numerar los IDs de los personajes
