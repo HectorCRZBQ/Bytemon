@@ -109,7 +109,7 @@ exports.updatePosition = (req, res) => {
     return res.status(403).json({ success: false, message: 'No tienes permiso para actualizar este personaje.' });
 };
 
-exports.getPosition = (req, res) => {
+exports.getPositions = (req, res) => {
     const characterId = parseInt(req.params.id);
     const characters = characterModel.getAllCharacters();
     const character = characters.find(c => c.id === characterId);
