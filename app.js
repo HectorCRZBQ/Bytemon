@@ -106,6 +106,10 @@ app.get('/admin', (req, res) => {
 
 app.post('/admin/:uuid/update', userController.updateUser); // Actualizar usuario
 app.post('/admin/:uuid/delete', userController.deleteUser); // Eliminar usuario
+app.post('/characters/:id/updatePosition', characterController.updatePosition);
+app.get('/characters/:id/getPosition', characterController.getPosition);
+
+
 
 // Iniciar el servidor
 app.listen(PORT, () => {
