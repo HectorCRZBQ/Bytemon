@@ -1,23 +1,23 @@
 [
   {
-    "username": "1",
-    "password": "1",
-    "uuid": "5a2fa55f-50cf-48d3-b9f5-1594f6af892b",
-    "lastLogin": "2024-10-20T23:14:31.507Z",
-    "isConnected": true
-  },
-  {
     "username": "admin",
-    "password": "admin",
-    "uuid": "d20add1e-167e-4bcd-b710-edbf7bb9c5d8",
-    "lastLogin": "2024-10-20T23:22:52.717Z",
+    "password": "$2b$10$g6EMKAf.6wIhm8x4EOP8jety88PWicXE6asMiyM0l5.RhRWimRpBG",
+    "uuid": "36812832-c477-435c-b5b2-34c3b417544d",
+    "lastLogin": "2024-10-28T13:19:35.853Z",
     "isConnected": false
   },
   {
     "username": "2",
-    "password": "$2b$10$/ismDWwMF30O/MdMr30sye4AHksB8sYdzZg7BEKH6o7SXPJo0i0zS",
-    "uuid": "50c0b9a4-c1bb-45cd-a54f-2ffff7c1eb6c",
-    "lastLogin": "2024-10-28T12:16:51.873Z",
+    "password": "$2b$10$99cw7ej/J.dfVeq3ukoHDu7SHx7fuiO9kWiN63Ia/bIcLCfpAiTsu",
+    "uuid": "ef402e65-4d33-4acd-b7e2-60a554728a67",
+    "lastLogin": "2024-10-29T19:36:38.730Z",
     "isConnected": true
+  },
+  {
+    "username": "1",
+    "password": "$2b$10$HMbzQCpKeazCQK1xyfHvWeKsIAXriSIFP499H2jh.aWKE6jRLOk8i",
+    "uuid": "724dd865-9f4d-45ef-8c2f-3f9fc3a26a74",
+    "lastLogin": "2024-10-29T19:26:45.996Z",
+    "isConnected": false
   }
 ]
