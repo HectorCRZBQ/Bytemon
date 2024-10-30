@@ -1,0 +1,116 @@
+/* Estilos generales para el cuerpo del documento */
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #222; /* Fondo oscuro similar al formulario */
+    color: #fff; /* Texto en blanco para mejor contraste */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Estilo del encabezado */
+header {
+    background: #ff6f00;
+    color: #fff;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si es necesario */
+    border-bottom: 0.3125rem solid #770505;
+    font-size: 0.9375rem;
+}
+
+h1 {
+    font-size: 2rem; /* Tamaño de fuente más grande */
+    color: #ffcc00; /* Color amarillo para el título */
+}
+
+p {
+    text-align: center; /* Centrar párrafo */
+    margin: 1rem 0; /* Espaciado superior e inferior */
+    font-size: 1rem; /* Tamaño de fuente estándar */
+}
+
+/* Estilo del contenedor del mapa */
+/* Estilo del contenedor del mapa */
+#map {
+    width: 50rem; /* Ancho fijo para el mapa */
+    height: 37.5rem; /* Altura fija para el mapa (600px = 37.5rem) */
+    border: 0.25rem solid #ffcc00; /* Borde amarillo brillante */
+    border-radius: 0.625rem; /* Bordes redondeados */
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.8); /* Sombra intensa */
+    overflow: hidden; /* Ocultar cualquier contenido desbordante */
+    margin: 2rem auto; /* Espacio inferior del mapa (32px = 2rem) y centrar horizontalmente */
+}
+
+
+/* Estilo del selector de fondo */
+label {
+    display: block; /* Mostrar en bloque */
+    margin: 1rem auto; /* Margen automático para centrar */
+    font-weight: bold; /* Negrita */
+    text-align: center; /* Centrar texto */
+    color: #ffcc00; /* Color amarillo para el texto */
+}
+
+/* Estilo del dropdown */
+#backgroundSelector {
+    padding: 0.625rem; /* Espaciado interno */
+    border-radius: 0.3125rem; /* Bordes redondeados */
+    border: 0.125rem solid #ffcc00; /* Borde amarillo */
+    background-color: #333; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro estilo pixel */
+}
+
+/* Estilos para los botones de interacción */
+.button {
+    background-color: #ff6f00; /* Color de fondo naranja brillante */
+    color: #ffffff; /* Texto blanco */
+    padding: 0.625rem 1rem; /* Espaciado del botón */
+    border: 0.125rem solid #ffcc00; /* Borde amarillo */
+    border-radius: 0.3125rem; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    transition: background-color 0.3s; /* Transición suave */
+    margin: 1rem 0; /* Margen superior e inferior */
+    font-family: 'Press Start 2P', cursive; /* Fuente retro estilo pixel */
+}
+
+/* Efecto al pasar el cursor sobre los botones */
+.button:hover {
+    background-color: #ff8500; /* Color más claro al pasar */
+}
+
+/* Modo de alto contraste para elementos interactivos */
+body.high-contrast .button {
+    background-color: yellow; /* Fondo amarillo */
+    color: black; /* Texto negro */
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    #map {
+        width: 90%; /* Ancho ajustado para pantallas pequeñas */
+        height: 25rem; /* Altura ajustada para pantallas pequeñas (400px = 25rem) */
+        margin-bottom: 2rem; /* Espacio inferior en móviles */
+    }
+
+    /* Aumentar el tamaño de fuente en móviles */
+    h1 {
+        font-size: 1.5rem; /* Tamaño de fuente más accesible */
+    }
+
+    p {
+        font-size: 0.875rem; /* Tamaño de fuente accesible (14px = 0.875rem) */
+    }
+
+    #backgroundSelector {
+        width: 90%; /* Ancho ajustado para móviles */
+        font-size: 1rem; /* Tamaño de fuente accesible */
+    }
+
+    .button {
+        font-size: 1rem; /* Tamaño de fuente más accesible para botones */
+    }
+}
