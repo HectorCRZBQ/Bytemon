@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/map.css">
-
     <title>Mapa</title>
+    
     <!-- Incluir estilos de Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <!-- p5.js para animaciones -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <!-- Leaflet -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script> <!-- Asegúrate de que esta línea esté aquí -->
 </head>
 <body>
     <h1>Mapa del Juego</h1>
@@ -28,7 +29,7 @@
         <option value="night">Noche</option>
     </select>
 
-    <div id="map"></div> <!-- Contenedor para el mapa -->
+    <div id="map" style="height: 600px;"></div> <!-- Contenedor para el mapa, estableciendo una altura -->
 
     <script src="/js/sketch.js"></script> <!-- Enlace al archivo JS -->
 </body>
