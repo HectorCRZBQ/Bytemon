@@ -110,14 +110,22 @@ exports.updatePosition = (req, res) => {
 };
 
 exports.getPositions = (req, res) => {
-    const characterId = parseInt(req.params.id);
-    const characters = characterModel.getAllCharacters();
-    const character = characters.find(c => c.id === characterId);
-
-    // Verifica si el personaje existe
-    if (!character) {
-        return res.status(404).json({ message: 'Personaje no encontrado.' });
-    }
-
-    res.json({ position: character.position }); // Retorna la posición del personaje
+    const characterId = req.params.id;
+    const charactersFilePath = path.join(__dirname, '../data/characters.json');
+    
+    fs.readFile(charactersFilePath, 'utf8', (err, jsonData) => {
+        if (err) {
+            console.error('Error al leer el archivo JSON:', err);
+            return res.status(500).send('Error interno del servidor');
+        }
+        
+        const characters = JSON.parse(jsonData);
+        const character = characters.find(c => c.id == characterId);
+        
+        if (character) {
+            return res.json({ position: character.position });
+        } else {
+            return res.status(404).send('Personaje no encontrado');
+        }
+    });
 };

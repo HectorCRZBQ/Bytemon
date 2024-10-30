@@ -10,14 +10,14 @@
     "username": "2",
     "password": "$2b$10$99cw7ej/J.dfVeq3ukoHDu7SHx7fuiO9kWiN63Ia/bIcLCfpAiTsu",
     "uuid": "ef402e65-4d33-4acd-b7e2-60a554728a67",
-    "lastLogin": "2024-10-29T23:44:56.108Z",
+    "lastLogin": "2024-10-30T02:26:17.042Z",
     "isConnected": true
   },
   {
     "username": "1",
     "password": "$2b$10$HMbzQCpKeazCQK1xyfHvWeKsIAXriSIFP499H2jh.aWKE6jRLOk8i",
     "uuid": "724dd865-9f4d-45ef-8c2f-3f9fc3a26a74",
-    "lastLogin": "2024-10-29T19:26:45.996Z",
-    "isConnected": false
+    "lastLogin": "2024-10-30T02:01:38.082Z",
+    "isConnected": true
   }
 ]
