@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYTEMON 3D</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.2/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-plant-component@2.0.0/dist/aframe-plant-component.min.js"></script>
+    
+    <script>
+      // Componente personalizado para el sistema de partículas
+      AFRAME.registerComponent('custom-particle-system', {
+        init: function() {
+            this.particles = [];
+            this.maxParticles = 20000;
+
+            for (let i = 0; i < this.maxParticles; i++) {
+            let particle = document.createElement('a-entity');
+            particle.setAttribute('geometry', {
+                primitive: 'plane',
+                width: 0.1,
+                height: 0.1
+            });
+            particle.setAttribute('material', {
+                src: '#leaf-texture',
+                transparent: true,
+                alphaTest: 0.5,
+                side: 'double'
+            });
+
+            // Cambiar el rango para cubrir todo el mapa
+            const x = Math.random() * 200 - 100; // Rango [-100, 100] para el eje X
+            const y = Math.random() * 20 + 5;    // Altura aleatoria
+            const z = Math.random() * 200 - 100; // Rango [-100, 100] para el eje Z
+            particle.setAttribute('position', `${x} ${y} ${z}`);
+
+            // Rotación aleatoria
+            const rx = Math.random() * 360;
+            const ry = Math.random() * 360;
+            const rz = Math.random() * 360;
+            particle.setAttribute('rotation', `${rx} ${ry} ${rz}`);
+
+            this.particles.push({
+                element: particle,
+                velocity: Math.random() * 0.01 + 0.005,
+                rotationSpeed: {
+                x: Math.random() * 2 - 1,
+                y: Math.random() * 2 - 1,
+                z: Math.random() * 2 - 1
+                }
+            });
+
+            this.el.appendChild(particle);
+            }
+        },
+
+        tick: function(time, timeDelta) {
+            this.particles.forEach(particle => {
+            const currentPosition = particle.element.getAttribute('position');
+            const currentRotation = particle.element.getAttribute('rotation');
+
+            // Actualizar posición
+            currentPosition.y -= particle.velocity * timeDelta;
+
+            // Si la partícula llega al suelo, resetear su posición
+            if (currentPosition.y < 0) {
+                // Resetear la partícula a una altura aleatoria y en una posición aleatoria dentro del mapa
+                currentPosition.y = Math.random() * 20 + 5; // Altura aleatoria
+                currentPosition.x = Math.random() * 200 - 100; // Rango [-100, 100] para el eje X
+                currentPosition.z = Math.random() * 200 - 100; // Rango [-100, 100] para el eje Z
+            }
+
+            // Actualizar rotación
+            currentRotation.x += particle.rotationSpeed.x;
+            currentRotation.y += particle.rotationSpeed.y;
+            currentRotation.z += particle.rotationSpeed.z;
+
+            particle.element.setAttribute('position', currentPosition);
+            particle.element.setAttribute('rotation', currentRotation);
+            });
+        }
+        });
+    </script>
+    
+    <style>
+        .a-enter-vr {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        #back-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            background-color: #2d4c1e;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        #back-button:hover {
+            background-color: #1f3d13;
+        }
+    </style>
+</head>
+<body>
+    <a-scene renderer="antialias: true" dpr="1" lighting="type: directional; intensity: 1;">
+        <!-- Texturas para las partículas -->
+        <a-assets>
+            <img id="leaf-texture" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHBhdGggZD0iTTMyIDJDMjAgMTUgMTAgMzIgMzIgNjIgNTQgMzIgNDQgMTUgMzIgMnoiIGZpbGw9IiM4YmMzNGEiLz48L3N2Zz4=" crossorigin="anonymous">
+            <audio id="nature-sound" src="assets/audio/forest-163012.mp3" preload="auto"></audio>
+        </a-assets>
+
+        <!-- Ambiente -->
+        <a-entity id="environment" 
+                  environment="preset: forest; 
+                              dressingAmount: 500; 
+                              ground: natural; 
+                              groundColor: #2d4c1e; 
+                              skyType: atmosphere; 
+                              skyColor: #b3c1d1; 
+                              fog: 0.2;">
+        </a-entity>
+
+        <!-- Sistema de partículas personalizado -->
+        <a-entity custom-particle-system></a-entity>
+
+        <a-sound src="#nature-sound" 
+                position="0 2 0" 
+                autoplay="true" 
+                loop="true" 
+                distance="150" 
+                rolloff-factor="1" 
+                volume="0.7">
+        </a-sound>
+
+        <!-- Terreno con césped -->
+        <a-entity id="terrain">
+            <a-plane position="0 0 0" 
+                     rotation="-90 0 0" 
+                     width="200" 
+                     height="200" 
+                     material="src: url(assets/Grass001_1K-JPG/Grass001_1K-JPG_Color.jpg);
+                              normalMap: url(assets/Grass001_1K-JPG/Grass001_1K-JPG_NormalGL.jpg);
+                              roughnessMap: url(assets/Grass001_1K-JPG/Grass001_1K-JPG_Roughness.jpg);
+                              displacementMap: url(assets/Grass001_1K-JPG/Grass001_1K-JPG_Displacement.jpg);
+                              repeat: 100 100;">
+            </a-plane>
+        </a-entity>
+
+        <!-- Generación aleatoria de árboles -->
+        <a-entity id="tree-cluster">
+            <script>
+                var numTrees = 150; // Número de árboles a generar
+                var treeCluster = document.querySelector('#tree-cluster');
+                
+                var barkTexture = 'assets/Bark014_1K-JPG/Bark014_1K-JPG_Color.jpg';
+                var barkNormalMap = 'assets/Bark014_1K-JPG/Bark014_1K-JPG_NormalGL.jpg';
+                var barkRoughness = 'assets/Bark014_1K-JPG/Bark014_1K-JPG_Roughness.jpg';
+                var leafTexture = 'assets/ScatteredLeaves008_1K-JPG/ScatteredLeaves008_1K-JPG_Color.jpg';
+
+                for (var i = 0; i < numTrees; i++) {
+                    var xPos = (Math.random() * 200) - 100;
+                    var zPos = (Math.random() * 200) - 100;
+                    var yPos = 0;
+                    var scale = Math.random() * 1.5 + 1.5;
+                    
+                    var tree = document.createElement('a-entity');
+                    tree.setAttribute('plant', `type: tree; height: ${scale}; spread: 2`);
+                    tree.setAttribute('position', `${xPos} ${yPos} ${zPos}`);
+                    tree.setAttribute('scale', `${scale} ${scale} ${scale}`);
+                    tree.setAttribute('rotation', `0 ${Math.random() * 360} 0`);
+                    
+                    // Tronco con corteza
+                    var trunk = document.createElement('a-cylinder');
+                    trunk.setAttribute('height', scale * 2);
+                    trunk.setAttribute('radius', 0.4);
+                    trunk.setAttribute('material', `src: url(${barkTexture});
+                                                   normalMap: url(${barkNormalMap});
+                                                   roughnessMap: url(${barkRoughness});`);
+                    trunk.setAttribute('position', `0 ${scale} 0`);
+                    tree.appendChild(trunk);
+
+                    // Hojas del árbol
+                    var leaves = document.createElement('a-sphere');
+                    leaves.setAttribute('radius', scale * 1.2);
+                    leaves.setAttribute('material', `src: url(${leafTexture});
+                                                     normalMap: url(assets/ScatteredLeaves008_1K-JPG/ScatteredLeaves008_1K-JPG_NormalGL.jpg);
+                                                     roughnessMap: url(assets/ScatteredLeaves008_1K-JPG/ScatteredLeaves008_1K-JPG_Roughness.jpg);`);
+                    leaves.setAttribute('position', `0 ${scale * 2.5} 0`);
+                    tree.appendChild(leaves);
+
+                    treeCluster.appendChild(tree);
+                }
+            </script>
+        </a-entity>
+
+        <!-- Generación aleatoria de rocas -->
+        <a-entity id="rock-cluster">
+            <script>
+                var numRocks = 50;
+                var rockCluster = document.querySelector('#rock-cluster');
+                
+                var rockTexture = 'assets/Rock051_1K-JPG/Rock051_1K-JPG_Color.jpg';
+                var rockNormalMap = 'assets/Rock051_1K-JPG/Rock051_1K-JPG_NormalGL.jpg';
+                var rockRoughness = 'assets/Rock051_1K-JPG/Rock051_1K-JPG_Roughness.jpg';
+
+                for (var i = 0; i < numRocks; i++) {
+                    var xPos = (Math.random() * 200) - 100;
+                    var zPos = (Math.random() * 200) - 100;
+                    var yPos = 0.5;
+                    var scale = Math.random() * 2 + 1;
+
+                    var rock = document.createElement('a-box');
+                    rock.setAttribute('width', scale);
+                    rock.setAttribute('height', scale * 0.5);
+                    rock.setAttribute('depth', scale * 0.8);
+                    rock.setAttribute('material', `src: url(${rockTexture});
+                                                normalMap: url(${rockNormalMap});
+                                                roughnessMap: url(${rockRoughness});`);
+                    rock.setAttribute('position', `${xPos} ${yPos} ${zPos}`);
+                    rock.setAttribute('rotation', `${Math.random() * 360} ${Math.random() * 360} ${Math.random() * 360}`);
+                    rockCluster.appendChild(rock);
+                }
+            </script>
+        </a-entity>
+
+        <!-- Sistema de iluminación -->
+        <a-entity id="lighting-rig">
+            <a-light id="main-light" 
+                     type="directional" 
+                     position="5 10 5" 
+                     intensity="1" 
+                     castShadow="true" 
+                     color="#ffffff">
+            </a-light>
+            
+            <a-light id="ambient-light" 
+                     type="ambient" 
+                     color="#ffffff" 
+                     intensity="0.5">
+            </a-light>
+        </a-entity>
+
+        <!-- Cámara -->
+        <a-entity id="rig" position="0 2 0">
+            <a-camera look-controls="pointerLockEnabled: true; touchEnabled: true"
+                      wasd-controls="acceleration: 15; fly: false;">
+                <a-entity cursor="fuse: false; rayOrigin: mouse"
+                          raycaster="objects: .clickable"
+                          position="0 0 -1"
+                          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                          material="color: white; shader: flat">
+                </a-entity>
+            </a-camera>
+        </a-entity>
+
+        <!-- Botón para volver -->
+        <button id="back-button" onclick="window.location.href='/map';">Volver al Mapa 2D</button>
+    </a-scene>
+</body>
+</html>
