@@ -261,3 +261,40 @@ document.getElementById('chat-form').addEventListener('submit', (e) => {
     }
 });
 
+// Botón de borrar los mensajes
+document.getElementById('clearChatBtn').addEventListener('click', () => {
+    // Limpiar todos los mensajes del chat
+    const messagesContainer = document.getElementById('messages');
+    messagesContainer.innerHTML = ''; // Eliminar todo el contenido
+});
+
+// Botón de ocultar/mostrar chat
+let isChatVisible = true;
+document.getElementById('toggleChatBtn').addEventListener('click', () => {
+    const chatContainer = document.getElementById('chat-container');
+    
+    // Alternar la visibilidad del chat
+    if (isChatVisible) {
+        chatContainer.style.display = 'none';
+    } else {
+        chatContainer.style.display = 'block';
+    }
+    
+    // Cambiar el estado de visibilidad
+    isChatVisible = !isChatVisible;
+});
+
+function toggleChat() {
+    const chatContainer = document.getElementById('chat-container');
+    const toggleChatBtn = document.getElementById('toggleChatBtn');
+    
+    // Si el chat está visible, lo ocultamos y cambiamos el texto del botón
+    if (chatContainer.style.display !== 'none') {
+        chatContainer.style.display = 'none';
+        toggleChatBtn.textContent = 'Mostrar Chat';
+    } else {
+        // Si el chat está oculto, lo mostramos y cambiamos el texto del botón
+        chatContainer.style.display = 'block';
+        toggleChatBtn.textContent = 'Ocultar Chat';
+    }
+}

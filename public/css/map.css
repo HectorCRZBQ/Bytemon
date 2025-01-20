@@ -133,7 +133,7 @@ body.high-contrast .button {
     border: 1px solid #ccc;
     margin-bottom: 20px;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: black;
 }
 
 #messages div {
@@ -170,4 +170,17 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+#clearChatBtn, #toggleChatBtn {
+    padding: 5px;
+    background-color: #f44336; /* Rojo para el botón de borrar */
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#clearChatBtn:hover, #toggleChatBtn:hover {
+    background-color: #d32f2f;
 }
