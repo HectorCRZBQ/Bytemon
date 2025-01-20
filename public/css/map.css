@@ -114,3 +114,43 @@ body.high-contrast .button {
         font-size: 1rem; /* Tamaño de fuente más accesible para botones */
     }
 }
+
+
+#chat-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+#messages {
+    max-height: 200px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+#chat-form {
+    display: flex;
+    gap: 10px;
+}
+
+#chat-message {
+    flex-grow: 1;
+    padding: 5px;
+}
+
+button {
+    padding: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}

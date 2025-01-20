@@ -212,3 +212,35 @@ function getCharacterIdFromSession() {
             console.error('Error al obtener el ID del personaje:', error);
         });
 }
+
+
+// Función para enviar el mensaje
+function sendMessage(message) {
+    socket.emit('chatMessage', { message: message, id: characterId });
+}
+
+// Recibir mensajes de otros jugadores
+socket.on('chatMessage', (data) => {
+    // Mostrar el mensaje en el chat
+    const messageElement = document.createElement('div');
+    messageElement.textContent = `Jugador ${data.id}: ${data.message}`;
+    document.getElementById('messages').appendChild(messageElement);
+});
+
+// Manejar el evento de enviar un mensaje
+document.getElementById('chat-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const message = document.getElementById('chat-message').value;
+    if (message.trim()) {
+        // Mostrar el mensaje en el chat local (antes de enviarlo)
+        const messageElement = document.createElement('div');
+        messageElement.textContent = `Tú: ${message}`; // Muestra "Tú" para el jugador que envía el mensaje
+        document.getElementById('messages').appendChild(messageElement);
+
+        // Enviar el mensaje al servidor
+        sendMessage(message); 
+        
+        // Limpiar el campo de texto
+        document.getElementById('chat-message').value = ''; 
+    }
+});

@@ -32,6 +32,15 @@
     <!-- Contenedor para el mapa de Leaflet -->
     <div id="map" style="height: 600px;"></div> <!-- Contenedor para el mapa, estableciendo una altura -->
 
+    <!-- Sección del chat -->
+    <div id="chat-container">
+        <h2>Chat del Juego</h2>
+        <div id="messages"></div>
+        <form id="chat-form">
+            <input type="text" id="chat-message" placeholder="Escribe un mensaje..." required />
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
     <!-- Botón para redirigir a la escena 3D -->
     <br><br>
     <button onclick="window.location.href='/scene.html';">Mapa 3D</button>

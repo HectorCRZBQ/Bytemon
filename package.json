@@ -10,7 +10,7 @@
         "bcrypt": "^5.1.1",
         "body-parser": "^1.20.3",
         "ejs": "^3.1.10",
-        "express": "^4.21.1",
+        "express": "^4.21.2",
         "express-ejs-layouts": "^2.5.1",
         "express-session": "^1.18.1",
         "socket.io": "^4.8.1",
@@ -18,5 +18,8 @@
     },
     "author": "HéctorCRZBQ y Sergio016",
     "license": "MIT",
-    "keywords": []
+    "keywords": [],
+    "directories": {
+        "test": "tests"
+    }
 }

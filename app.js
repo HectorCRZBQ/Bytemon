@@ -163,5 +163,17 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('Usuario desconectado:', socket.id);
     });
+
+    // Manejar la recepción de un mensaje de chat
+    socket.on('chatMessage', (data) => {
+        // Emitir el mensaje a todos los demás jugadores
+        socket.broadcast.emit('chatMessage', data); // Enviar a todos menos al emisor
+    });
+
+    // Manejar la desconexión del socket
+    socket.on('disconnect', () => {
+        console.log('Usuario desconectado:', socket.id);
+    });
+ 
 });
 
