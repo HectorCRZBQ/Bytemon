@@ -88,34 +88,6 @@ body.high-contrast .button {
     color: black; /* Texto negro */
 }
 
-/* Media queries para pantallas pequeñas */
-@media (max-width: 768px) {
-    #map {
-        width: 90%; /* Ancho ajustado para pantallas pequeñas */
-        height: 25rem; /* Altura ajustada para pantallas pequeñas (400px = 25rem) */
-        margin-bottom: 2rem; /* Espacio inferior en móviles */
-    }
-
-    /* Aumentar el tamaño de fuente en móviles */
-    h1 {
-        font-size: 1.5rem; /* Tamaño de fuente más accesible */
-    }
-
-    p {
-        font-size: 0.875rem; /* Tamaño de fuente accesible (14px = 0.875rem) */
-    }
-
-    #backgroundSelector {
-        width: 90%; /* Ancho ajustado para móviles */
-        font-size: 1rem; /* Tamaño de fuente accesible */
-    }
-
-    .button {
-        font-size: 1rem; /* Tamaño de fuente más accesible para botones */
-    }
-}
-
-
 #chat-container {
     position: fixed;
     bottom: 10px;
@@ -183,4 +155,107 @@ button:hover {
 
 #clearChatBtn:hover, #toggleChatBtn:hover {
     background-color: #d32f2f;
+}
+
+/* Media queries mejoradas para móviles */
+@media (max-width: 768px) {
+    /* Ajustes del header */
+    header {
+        padding: 0.75rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Ajustes del mapa como ya estaba definido */
+    #map {
+        width: 90%;
+        height: 25rem;
+        margin: 1rem auto;
+        border-width: 0.1875rem;
+    }
+
+    /* Ajustes de tipografía */
+    h1 {
+        font-size: 1.25rem;
+        margin: 0.5rem 0;
+    }
+
+    p {
+        font-size: 0.8125rem;
+        margin: 0.75rem 1rem;
+        line-height: 1.4;
+    }
+
+    /* Ajustes del selector de fondo */
+    label {
+        margin: 0.75rem auto;
+        font-size: 0.875rem;
+    }
+
+    #backgroundSelector {
+        width: 85%;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+        margin: 0.5rem auto;
+    }
+
+    /* Ajustes de los botones */
+    .button {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        margin: 0.75rem 0;
+        width: 85%;
+        max-width: 250px;
+    }
+
+    /* Ajustes del chat para móviles */
+    #chat-container {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        max-height: 50vh;
+        border-radius: 0;
+        padding: 0.5rem;
+    }
+
+    #messages {
+        height: 200px;
+        font-size: 0.8125rem;
+        padding: 0.5rem;
+    }
+
+    #chat-form {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    #chat-message {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    #clearChatBtn, #toggleChatBtn {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    /* Ajustes adicionales para pantallas muy pequeñas */
+    @media (max-width: 320px) {
+        h1 {
+            font-size: 1rem;
+        }
+
+        #map {
+            height: 20rem;
+        }
+
+        #messages {
+            height: 150px;
+        }
+    }
 }

@@ -388,7 +388,7 @@ body.high-contrast #healMessage {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1429px) {
     /* Oculta los enlaces en dispositivos pequeños, muestra el menú hamburguesa */
     .nav-links {
         display: none;
