@@ -124,6 +124,18 @@ Mayor personalización de personajes y mejoras gráficas.
 ---
 
 ### **V-1.8.0** --- *20/10/2024*
-Lanzamiento final con soporte completo y ajustes finales.  
+Modo de acccesibilidad completo para toda la interfaz 
 ![image](https://github.com/user-attachments/assets/c25be6b8-5c7d-4857-8d5d-a22a09a9b244)  
 ![image](https://github.com/user-attachments/assets/20707074-63c8-4854-8bb7-254f55d31217)
+
+---
+
+### **V-1.9.0** --- *18/1/2024*
+Chat de comunicacion entre multiples usuarios 
+![image](https://github.com/user-attachments/assets/90dcf66c-86a6-41d8-b32f-ca62ec5a2c0f)
+
+---
+
+### **V-1.10.0** --- *20/10/2024*
+Version final hasta la fecha
+
