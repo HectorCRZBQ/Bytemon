@@ -128,9 +128,26 @@ body.high-contrast .button {
 }
 
 #messages {
-    max-height: 200px;
-    overflow-y: scroll;
+    height: 300px; /* Ajusta el alto del área de mensajes */
+    overflow-y: auto; /* Permite hacer scroll */
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+#messages div {
     margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#messages .self-message {
+    font-weight: bold;
+    color: green; /* Mensajes del jugador en color verde */
+}
+
+#messages .other-message {
+    color: blue; /* Mensajes de otros jugadores en color azul */
 }
 
 #chat-form {

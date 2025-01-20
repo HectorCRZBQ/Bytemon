@@ -221,26 +221,43 @@ function sendMessage(message) {
 
 // Recibir mensajes de otros jugadores
 socket.on('chatMessage', (data) => {
-    // Mostrar el mensaje en el chat
+    // Crear un nuevo div para el mensaje
     const messageElement = document.createElement('div');
-    messageElement.textContent = `Jugador ${data.id}: ${data.message}`;
+    
+    // Si el mensaje lo envió el jugador, se marca como "Tú"
+    if (data.id === characterId) {
+        messageElement.textContent = `Tú: ${data.message}`;
+        messageElement.classList.add('self-message'); // Clase para diferenciar mensajes propios
+    } else {
+        messageElement.textContent = `Jugador ${data.id}: ${data.message}`;
+        messageElement.classList.add('other-message'); // Clase para los mensajes de otros jugadores
+    }
+
+    // Agregar el mensaje al contenedor de mensajes
     document.getElementById('messages').appendChild(messageElement);
+    // Hacer scroll hacia el final para mostrar siempre el último mensaje
+    document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
 });
 
 // Manejar el evento de enviar un mensaje
 document.getElementById('chat-form').addEventListener('submit', (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevenir el comportamiento por defecto (recargar la página)
+
     const message = document.getElementById('chat-message').value;
     if (message.trim()) {
         // Mostrar el mensaje en el chat local (antes de enviarlo)
         const messageElement = document.createElement('div');
-        messageElement.textContent = `Tú: ${message}`; // Muestra "Tú" para el jugador que envía el mensaje
+        messageElement.textContent = `Tú: ${message}`; // "Tú" para indicar que lo envió el jugador
+        messageElement.classList.add('self-message'); // Añadir clase CSS para los mensajes del jugador
         document.getElementById('messages').appendChild(messageElement);
-
-        // Enviar el mensaje al servidor
-        sendMessage(message); 
         
+        // Enviar el mensaje al servidor
+        socket.emit('chatMessage', { message: message, id: characterId });
+
         // Limpiar el campo de texto
-        document.getElementById('chat-message').value = ''; 
+        document.getElementById('chat-message').value = '';
+        // Hacer scroll hacia el final para mostrar siempre el último mensaje
+        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
     }
 });
+
